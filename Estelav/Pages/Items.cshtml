@@ -1,0 +1,41 @@
+﻿@page
+@model Estelav.Pages.ItemsModel
+@{
+    ViewData["Title"] = "Items";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+
+<h1 style="width: 100%; text-align: center;">@Model._categoryName</h1>
+
+    <div style="display: inline-flex; flex-direction: row; flex-basis: auto; justify-content: center; flex-wrap: wrap; flex-shrink: 0;">
+
+
+        @foreach (var item in Model.items)
+        {
+
+
+            <div class="item-card">
+                <img src="@item.ImageUrl" />
+                <div class="item-descr" style="display: flex; flex-direction: column;">
+                    <span class="sizes">10-11-12</span>
+                    <span class="item-name">@item.Name</span>
+                    <span class="price">@item.Price $</span>
+                        @if (item.Price == 11.00)
+                        {
+
+                            @Html.Raw("<button style='background: gray;'>Not in Stock</button>")
+
+                        }
+                        else
+                        {
+                            @Html.Raw("<button>Add to Cart</button>")
+                        }
+                        
+                </div>
+            </div>
+
+
+
+        }
+    </div>

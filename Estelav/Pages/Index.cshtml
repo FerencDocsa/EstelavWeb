@@ -1,0 +1,118 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Estelav Shop";
+}
+
+
+<div class="main-image-cont">
+    <img src="~/img/top.jpg" style="width: 100%;" />
+    <p id="mainTitle">NEW COLLECTION</p>
+    <button class="btn" id="shopNowButton" href="#main-cards">Shop Now</button>
+</div>
+
+
+<div style="justify-content: center; text-align: center; width: 100%; " id="main-cards">
+
+    <div class="top-3-cards" style="flex-direction: row; flex-basis: auto; flex-wrap: wrap;">
+
+        <div class="main-image-row">
+            <a asp-page="/Items" asp-route-id="1">
+
+                <p>BAGS</p>
+                <img src="~/img/merch/bag.jpg" />
+            </a>
+        </div>
+
+        <div class="main-image-row">
+            <a asp-page="/Items" asp-route-id="2">
+                <p>SHOES</p>
+                <img src="~/img/merch/shoes.jpg" />
+            </a>
+        </div>
+
+        <div class="main-image-row">
+            <a asp-page="/Items" asp-route-id="3">
+                <p>SWIMSUITS</p>
+                <img src="~/img/merch/swim.jpg" />
+            </a>
+        </div>
+
+    </div>
+
+    <div class="top-2-cards">
+        <div class="main-image-row">
+            <p style="top: 55%;">DRESSES</p>
+            <img src="~/img/merch/dress1.png" style="height: 500px; " />
+        </div>
+
+        <div class="main-image-row">
+            <p style="top: 55%;">DRESSES</p>
+            <img src="~/img/merch/dress2.png" style="height: 500px; " />
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+<p style="font-size: 40px; width: 100%; text-align: center; font-weight: bold;">BESTSELLERS</p>
+
+<div class="item-cards" style="display: flex; flex-direction: row; flex-basis: auto; justify-content: space-evenly; margin-bottom: 25px; flex-wrap: wrap;">
+    <div class="item-card">
+        <img src="~/img/merch/dress1.png" />
+        <div class="item-descr" style="display: flex; flex-direction: column;">
+            <span class="sizes">40-41-42-43</span>
+            <span class="item-name">Dress</span>
+            <span class="price">50$</span>
+            <button>Add to Cart</button>
+        </div>
+    </div>
+
+
+    <div class="item-card">
+        <img src="~/img/merch/dresses.jpg" />
+        <div class="item-descr" style="display: flex; flex-direction: column;">
+            <span class="sizes">40-41-42-43</span>
+            <span class="item-name">Dress</span>
+            <span class="price">50$</span>
+            <button>Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="item-card">
+        <img src="~/img/merch/dress2.png" />
+        <div class="item-descr" style="display: flex; flex-direction: column;">
+            <span class="sizes">40-41-42-43</span>
+            <span class="item-name">Dress</span>
+            <span class="price">50$</span>
+            <button>Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="item-card">
+        <img src="~/img/merch/dress3.png" />
+        <div class="item-descr" style="display: flex; flex-direction: column;">
+            <span class="sizes">40-41-42-43</span>
+            <span class="item-name">Dress</span>
+            <span class="price">50$</span>
+            <button>Add to Cart</button>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('#shopNowButton').click(function (e) {
+            e.preventDefault();
+
+            $('html, body').animate({
+                scrollTop: $('#main-cards').offset().top
+            }, 500);
+        });
+    });
+
+</script>
