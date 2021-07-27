@@ -29,7 +29,7 @@ namespace Estelav
             //services.AddScoped<DbContext, Models.EstelavContext>();
             services.AddDbContext<EstelavContext>(options =>
                 options.UseSqlServer(
-                    "Data Source=DESKTOP-33NPB64\\SQLEXPRESS;Initial Catalog=Estelav;Integrated Security=True"));
+                    "Data Source=.\\sqlexpress;Initial Catalog=Estelav;Integrated Security=True"));
 
 
 

@@ -11,106 +11,264 @@
 </head>
 
 @*<style>
-    .navbar .navbar-nav {
-        display: inline-block;
-        float: none;
-        vertical-align: top;
-    }
+        .navbar .navbar-nav {
+            display: inline-block;
+            float: none;
+            vertical-align: top;
+        }
 
-    .navbar .navbar-collapse {
-        text-align: center;
-    }
-</style>*@
+        .navbar .navbar-collapse {
+            text-align: center;
+        }
+    </style>*@
 
 <body>
     <header>
 
+    @*<nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                    <a class="navbar-brand" asp-page="/Index">
+                        <img src="/img/logo.jpg" width="100" height="50" class="d-inline-block align-top" alt="">
 
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-                <a class="navbar-brand" asp-page="/Index">
-                    <img src="/img/logo.jpg" width="100" height="50" class="d-inline-block align-top" alt="">
+                    </a>
 
-                </a>
+                    <div class="navbar-nav mx-auto">
+                        <ul class="nav justify-content-center">
+                            <li class="nav-item">
+                                <a class="nav-link active" asp-page="/Items" asp-route-id="6">New In</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" asp-page="/Items" asp-route-id="7">Clothes</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" asp-page="/Items" asp-route-id="2">Shoes</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" asp-page="/Items" asp-route-id="1">Bags</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" asp-page="/Items" asp-route-id="8">Accessories</a>
+                            </li>
+                        </ul>
+                    </div>
 
-                <div class="navbar-nav mx-auto">
-                    <ul class="nav justify-content-center">
-                        <li class="nav-item">
-                            <a class="nav-link active" asp-page="/Items" asp-route-id="6">New In</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" asp-page="/Items" asp-route-id="7">Clothes</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" asp-page="/Items" asp-route-id="2">Shoes</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" asp-page="/Items" asp-route-id="1">Bags</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" asp-page="/Items" asp-route-id="8">Accessories</a>
-                        </li>
-                    </ul>
+                    <div class="navbar-nav my-lg-0">
+
+
+                        <span class="navbar-text">
+
+                            <img width="25" height="25" src="~/img/cart.svg" />
+                            <span style="font-weight: bold; color: black;">Cart</span>
+                        </span>
+
+
+
+
+                        <span class="navbar-text">
+                            <img width="25" height="25" src="https://img.icons8.com/ios-glyphs/30/000000/gender-neutral-user.png" />
+                            <span style="font-weight: bold; color:black;">Profile</span>
+                        </span>
+
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    EN
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown" >
+                                    <a class="dropdown-item" href="#" style="font-weight: bold;">EN</a>
+                                    <a class="dropdown-item" href="#" style="font-weight: bold;">RU</a>
+                                    <a class="dropdown-item" href="#" style="font-weight: bold;">UA</a>
+
+                                </div>
+                            </li>
+                        </ul>
+
+                    </div>
+
                 </div>
+            </nav>
+        </header>*@
+    <div class="layuot-global">
 
-                <div class="navbar-nav my-lg-0">
-
-
-                    <span class="navbar-text">
-
-                        <img width="25" height="25" src="~/img/cart.svg" />
-                        <span style="font-weight: bold; color: black;">Cart</span>
-                    </span>
-                    
-                      
-                    
-
-                    <span class="navbar-text">
-                        <img width="25" height="25" src="https://img.icons8.com/ios-glyphs/30/000000/gender-neutral-user.png" />
-                        <span style="font-weight: bold; color:black;">Profile</span>
-                    </span>
-                    
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                EN
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown" >
-                                <a class="dropdown-item" href="#" style="font-weight: bold;">EN</a>
-                                <a class="dropdown-item" href="#" style="font-weight: bold;">RU</a>
-                                <a class="dropdown-item" href="#" style="font-weight: bold;">UA</a>
-
-                            </div>
-                        </li>
-                    </ul>
-
-                </div>
-
+        <header class="header" id="header" itemscope itemtype="http://schema.org/WPHeader" data-header-stick>
+            <div class="layout-main">
+                <a class="header__logo" href="https://tally-weijl.com.ua" title="на головну"><img src="/markup/build/img/header/logo-tw.svg" alt="Tally Weijl" width="260"></a>
+                <div class="header__active-panel"><span class="icon icon_grafic header_basket header_basket-empty" data-cart-popup data-cart-url="/api/cart"><span class="icon__text" data-cart-header-num>0</span><span class="icon__pic basket"></span></span><a href="https://tally-weijl.com.ua/stores" class="icon icon_grafic header_location"><span class="icon__text hide-for-m">Магазини</span><span class="icon__pic location"></span></a><a href="https://tally-weijl.com.ua/registration" class="icon icon_grafic"><span class="icon__text hide-for-m">Вхід / Реєстрація</span><span class="icon__pic user icon-font"></span></a></div>
             </div>
-        </nav>
-
-
-
-    </header>
-    <div>
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
-
-    <footer class="border-top footer text-muted" style="background-color: #efefdc;">
-        <div class="container">
-            &copy; 2021 - Estelav - <a asp-area="" asp-page="/Contacts">Contacts</a>  <a asp-area="" asp-page="/Shipping">Payment & Shipping</a>  <a asp-area="" asp-page="/Contacts">F.A.Q</a>
+            <div class="header-search-overlay"></div>
+            <div class="header-search-wrap">
+                <div class="header__search">
+                    <form action="/search" method="get" autocomplete="off">
+                        <fieldset>
+                            <label class="label-search icon-font" for="header-search-input"></label><input class="input-search" id="header-search-input" type="text" name="query" placeholder="Пошук" data-autocomplete-url="/api/search" value=""><input class="button-search" type="submit" value="Пошук">
+                            <div class="header__search-close icon-font"></div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+            <nav class="h-menu-dd" itemscope itemtype="http://schema.org/SiteNavigationElement">
+                <input class="h-menu-dd__mob-btn-check" id="h-menu-dd__show-menu" type="checkbox"><label class="h-menu-dd__mob-btn" for="h-menu-dd__show-menu"></label>
+                <ul class="h-menu-dd__list">
+                    <li class="h-menu-dd__item h-menu-dd__item_search"><span class="h-menu-dd__item_search-icon"></span>Пошук</li>
+                    <li class="h-menu-dd__item show-for-mobile h-menu__item-link"><a href="https://tally-weijl.com.ua/registration" class="h-menu-dd__link">Увійти</a></li>
+                    <li class="h-menu-dd__item">
+                        <a href=https://tally-weijl.com.ua/novelty itemprop="url" class="h-menu-dd__link"><span itemprop="name">Новинки</span></a>
+                        <div class="h-menu-dd__layout-sub-menu">
+                            <div class="layout-main">
+                                <div class="h-menu-dd__layout-row">
+                                    <div class="h-menu-dd__layout-col">
+                                        <ul>
+                                            <li class="h-menu__item-link"><a href=https://tally-weijl.com.ua/novelty itemprop="url"><span itemprop="name">Всі новинки</span></a></li>
+                                            <li class="h-menu__item-link"><a href=https://tally-weijl.com.ua/clothes/novelty itemprop="url"><span itemprop="name">Увесь одяг</span></a></li>
+                                            <li class="h-menu__item-link"><a href=https://tally-weijl.com.ua/accessories/novelty itemprop="url"><span itemprop="name">Всі аксесуари</span></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="h-menu-dd__layout-col hide-for-s">
+                                        <a href="https://tally-weijl.com.ua/novelty" itemprop="url" class="h-menu-dd__layout-promo">
+                                            <img src="/p/promoblocks/preview-1586505606.2268-16-imgPromo.jpg" alt="" width="220" height="310" />
+                                            <div class="h-menu-dd__layout-promo-layout">
+                                                <div class="h-menu-dd__layout-promo-layout-table-cell">
+                                                    <div class="h-menu-dd__layout-promo-text">Новинки тижня</div>
+                                                    <div class="h-menu-dd__layout-promo-buy">купити зараз</div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="h-menu-dd__item">
+                        <a href=https://tally-weijl.com.ua/clothes itemprop="url" class="h-menu-dd__link"><span itemprop="name">Одяг</span></a>
+                        <div class="h-menu-dd__layout-sub-menu">
+                            <div class="layout-main">
+                                <div class="h-menu-dd__layout-row">
+                                    <div class="h-menu-dd__layout-col">
+                                        <ul>
+                                            <li class="h-menu__item-link"><a href="https://tally-weijl.com.ua/clothes" itemprop="url"><span itemprop="name">Увесь одяг</span></a></li>
+                                            <li class="h-menu__item-link"><a href=https://tally-weijl.com.ua/clothes/svtshoti itemprop="url"><span itemprop="name">Світшоти</span></a></li>
+                                            <li class="h-menu__item-link"><a href=https://tally-weijl.com.ua/clothes/shorti itemprop="url"><span itemprop="name">Шорти</span></a></li>
+                                            <li class="h-menu__item-link"><a href=https://tally-weijl.com.ua/clothes/trikotazh itemprop="url"><span itemprop="name">Трикотаж</span></a></li>
+                                            <li class="h-menu__item-link"><a href=https://tally-weijl.com.ua/clothes/sukn--kombnezoni itemprop="url"><span itemprop="name">Сукні & комбінезони</span></a></li>
+                                            <li class="h-menu__item-link"><a href=https://tally-weijl.com.ua/clothes/sorochki--bluzi itemprop="url"><span itemprop="name">Сорочки & блузи</span></a></li>
+                                            <li class="h-menu__item-link"><a href=https://tally-weijl.com.ua/clothes/spdnic itemprop="url"><span itemprop="name">Спідниці</span></a></li>
+                                            <li class="h-menu__item-link"><a href=https://tally-weijl.com.ua/clothes/denm itemprop="url"><span itemprop="name">Джинси</span></a></li>
+                                            <li class="h-menu__item-link"><a href=https://tally-weijl.com.ua/clothes/futbolki--topi itemprop="url"><span itemprop="name">Футболки & топи</span></a></li>
+                                            <li class="h-menu__item-link"><a href=https://tally-weijl.com.ua/clothes/shtani--legnsi itemprop="url"><span itemprop="name">Штани & легінси</span></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="h-menu-dd__layout-col">
+                                        <ul data-mob-sub-sub-menu="" class="h-menu-dd__folded">
+                                            <li data-toogle-mob-sub-sub-menu="">КОЛЛЕКЦИИ</li>
+                                            <li class="h-menu__item-link"><a href="https://tally-weijl.com.ua/custom/modniy-denm" itemprop="url"><span itemprop="name">Модний денім</span></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="h-menu-dd__layout-col hide-for-s">
+                                        <a href="https://tally-weijl.com.ua/custom/modniy-denm" itemprop="url" class="h-menu-dd__layout-promo">
+                                            <img src="/p/promoblocks/preview-1594200731.5051-6-imgPromo.jpg" alt="" width="220" height="310" />
+                                            <div class="h-menu-dd__layout-promo-layout">
+                                                <div class="h-menu-dd__layout-promo-layout-table-cell">
+                                                    <div class="h-menu-dd__layout-promo-text">Модний денім</div>
+                                                    <div class="h-menu-dd__layout-promo-buy">купити зараз</div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="h-menu-dd__item">
+                        <a href=https://tally-weijl.com.ua/accessories itemprop="url" class="h-menu-dd__link"><span itemprop="name">Аксесуари</span></a>
+                        <div class="h-menu-dd__layout-sub-menu">
+                            <div class="layout-main">
+                                <div class="h-menu-dd__layout-row">
+                                    <div class="h-menu-dd__layout-col">
+                                        <ul>
+                                            <li class="h-menu__item-link"><a href="https://tally-weijl.com.ua/accessories" itemprop="url"><span itemprop="name">Всі аксесуари</span></a></li>
+                                            <li class="h-menu__item-link"><a href=https://tally-weijl.com.ua/accessories/vzuttya itemprop="url"><span itemprop="name">Взуття</span></a></li>
+                                            <li class="h-menu__item-link"><a href=https://tally-weijl.com.ua/accessories/pasok itemprop="url"><span itemprop="name">Пасок</span></a></li>
+                                            <li class="h-menu__item-link"><a href=https://tally-weijl.com.ua/accessories/nshe itemprop="url"><span itemprop="name">Інше</span></a></li>
+                                            <li class="h-menu__item-link"><a href=https://tally-weijl.com.ua/accessories/sumka itemprop="url"><span itemprop="name">Сумка</span></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="h-menu-dd__item">
+                        <a href="https://tally-weijl.com.ua/sale" itemprop="url" class="h-menu-dd__link h-menu-dd__link_marked"><span itemprop="name">Розпродаж</span></a>
+                        <div class="h-menu-dd__layout-sub-menu">
+                            <div class="layout-main">
+                                <div class="h-menu-dd__layout-row">
+                                    <div class="h-menu-dd__layout-col">
+                                        <ul data-mob-sub-sub-menu="data-mob-sub-sub-menu">
+                                            <!--<li data-toogle-mob-sub-sub-menu="data-toogle-mob-sub-sub-menu">Одяг</li>-->
+                                            <li class="h-menu__item-link"><a href="https://tally-weijl.com.ua/clothes/sale" itemprop="url"><span itemprop="name">Увесь одяг</span></a></li>
+                                            <li class="h-menu__item-link"><a href="https://tally-weijl.com.ua/clothes/svtshoti/sale" itemprop="url"><span itemprop="name">Світшоти</span></a></li>
+                                            <li class="h-menu__item-link"><a href="https://tally-weijl.com.ua/clothes/shorti/sale" itemprop="url"><span itemprop="name">Шорти</span></a></li>
+                                            <li class="h-menu__item-link"><a href="https://tally-weijl.com.ua/clothes/verhny-odyag/sale" itemprop="url"><span itemprop="name">Верхній одяг</span></a></li>
+                                            <li class="h-menu__item-link"><a href="https://tally-weijl.com.ua/clothes/pdzhaki/sale" itemprop="url"><span itemprop="name">Піджаки</span></a></li>
+                                            <li class="h-menu__item-link"><a href="https://tally-weijl.com.ua/clothes/trikotazh/sale" itemprop="url"><span itemprop="name">Трикотаж</span></a></li>
+                                            <li class="h-menu__item-link"><a href="https://tally-weijl.com.ua/clothes/sukn--kombnezoni/sale" itemprop="url"><span itemprop="name">Сукні & комбінезони</span></a></li>
+                                            <li class="h-menu__item-link"><a href="https://tally-weijl.com.ua/clothes/sorochki--bluzi/sale" itemprop="url"><span itemprop="name">Сорочки & блузи</span></a></li>
+                                            <li class="h-menu__item-link"><a href="https://tally-weijl.com.ua/clothes/spdnic/sale" itemprop="url"><span itemprop="name">Спідниці</span></a></li>
+                                            <li class="h-menu__item-link"><a href="https://tally-weijl.com.ua/clothes/denm/sale" itemprop="url"><span itemprop="name">Джинси</span></a></li>
+                                            <li class="h-menu__item-link"><a href="https://tally-weijl.com.ua/clothes/futbolki--topi/sale" itemprop="url"><span itemprop="name">Футболки & топи</span></a></li>
+                                            <li class="h-menu__item-link"><a href="https://tally-weijl.com.ua/clothes/shtani--legnsi/sale" itemprop="url"><span itemprop="name">Штани & легінси</span></a></li>
+                                        </ul>
+                                    </div>
+                                    <!-- RootModel::#191108 --> <!--<div class="h-menu-dd__layout-col"> <ul data-mob-sub-sub-menu="data-mob-sub-sub-menu" class="h-menu-dd__folded"> <li data-toogle-mob-sub-sub-menu="data-toogle-mob-sub-sub-menu">Взуття</li> <li class="h-menu__item-link"><a href="https://tally-weijl.com.ua/shoes/sale" itemprop="url"><span itemprop="name">Взуття</span></a></li>  </ul> </div>-->
+                                    <div class="h-menu-dd__layout-col">
+                                        <ul data-mob-sub-sub-menu="data-mob-sub-sub-menu" class="h-menu-dd__folded">
+                                            <!--<li data-toogle-mob-sub-sub-menu="data-toogle-mob-sub-sub-menu">Аксесуари</li>-->
+                                            <li class="h-menu__item-link"><a href="https://tally-weijl.com.ua/accessories/sale" itemprop="url"><span itemprop="name">Всі аксесуари</span></a></li>
+                                            <li class="h-menu__item-link"><a href="https://tally-weijl.com.ua/accessories/shkarpetki/sale" itemprop="url"><span itemprop="name">Шкарпетки</span></a></li>
+                                            <li class="h-menu__item-link"><a href="https://tally-weijl.com.ua/accessories/vzuttya/sale" itemprop="url"><span itemprop="name">Взуття</span></a></li>
+                                            <li class="h-menu__item-link"><a href="https://tally-weijl.com.ua/accessories/nshe/sale" itemprop="url"><span itemprop="name">Інше</span></a></li>
+                                            <li class="h-menu__item-link"><a href="https://tally-weijl.com.ua/accessories/sumka/sale" itemprop="url"><span itemprop="name">Сумка</span></a></li>
+                                            <li class="h-menu__item-link"><a href="https://tally-weijl.com.ua/accessories/sharfi--shapki/sale" itemprop="url"><span itemprop="name">Шарфи & шапки</span></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="h-menu-dd__layout-col hide-for-s">
+                                        <a href="https://tally-weijl.com.ua/sale" itemprop="url" class="h-menu-dd__layout-promo">
+                                            <img src="/p/promoblocks/preview-1586505565.9903-17-imgPromo.jpg" alt="" width="220" height="310" />
+                                            <div class="h-menu-dd__layout-promo-layout">
+                                                <div class="h-menu-dd__layout-promo-layout-table-cell">
+                                                    <div class="h-menu-dd__layout-promo-text">Розпродаж</div>
+                                                    <div class="h-menu-dd__layout-promo-buy">купити зараз</div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="h-menu-dd__item show-for-mobile h-menu__item-link"><a href="https://tally-weijl.com.ua/stores" class="h-menu-dd__link">Магазини</a></li>
+                </ul>
+            </nav>
+        </header>
+        <div>
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
         </div>
-    </footer>
+        </div>
+        @*<footer class="border-top footer text-muted" style="background-color: #efefdc;">
+            <div class="container">
+                &copy; 2021 - Estelav - <a asp-area="" asp-page="/Contacts">Contacts</a>  <a asp-area="" asp-page="/Shipping">Payment & Shipping</a>  <a asp-area="" asp-page="/Contacts">F.A.Q</a>
+            </div>
+        </footer>*@
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
 
 </body>
 </html>
+
