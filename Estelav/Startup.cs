@@ -28,8 +28,8 @@ namespace Estelav
             services.AddRazorPages();
             //services.AddScoped<DbContext, Models.EstelavContext>();
             services.AddDbContext<EstelavContext>(options =>
-                options.UseSqlServer(
-                    "Data Source=.\\sqlexpress;Initial Catalog=Estelav;Integrated Security=True"));
+                //options.UseSqlServer(Configuration.GetConnectionString("EstelavDatabase")));
+                options.UseSqlServer(Configuration.GetConnectionString("EstelavDatabaseLocal")));
 
 
 

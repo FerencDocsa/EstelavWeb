@@ -20,7 +20,9 @@
 */
 html, body {
     margin: 0;
-    /*scroll-behavior: smooth;*/
+    padding: 0;
+    scroll-behavior: smooth;
+    height: 100%;
 }
 
 
@@ -92,7 +94,7 @@ button.accept-policy {
 -------------------------------------------------- */
 html {
     position: relative;
-    min-height: 100%;
+    min-height: 80%;
 }
 
 body {
@@ -101,7 +103,11 @@ body {
 }
 
 .footer {
-    position: absolute;
+    /*position: absolute;*/
+    /*position: fixed;*/
+    left: 0;
+    clear: both;
+    /*margin-top: -2*/
     bottom: 0;
     width: 100%;
     white-space: nowrap;
@@ -668,7 +674,7 @@ html {
 }
 
 .layuot-global {
-    min-height: 100%;
+    min-height: 80%;
     padding-bottom: 310px;
     padding-top: 180px;
     text-align: center
@@ -936,8 +942,8 @@ body {
 
 @font-face {
     font-family: km-icons;
-    src: url(../fonts/km-2018.eot?afx0qw);
-    src: url(../fonts/km-2018.eot?afx0qw#iefix) format("embedded-opentype"), url(../fonts/km-2018.ttf?afx0qw) format("truetype"), url(../fonts/km-2018.woff?afx0qw) format("woff"), url(../fonts/km-2018.svg?afx0qw#km-icons) format("svg");
+    src: url(/fonts/km-2018.eot?afx0qw);
+    src: url(/fonts/km-2018.eot?afx0qw#iefix) format("embedded-opentype"), url(/fonts/km-2018.ttf?afx0qw) format("truetype"), url(/fonts/km-2018.woff?afx0qw) format("woff"), url(/fonts/km-2018.svg?afx0qw#km-icons) format("svg");
     font-weight: 400;
     font-style: normal
 }
@@ -2564,8 +2570,12 @@ a.header__shops-help-item {
     height: 310px;
     padding-top: 20px;
     background-color: #f9f9f9;
-    overflow: hidden;
-    margin-top: -310px
+    /*overflow: hidden;*/
+    /*position: absolute;*/
+    /*margin-top: -310px*/ 
+    position: relative;
+    bottom: 0;
+    width: 100%;
 }
 
 @media (max-width:1000px) {
@@ -2957,7 +2967,7 @@ a.header__shops-help-item {
 
 .e-card-2__layout-slider {
     overflow: hidden;
-    margin-bottom: 48px
+    margin-bottom: 10px;
 }
 
 .e-card-2__pic {
@@ -4297,17 +4307,17 @@ a.header__shops-help-item {
 }
 
 .ic-tw {
-    background: url(../img/icons/twitter.png) no-repeat;
+    background: url(img/twitter.png) no-repeat;
     width: 30px
 }
 
 .ic-pt {
     width: 24px;
-    background: url(../img/icons/pinterest.png) no-repeat
+    background: url(img/icons/pinterest.png) no-repeat
 }
 
 .ic-in {
-    background: url(../img/icons/instagram.png) no-repeat
+    background: url(../img/instagram.png) no-repeat;
 }
 
 .ic-gp,
@@ -4318,11 +4328,11 @@ a.header__shops-help-item {
 }
 
 .ic-gp {
-    background: url(../img/icons/google.png) no-repeat
+    background: url(img/google.png) no-repeat
 }
 
 .ic-yt {
-    background: url(../img/icons/youtube.png) no-repeat
+    background: url(/img/icons/youtube.png) no-repeat
 }
 
 .ic-mastercard,
@@ -4335,19 +4345,19 @@ a.header__shops-help-item {
 }
 
 .ic-portmone {
-    background: url(../img/icons/social-sharing/portmone.png) no-repeat;
+    background: url(../img/instagram.png) no-repeat;
     width: 76px;
     height: 25px
 }
 
 .ic-mastercard {
-    background: url(../img/icons/social-sharing/mastercard.png) no-repeat;
+    background: url(../img/mastercard.png) no-repeat;
     width: 37px;
     height: 29px
 }
 
 .ic-visa {
-    background: url(../img/icons/social-sharing/visa.png) no-repeat;
+    background: url(../img/visa.png) no-repeat;
     width: 54px;
     height: 17px
 }
@@ -16965,4 +16975,20 @@ video::-webkit-media-text-track-display {
     height: 100%;
     border: none;
     visibility: hidden
+}
+
+/*
+    CUSTOM
+*/
+
+.navbar-text span:hover {
+    border-bottom: 1px solid #000;
+}
+
+.addToCartBtn {
+    margin-top: 5px;
+    border: 1px solid black;
+    width: 100%;
+    color: black;
+    background: lightsalmon;
 }

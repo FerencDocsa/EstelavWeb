@@ -1,0 +1,76 @@
+﻿@page
+@model Estelav.Pages.ItemModel
+@{
+}
+
+<main>
+    <div class="layout-main">
+        <div class="item-page">
+            >
+            <div class="item-page__main-row">
+                <div class="item-page__col_photo" id="item-page__photo-type-switching-row">
+                    <div class="item-page__photo-preview">
+                        <div class="item-page__photo-preview-layout">
+                            <div class="bx-wrapper" style="max-width: 100%">
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="item-page__photo-big">
+                        <div class="bx-wrapper" style="max-width: 100%">
+
+                            <ul id="item-page-big-photo-gallery">
+                                <li><img src="/img/merch/dress1.png" width="310" height="510"></li>
+
+                            </ul>
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+                <div class="item-page__col_title">
+
+                <h1 class="title title_fifth" itemprop="name">Укорочена футболка</h1>
+                <meta itemprop="brand" content="Tally Weijl">
+                <div class="item-page__product-code" data-product-id="9249" itemprop="productID">STSCOELIO2</div>
+                <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                    <span class="e-card-2__price"><span itemprop="price" content="359.00">359<span itemprop="priceCurrency" content="UAH"> грн</span></span></span>
+                    <link itemprop="availability" href="http://schema.org/InStock">
+                    <span class="e-card-2__label e-card-2__label_new">Новинка</span><!-- else if ($item['bestseller'] != 0) --><!-- span.e-card-2__label.e-card-2__label_bestseller Бестселлер -->
+                </div>
+            </div>
+            <div class="item-page__col_cart-button">
+                <div class="item-page__go-to-desc"><span id="go-to-desc">Опис</span></div>
+                <div class="item-page__colors"><span class="icon icon_grafic icon_grafic-circle"><span class="icon__text">Монохром</span><span class="icon__pic" style="background-image: url(/p/prods/original-9249-print.jpg)"></span></span></div>
+                <div class="item-page__sizes">
+                    <span class="button button-size " data-cart-size-check="31">XXS</span><span class="button button-size button-size_none">XS</span><!-- span.button.button-size.button-size_active xS --><span class="button button-size button-size_none">S</span><!-- span.button.button-size.button-size_active xS --><span class="button button-size button-size_none">M</span><!-- span.button.button-size.button-size_active xS --><span class="button button-size button-size_none">L</span><!-- span.button.button-size.button-size_active xS --><span class="button button-size button-size_none">XL</span><!-- span.button.button-size.button-size_active xS -->
+                </div>
+                <div class="item-page__wrong-message" data-cart-size-wrong>Будь ласка, оберіть розмір</div>
+                <div class="item-page__non-in-stock"></div>
+                <!-- компонент UI tabs умеет работать только с порядковыми номерами --><!-- поэтому определяем массив, ассоциирующий алиасы табов с их порядковыми номерами -->
+                <div class="item-page__show-size-guide" id="show-size-guide" data-active-tabs="0">Гід по розмірах</div>
+                <div class="button item-page__button-cart" id="add-to-cart" data-cart-add data-cart-id="9249">додати до кошику</div>
+                <div class="item-page__sucsses-message" data-cart-size-sucsses>Товар доданий до <a href="https://tally-weijl.com.ua/cart">кошику</a></div>
+                <div class="item-page__sucsses-message" data-cart-favorite-sucsses>Товар доданий до <a href="https://tally-weijl.com.ua/profile#favorites">обраного</a></div>
+                <div class="item-page__share">
+                    <span class="icon icon_grafic icon_grafic-small" data-cart-logout-add-to-favorite><a class="icon__text" href="https://tally-weijl.com.ua/registration">До обраного</a><span class="icon__pic star-small item-page__favorites icon-font"></span></span>
+                    <div class="icon icon_grafic icon_grafic-small" id="item-page-sharing-toggle">
+                        <span class="icon__text">Поділитися</span><span class="icon__pic plus"></span>
+                        <ul class="social" id="sharing-panel">
+                            <li><a href="https://www.facebook.com/sharer/sharer.php?u=https://tally-weijl.com.ua/clothes/futbolki--topi/ukorochena-futbolka-9249" target="_blank" class="ic-fc"></a></li>
+                            <li><a href="https://twitter.com/share?url=https://tally-weijl.com.ua/clothes/futbolki--topi/ukorochena-futbolka-9249&amp;text=Укорочена футболка" target="_blank" class="ic-tw"></a></li>
+                            <li><a href="https://plus.google.com/share?url=https://tally-weijl.com.ua/clothes/futbolki--topi/ukorochena-futbolka-9249" target="_blank" class="ic-gp"></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</main>
