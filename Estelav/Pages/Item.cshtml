@@ -6,7 +6,6 @@
 <main>
     <div class="layout-main">
         <div class="item-page">
-            >
             <div class="item-page__main-row">
                 <div class="item-page__col_photo" id="item-page__photo-type-switching-row">
                     <div class="item-page__photo-preview">
@@ -21,7 +20,7 @@
                         <div class="bx-wrapper" style="max-width: 100%">
 
                             <ul id="item-page-big-photo-gallery">
-                                <li><img src="/img/merch/dress1.png" width="310" height="510"></li>
+                                <li><img src="@Model.foundItem.ImageUrl" width="310" height="510"></li>
 
                             </ul>
 
@@ -34,37 +33,50 @@
                 </div>
 
                 <div class="item-page__col_title">
-
-                <h1 class="title title_fifth" itemprop="name">Укорочена футболка</h1>
-                <meta itemprop="brand" content="Tally Weijl">
-                <div class="item-page__product-code" data-product-id="9249" itemprop="productID">STSCOELIO2</div>
-                <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-                    <span class="e-card-2__price"><span itemprop="price" content="359.00">359<span itemprop="priceCurrency" content="UAH"> грн</span></span></span>
+                    <a class="item-page__link-next"> </a>
+                    <h1 class="title title_fifth" itemprop="name">@Model.foundItem.Name</h1>
+                    <meta itemprop="brand" content="Tally Weijl">
+                    <div class="item-page__product-code" data-product-id="9249" itemprop="productID">Product ID: @Model.foundItem.ItemId</div>
+                    <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                        <span class="e-card-2__price">
+                            <span itemprop="price" content="@Model.foundItem.Price">
+                                @Model.foundItem.Price
+                            <span itemprop="priceCurrency" content="USD"> USD</span>
+                        </span>
+                    </span>
                     <link itemprop="availability" href="http://schema.org/InStock">
-                    <span class="e-card-2__label e-card-2__label_new">Новинка</span><!-- else if ($item['bestseller'] != 0) --><!-- span.e-card-2__label.e-card-2__label_bestseller Бестселлер -->
+                    <span class="e-card-2__label e-card-2__label_new">New In</span>
                 </div>
-            </div>
+                </div>
             <div class="item-page__col_cart-button">
-                <div class="item-page__go-to-desc"><span id="go-to-desc">Опис</span></div>
-                <div class="item-page__colors"><span class="icon icon_grafic icon_grafic-circle"><span class="icon__text">Монохром</span><span class="icon__pic" style="background-image: url(/p/prods/original-9249-print.jpg)"></span></span></div>
-                <div class="item-page__sizes">
-                    <span class="button button-size " data-cart-size-check="31">XXS</span><span class="button button-size button-size_none">XS</span><!-- span.button.button-size.button-size_active xS --><span class="button button-size button-size_none">S</span><!-- span.button.button-size.button-size_active xS --><span class="button button-size button-size_none">M</span><!-- span.button.button-size.button-size_active xS --><span class="button button-size button-size_none">L</span><!-- span.button.button-size.button-size_active xS --><span class="button button-size button-size_none">XL</span><!-- span.button.button-size.button-size_active xS -->
+                <div class="item-page__go-to-desc">
+                <span id="go-to-desc">Description</span>
                 </div>
-                <div class="item-page__wrong-message" data-cart-size-wrong>Будь ласка, оберіть розмір</div>
+                <div class="item-page__sizes">
+                    <span class="button button-size " data-cart-size-check="31">XXS</span>
+                    <span class="button button-size button-size_none">XS</span>
+                    <span class="button button-size button-size_none">S</span>
+                    <span class="button button-size button-size_none">M</span>
+                    <span class="button button-size button-size_none">L</span>
+                    <span class="button button-size button-size_none">XL</span>
+                </div>
+                <div class="item-page__wrong-message" data-cart-size-wrong>Please, choose a size!</div>
                 <div class="item-page__non-in-stock"></div>
-                <!-- компонент UI tabs умеет работать только с порядковыми номерами --><!-- поэтому определяем массив, ассоциирующий алиасы табов с их порядковыми номерами -->
-                <div class="item-page__show-size-guide" id="show-size-guide" data-active-tabs="0">Гід по розмірах</div>
-                <div class="button item-page__button-cart" id="add-to-cart" data-cart-add data-cart-id="9249">додати до кошику</div>
-                <div class="item-page__sucsses-message" data-cart-size-sucsses>Товар доданий до <a href="https://tally-weijl.com.ua/cart">кошику</a></div>
-                <div class="item-page__sucsses-message" data-cart-favorite-sucsses>Товар доданий до <a href="https://tally-weijl.com.ua/profile#favorites">обраного</a></div>
+                @*<div class="item-page__show-size-guide" id="show-size-guide" data-active-tabs="0">Гід по розмірах</div>*@
+                <div class="button item-page__button-cart" id="add-to-cart" data-cart-add data-cart-id="9249">Add to Cart</div>
+                @*<div class="item-page__sucsses-message" data-cart-size-sucsses>Товар доданий до <a href="https://tally-weijl.com.ua/cart">кошику</a></div>*@
+                @*<div class="item-page__sucsses-message" data-cart-favorite-sucsses>Товар доданий до <a href="https://tally-weijl.com.ua/profile#favorites">обраного</a></div>*@
                 <div class="item-page__share">
-                    <span class="icon icon_grafic icon_grafic-small" data-cart-logout-add-to-favorite><a class="icon__text" href="https://tally-weijl.com.ua/registration">До обраного</a><span class="icon__pic star-small item-page__favorites icon-font"></span></span>
+                    <span class="icon icon_grafic icon_grafic-small" data-cart-logout-add-to-favorite>
+                        <a class="icon__text">To Favourites</a>
+                        <span class="icon__pic star-small item-page__favorites icon-font"></span>
+                    </span>
                     <div class="icon icon_grafic icon_grafic-small" id="item-page-sharing-toggle">
                         <span class="icon__text">Поділитися</span><span class="icon__pic plus"></span>
                         <ul class="social" id="sharing-panel">
-                            <li><a href="https://www.facebook.com/sharer/sharer.php?u=https://tally-weijl.com.ua/clothes/futbolki--topi/ukorochena-futbolka-9249" target="_blank" class="ic-fc"></a></li>
+                            @*<li><a href="https://www.facebook.com/sharer/sharer.php?u=https://tally-weijl.com.ua/clothes/futbolki--topi/ukorochena-futbolka-9249" target="_blank" class="ic-fc"></a></li>
                             <li><a href="https://twitter.com/share?url=https://tally-weijl.com.ua/clothes/futbolki--topi/ukorochena-futbolka-9249&amp;text=Укорочена футболка" target="_blank" class="ic-tw"></a></li>
-                            <li><a href="https://plus.google.com/share?url=https://tally-weijl.com.ua/clothes/futbolki--topi/ukorochena-futbolka-9249" target="_blank" class="ic-gp"></a></li>
+                            <li><a href="https://plus.google.com/share?url=https://tally-weijl.com.ua/clothes/futbolki--topi/ukorochena-futbolka-9249" target="_blank" class="ic-gp"></a></li>*@
                         </ul>
                     </div>
                 </div>
@@ -73,4 +85,88 @@
     </div>
 
 
-</main>
+     <div class="item-page__tabs">
+         <div class="layout-main">
+             <ul class="item-page__tabs-name">
+                 <li class="active">
+                     <span>Description</span>
+                 </li>
+
+                 <li>
+                     <span>Information</span>
+                 </li>
+
+                 <li>
+                     Shipping
+                 </li>
+             </ul>
+
+             <div class="item-page__tabs-content-layout">
+                 <div class="item-page__tabs-content active">
+                     <div class="frondevo-tabs__mob-head">Description</div>
+                 </div>
+             </div>
+
+         </div>
+     </div>      
+
+     <aside class="horisontal-ecards-slider">
+         <div class="horisontal-ecards-slider__header">
+             <h2 class="horisontal-ecards-slider__title horisontal-ecards-slider__title_more-one-row">
+                 <span itemprop="name">We Recommend</span>
+             </h2>
+         </div>
+
+         <div class="horisontal-ecards-slider__layout">
+             <li>
+                 <div class="e-card-1">
+                     <a class="e-card-1__layout-inside">
+                         <div class="e-card-1__layout-slider"><img src="~/img/merch/dress1.png" width="250" height="400"></div>
+                         <span class="e-card-1__title"> Brown Dress </span>
+                     </a>
+                     <div class="e-card-1__price-wrap"><span class="e-card-1__price">1199 грн</span><a class="e-card-1__favorite"></a></div>
+                 </div>
+             </li>
+             <li>
+                 <div class="e-card-1">
+                     <a class="e-card-1__layout-inside">
+                         <div class="e-card-1__layout-slider"><img src="~/img/merch/dress2.png" width="250" height="400"></div>
+                         <span class="e-card-1__title">Pink Dress </span>
+                     </a>
+                     <div class="e-card-1__price-wrap"><span class="e-card-1__price">1099 грн</span><a class="e-card-1__favorite"></a></div>
+                 </div>
+             </li>
+             <li>
+                 <div class="e-card-1">
+                     <a class="e-card-1__layout-inside">
+                         <div class="e-card-1__layout-slider"><img src="~/img/merch/dress1.png" width="250" height="400"></div>
+                         <span class="e-card-1__title">Brown Dress </span>
+                     </a>
+                     <div class="e-card-1__price-wrap"><span class="e-card-1__price">459 грн</span><a class="e-card-1__favorite"></a></div>
+                 </div>
+             </li>
+             <li>
+                 <div class="e-card-1">
+                     <a class="e-card-1__layout-inside">
+                         <div class="e-card-1__layout-slider"><img src="~/img/merch/dress1.png" width="250" height="400"></div>
+                         <span class="e-card-1__title">Pink Dress </span>
+                     </a>
+                     <div class="e-card-1__price-wrap"><span class="e-card-1__price">699 грн</span><a class="e-card-1__favorite"></a></div>
+                 </div>
+             </li>
+             <li>
+                 <div class="e-card-1">
+                     <a class="e-card-1__layout-inside">
+                         <div class="e-card-1__layout-slider"><img src="~/img/merch/dress2.png" width="250" height="400"></div>
+                         <span class="e-card-1__title">Brown Dress </span>
+                     </a>
+                     <div class="e-card-1__price-wrap"><span class="e-card-1__price">1299 грн</span><a class="e-card-1__favorite"></a></div>
+                 </div>
+             </li>
+         </div>
+
+     </aside>
+        
+        
+        
+ </main>

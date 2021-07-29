@@ -53,6 +53,8 @@ namespace Estelav
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
+            app.UseStatusCodePages();
+
             app.UseRouting();
 
             app.UseAuthorization();
