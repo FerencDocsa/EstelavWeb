@@ -3,9 +3,9 @@
 @{ ViewData["Title"] = "Estelav Shop"; }
 
 
-<div class="main-image-cont">
-    <a asp-page="/Items" asp-route-id="5">
-        <img src="~/img/top.jpg" style="width: 100%;" />
+<div class="main-image-cont" style="">
+    <a asp-page="/Items" asp-route-id="6">
+        <img src="~/img/top.png" style="width: 100%;" />
     </a>
 
 </div>
@@ -13,13 +13,7 @@
 
 <div class="index" itemscope itemprop="mainContentOfPage">
     <div class="layout">
-        <a class="index__header index__col">
 
-            <div class="index__header-text">
-                <h1 class="title index__header-title "> </h1>
-                <div class="button button-sixth "></div>
-            </div>
-        </a>
         <div class="layout-main">
             <div class="index__row">
                 <a class="index__col" asp-page="/Items" asp-route-id="1">
@@ -29,7 +23,7 @@
                     </picture>
                     <div class="index__col-content index__col-content_hCenter index__col-content_vBottom">
                         <div class="title title_third "></div>
-                        <div class="button button-sixth "> Bags </div>
+                        <div class="button button-sixth "> Bags </div>
                     </div>
                 </a>
                 <a class="index__col" asp-page="/Items" asp-route-id="2">
@@ -39,7 +33,7 @@
                     </picture>
                     <div class="index__col-content index__col-content_hCenter index__col-content_vBottom">
                         <div class="title title_third "></div>
-                        <div class="button button-sixth "> Shoes </div>
+                        <div class="button button-sixth "> Shoes </div>
                     </div>
                 </a>
                 <a class="index__col" asp-page="/Items" asp-route-id="3">
@@ -49,7 +43,7 @@
                     </picture>
                     <div class="index__col-content index__col-content_hCenter index__col-content_vBottom">
                         <div class="title title_third "></div>
-                        <div class="button button-sixth "> Swimsuits </div>
+                        <div class="button button-sixth "> Swimsuits </div>
                     </div>
                 </a>
             </div>
@@ -61,7 +55,7 @@
                     </picture>
                     <div class="index__col-content index__col-content_hCenter index__col-content_vBottom">
                         <div class="title title_third "></div>
-                        <div class="button button-sixth "> Dresses </div>
+                        <div class="button button-sixth "> Dresses </div>
                     </div>
                 </a>
                 <a class="index__col" asp-page="/Items" asp-route-id="4">
@@ -71,7 +65,7 @@
                     </picture>
                     <div class="index__col-content index__col-content_hCenter index__col-content_vBottom">
                         <div class="title title_third "></div>
-                        <div class="button button-sixth ">  Dresses </div>
+                        <div class="button button-sixth "> Dresses </div>
                     </div>
                 </a>
             </div>
@@ -84,53 +78,7 @@
             <h2 class="horisontal-ecards-slider__title"><span>WE RECOMMEND</span></h2>
             <div class="horisontal-ecards-slider__sub-title"></div>
         </div>
-        <div class="horisontal-ecards-slider__layout">
-            <li>
-                <div class="e-card-1">
-                    <a class="e-card-1__layout-inside">
-                        <div class="e-card-1__layout-slider"><img src="~/img/merch/dress1.png" width="250" height="400"></div>
-                        <span class="e-card-1__title"> Brown Dress </span>
-                    </a>
-                    <div class="e-card-1__price-wrap"><span class="e-card-1__price">1199 грн</span><a class="e-card-1__favorite"></a></div>
-                </div>
-            </li>
-            <li>
-                <div class="e-card-1">
-                    <a class="e-card-1__layout-inside">
-                        <div class="e-card-1__layout-slider"><img src="~/img/merch/dress2.png" width="250" height="400"></div>
-                        <span class="e-card-1__title">Pink Dress </span>
-                    </a>
-                    <div class="e-card-1__price-wrap"><span class="e-card-1__price">1099 грн</span><a class="e-card-1__favorite"></a></div>
-                </div>
-            </li>
-            <li>
-                <div class="e-card-1">
-                    <a class="e-card-1__layout-inside">
-                        <div class="e-card-1__layout-slider"><img src="~/img/merch/dress1.png" width="250" height="400"></div>
-                        <span class="e-card-1__title">Brown Dress </span>
-                    </a>
-                    <div class="e-card-1__price-wrap"><span class="e-card-1__price">459 грн</span><a class="e-card-1__favorite"></a></div>
-                </div>
-            </li>
-            <li>
-                <div class="e-card-1">
-                    <a class="e-card-1__layout-inside">
-                        <div class="e-card-1__layout-slider"><img src="~/img/merch/dress1.png" width="250" height="400"></div>
-                        <span class="e-card-1__title">Pink Dress </span>
-                    </a>
-                    <div class="e-card-1__price-wrap"><span class="e-card-1__price">699 грн</span><a class="e-card-1__favorite"></a></div>
-                </div>
-            </li>
-            <li>
-                <div class="e-card-1">
-                    <a class="e-card-1__layout-inside">
-                        <div class="e-card-1__layout-slider"><img src="~/img/merch/dress2.png" width="250" height="400"></div>
-                        <span class="e-card-1__title">Brown Dress </span>
-                    </a>
-                    <div class="e-card-1__price-wrap"><span class="e-card-1__price">1299 грн</span><a class="e-card-1__favorite"></a></div>
-                </div>
-            </li>
-        </div>
+
     </div>
 </div>
 
@@ -281,4 +229,54 @@
         </div>
 
     </div>
+
+
+    <div class="horisontal-ecards-slider__layout">
+            <li>
+                <div class="e-card-1">
+                    <a class="e-card-1__layout-inside">
+                        <div class="e-card-1__layout-slider"><img src="~/img/merch/dress1.png" width="250" height="400"></div>
+                        <span class="e-card-1__title"> Brown Dress </span>
+                    </a>
+                    <div class="e-card-1__price-wrap"><span class="e-card-1__price">1199 грн</span><a class="e-card-1__favorite"></a></div>
+                </div>
+            </li>
+            <li>
+                <div class="e-card-1">
+                    <a class="e-card-1__layout-inside">
+                        <div class="e-card-1__layout-slider"><img src="~/img/merch/dress2.png" width="250" height="400"></div>
+                        <span class="e-card-1__title">Pink Dress </span>
+                    </a>
+                    <div class="e-card-1__price-wrap"><span class="e-card-1__price">1099 грн</span><a class="e-card-1__favorite"></a></div>
+                </div>
+            </li>
+            <li>
+                <div class="e-card-1">
+                    <a class="e-card-1__layout-inside">
+                        <div class="e-card-1__layout-slider"><img src="~/img/merch/dress1.png" width="250" height="400"></div>
+                        <span class="e-card-1__title">Brown Dress </span>
+                    </a>
+                    <div class="e-card-1__price-wrap"><span class="e-card-1__price">459 грн</span><a class="e-card-1__favorite"></a></div>
+                </div>
+            </li>
+            <li>
+                <div class="e-card-1">
+                    <a class="e-card-1__layout-inside">
+                        <div class="e-card-1__layout-slider"><img src="~/img/merch/dress1.png" width="250" height="400"></div>
+                        <span class="e-card-1__title">Pink Dress </span>
+                    </a>
+                    <div class="e-card-1__price-wrap"><span class="e-card-1__price">699 грн</span><a class="e-card-1__favorite"></a></div>
+                </div>
+            </li>
+            <li>
+                <div class="e-card-1">
+                    <a class="e-card-1__layout-inside">
+                        <div class="e-card-1__layout-slider"><img src="~/img/merch/dress2.png" width="250" height="400"></div>
+                        <span class="e-card-1__title">Brown Dress </span>
+                    </a>
+                    <div class="e-card-1__price-wrap"><span class="e-card-1__price">1299 грн</span><a class="e-card-1__favorite"></a></div>
+                </div>
+            </li>
+        </div>
+
 *@
