@@ -11,22 +11,11 @@ namespace Estelav.Pages
     public class ItemModel : PageModel
     {
         private readonly EstelavContext _context;
-
+        public Models.Items foundItem { get; set; }
 
         public ItemModel(EstelavContext context)
         {
             _context = context;
-        }
-
-        public IActionResult Item()
-        {
-            return NotFound();
-
-        }
-        public IActionResult Index()
-        {
-            return NotFound();
-
         }
 
         public IActionResult OnGet(int? id)
@@ -36,8 +25,9 @@ namespace Estelav.Pages
                 return NotFound();
             }
 
-            return NotFound();
+            foundItem = _context.Items.FirstOrDefault(c => c.ItemId == id);
 
+            return new PageResult();  
         }
 
 

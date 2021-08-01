@@ -9,7 +9,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Estelav.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using Estelav.Helpers;
+using Estelav.Helpers.Interface;
+using Estelav.Helpers.Services;
 
 namespace Estelav
 {
@@ -25,11 +29,25 @@ namespace Estelav
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddDistributedMemoryCache();
+
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromHours(1);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
+
             services.AddRazorPages();
             //services.AddScoped<DbContext, Models.EstelavContext>();
             services.AddDbContext<EstelavContext>(options =>
                 //options.UseSqlServer(Configuration.GetConnectionString("EstelavDatabase")));
                 options.UseSqlServer(Configuration.GetConnectionString("EstelavDatabaseLocal")));
+
+            services.AddTransient<IItem, ItemService>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            //services.AddScoped(sp => Pages.Cart.ShoppingCartModel.GetCart(sp));
 
 
 
@@ -53,7 +71,11 @@ namespace Estelav
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
+            app.UseStatusCodePages();
+
             app.UseRouting();
+
+            app.UseSession();
 
             app.UseAuthorization();
 

@@ -1,0 +1,135 @@
+﻿@page "{handler?}"
+@model Estelav.Pages.Cart.ShoppingCartModel
+@{
+}
+
+<div class="layout-main layout-main_cart">
+    <section class="cart-page">
+        <div class="cart-page-title-pane">
+
+            @if (Model._shopCartItems.Count == 0 )
+            {
+                <section class="cart-page cart-page_empty">
+                    <div class="cart-page-title-pane">
+                        <h1 class="cart-page__title">Your Cart is Empty</h1>
+                    </div>
+                    <div class="cart-page-pane">
+                        <a class="cart-page__back" asp-page="/Index">Go to Main Page</a>
+                    </div>
+                </section>
+
+            }
+        </div>
+
+
+        @if (Model._shopCartItems != null && Model._shopCartItems.Count > 0)
+        {
+
+
+
+            <h1 class="cart-page__title">Cart</h1>
+
+            <div>
+                <div class="cart-page-table">
+                    <div class="cart-page-table__head">
+                        <div class="cart-page-table-td cart-page-table-td_pic">&nbsp;</div>
+                        <div class="cart-page-table-td cart-page-table-td_name">Name</div>
+                        <div class="cart-page-table-td cart-page-table-td_size">Size</div>
+                        <div class="cart-page-table-td cart-page-table-td_price">Price</div>
+                        <div class="cart-page-table-td cart-page-table-td_num">Amount</div>
+                        <div class="cart-page-table-td cart-page-table-td_del">Remove</div>
+                        <div class="cart-page-table-td cart-page-table-td_cost">Price</div>
+                    </div>
+
+
+                    @foreach (var item in Model._shopCartItems)
+                    {
+                        <div class="cart-page-table-tr">
+
+
+                            <div class="cart-page-table-td cart-page-table-td_pic">
+                                <a class="cart-page__pic" asp-page="/Item" asp-route-id="@item.ItemNavigation.ItemId" style="background-image: url('@item.ItemNavigation.ImageUrl')"></a>
+                            </div>
+
+                            <div class="cart-page-table-td-mobcol">
+                                <div class="cart-page-table-td cart-page-table-td_name">
+                                    <div class="cart-page__descr">
+                                        <a class="cart-page__descr-name" href="#" target="_blank">@item.ItemNavigation.Name</a>
+                                        <div class="cart-page__descr-mobprice">@item.ItemNavigation.Price</div>
+                                        @*<div class="cart-page__descr-feature">Монохром</div>*@
+                                        <div class="cart-page__descr-code">@*Код товара: ЦБ-257496*@</div>
+                                    </div>
+                                </div>
+                                <div class="cart-page-table-td cart-page-table-td_size">
+                                    @*<div class="selectricWrapper selectric-select-selectric">
+                                            <div class="selectricHideSelect"><select class="select-selectric" data-cart-val-size="" tabindex="0"><option value="13" selected="selected">XS</option><option value="14">S</option><option value="15">M</option><option value="31">XXS</option></select></div>
+                                            <div class="selectric">
+                                                <p class="label">XS</p><b class="button"></b>
+                                            </div>
+                                            <div class="selectricItems" tabindex="-1">
+                                                <div class="selectricScroll"><ul><li class="selected">XS</li><li class="">S</li><li class="">M</li><li class="last">XXS</li></ul></div>
+                                            </div><input class="selectricInput" tabindex="0">
+                                        </div>*@
+                                </div>
+                                <div class="cart-page-table-td cart-page-table-td_price">@item.ItemNavigation.Price</div>
+                                <div class="cart-page-table-td-mobrow">
+                                    <div class="cart-page-table-td cart-page-table-td_num">
+
+                                        @Html.Raw(item.Amount)
+                                        @*<div class="selectricWrapper selectric-select-selectric">
+                                                <div class="selectricHideSelect">
+                                                    <select class="select-selectric" data-cart-val-num="" tabindex="0">
+                                                        <option value="1" selected="selected">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                    </select>
+                                                </div>
+                                                <div class="selectric">
+                                                    <p class="label">1</p><b class="button"></b>
+                                                </div>
+                                                <div class="selectricItems" tabindex="-1">
+                                                    <div class="selectricScroll"><ul><li class="selected">1</li><li class="">2</li><li class="">3</li><li class="">4</li><li class="last">5</li></ul></div>
+                                                </div><input class="selectricInput" tabindex="0">
+                                            </div>*@
+                                    </div>
+                                    <div class="cart-page-table-td cart-page-table-td_del">
+                                        <div class="cart-page__del" data-cart-delete-item=""></div>
+                                    </div>
+                                    <div class="cart-page-table-td cart-page-table-td_cost"><span data-cart-cost="">@item.ItemNavigation.Price</span> $</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+                    
+                    <div class="cart-page-total">
+                        <span class="cart-page-total__title">
+                            Total
+                        </span>
+                        
+                        <span class="cart-page-total__cost">@Model._shoppingCartSum</span>
+                        <span class="cart-page-total__cost-currency">$</span>
+                    </div>
+                    
+                    <div class="cart-page-pane">
+                        <a class="button cart-page-button">Checkout</a>
+                        <a class="cart-page__back" asp-page="/Index">Continue Shopping</a>
+                    </div>
+
+                </div>
+            </div>
+        }
+    </section>
+
+
+</div>
+
+@*<div class="cart-page-table-tr" data-cart-object="" data-cart-id="9249" data-cart-size="13" data-cart-num="1">
+
+        <div class="cart-page-table-td cart-page-table-td_pic">
+        <a class="cart-page__pic" href="https://tally-weijl.com.ua/clothes/futbolki--topi/ukorochena-futbolka-9249" target="_blank" style="background-image: url('/p/prods/preview-9249-gallery-1626794953.9179.jpg')"></a>
+        </div>
+
+    </div>*@

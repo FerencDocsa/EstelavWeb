@@ -66,17 +66,18 @@
                 {
 
     <div class="e-card-2">
-
-        <div class="e-card-2__layout-slider">
+        <a class="e-card-2__layout-inside" asp-page="/Item" asp-route-id="@item.ItemId">
             <div class="e-card-2__layout-slider">
-                <div class="e-card-2__pic e-card-2__pic_load e-card-2__pic_first">
-                    <img src="/img/item_bag.jpg" />
+                <div class="e-card-2__layout-slider">
+                    <div class="e-card-2__pic e-card-2__pic_load e-card-2__pic_first">
+                        <img src="@item.ImageUrl" />
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <span class="e-card-2__label e-card-2__label_new">New</span>
-        <span class="e-card-2__title">@item.Name</span>
+            @*<span class="e-card-2__label e-card-2__label_new">New</span>*@
+            <span class="e-card-2__title">@item.Name</span>
+        </a>
         <span class="e-card-2__price">@item.Price$</span>
         <br />
                     @if (item.Price == 11.00)
@@ -95,33 +96,3 @@
     </div>
 </div>
 
-
-
-
-
-
-
-    @*
-            <div style="display: inline-flex; flex-direction: row; flex-basis: auto; justify-content: center; flex-wrap: wrap; flex-shrink: 0;">
-
-
-                @foreach (var item in Model.items)
-                {
-
-
-                    <div class="item-card">
-                        <img src="@item.ImageUrl" />
-                        <div class="item-descr" style="display: flex; flex-direction: column;">
-                            <span class="sizes">10-11-12</span>
-                            <span class="item-name">@item.Name</span>
-                            <span class="price">@item.Price $</span>
-                            @if (item.Price == 11.00)
-                            {
-
-            @Html.Raw("<button style='background: gray;'>Not in Stock</button>") }
-        else
-        {
-
-                        </div>
-                    </div>            }
-            </div>*@

@@ -94,7 +94,7 @@ button.accept-policy {
 -------------------------------------------------- */
 html {
     position: relative;
-    min-height: 80%;
+    min-height: 100vh;
 }
 
 body {
@@ -827,7 +827,7 @@ body {
 
 .title_fifth {
     font-family: "FuturaPT Light";
-    font-size: 18px;
+    font-size: 28px;
     color: #000;
     margin-bottom: 10px
 }
@@ -2572,9 +2572,10 @@ a.header__shops-help-item {
     background-color: #f9f9f9;
     /*overflow: hidden;*/
     /*position: absolute;*/
-    /*margin-top: -310px*/ 
+    /*margin-top: -310px*/
     position: relative;
     bottom: 0;
+    background-color: #efdbdc;
     width: 100%;
 }
 
@@ -3094,7 +3095,7 @@ a.header__shops-help-item {
 }
 
 .e-card-2__title {
-    height: 22px;
+    /*height: 22px;*/
     display: block;
     text-transform: uppercase
 }
@@ -3738,7 +3739,7 @@ a.header__shops-help-item {
 .button-fifth,
 .button-sixth {
     font-family: "FuturaPT Book";
-    font-size: 19px;
+    font-size: 32px;
 }
 
 .button-fifth {
@@ -5697,7 +5698,7 @@ a.header__shops-help-item {
     }
 
 .item-page__main-row {
-    margin-bottom: 96px;
+    /*margin-bottom: 96px;*/
     display: -ms-flexbox;
     display: flex;
     -ms-flex-flow: row wrap;
@@ -6014,7 +6015,7 @@ a.header__shops-help-item {
     float: left;
     margin-top: 15px;
     margin-bottom: 7px;
-    min-height: 180px;
+    min-height: 140px;
     text-align: center
 }
 
@@ -6039,7 +6040,7 @@ a.header__shops-help-item {
 
 .item-page__col_title .title_fifth {
     line-height: inherit;
-    margin-bottom: 9px
+    margin-bottom: 1px
 }
 
 .item-page__col_title .e-card-2__oldPrice,
@@ -6191,7 +6192,7 @@ a.header__shops-help-item {
 .item-page__button-cart {
     font-family: "FuturaPT Light" !important;
     margin-bottom: 25px;
-    background-color: #ef4882;
+    background-color: #efdbdc;
     color: #fff
 }
 
@@ -9552,6 +9553,7 @@ button.help__accordion {
 
     .index__col-content.index__col-content_vBottom {
         top: auto;
+        margin-top: 10px;
         bottom: 5.5%
     }
 
@@ -9903,7 +9905,7 @@ button.help__accordion {
 
 .button_login,
 .login__col-reg .button {
-    background-color: #000;
+    background-color: #efdbdc;
     color: #fff
 }
 
@@ -11488,7 +11490,10 @@ button.help__accordion {
 }
 
 .cart-page-table-tr {
-    border-bottom: 1px solid #ececec
+    border-bottom: 1px solid #ececec;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 2px;
 }
 
     .cart-page-table-tr::after,
@@ -16986,9 +16991,16 @@ video::-webkit-media-text-track-display {
 }
 
 .addToCartBtn {
-    margin-top: 5px;
-    border: 1px solid black;
+    margin-top: 10px;
+    height: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    /*border: 1px solid black;*/
     width: 100%;
-    color: black;
-    background: lightsalmon;
+    color: white;
+    background: #efdbdc;
+}
+
+.nav-link {
+    color: black !important;
 }

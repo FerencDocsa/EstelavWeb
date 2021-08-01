@@ -13,7 +13,7 @@ namespace Estelav.Pages
     {
 
         private readonly EstelavContext _context;
-        public List<Models.Item> items { get; set; }
+        public List<Models.Items> items { get; set; }
         public string _categoryName { get; set; }
 
         public int _itemsCount { get; set; }

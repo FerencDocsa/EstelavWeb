@@ -1,0 +1,63 @@
+﻿@page
+@model Estelav.Pages.Account.RegisterModel
+@{
+}
+
+<div class="layout-main">
+    <div class="login__row-layout">
+        <div class="login__col-auth">
+            <form class="login__form login__form_mob-active" id="form-login" asp-action="/Login" method="post">
+                <h2 class="title title_fourth">Для постійних клієнтів</h2>
+                <fieldset class="layout-form-vert-1">
+                    <div class="layout-form-row">
+                        <label for="auth-email">E-MAIL:*</label><input class="input" type="text" id="auth-email" name="login-form[login]" value="">
+                        <div class="login__err-mess"></div>
+                    </div>
+                    <div class="layout-form-row">
+                        <label for="auth-pass">Пароль:*</label><input class="input" type="password" id="auth-pass" name="login-form[password]" value="">
+                        <div class="login__err-mess">тест</div>
+                    </div>
+                    @*<div class="layout-form-row login__row-checkbox">
+                        <div class="custom-checkbox"><input id="login-remember" name="login-form[remember]" type="checkbox" value="true" checked="checked">
+                        <label for="login-remember">Запам'ятати мене</label></div>
+                    </div>*@
+                    <div class="layout-form-row"><input class="button button_login" type="submit" value="увійти"><span class="login__secondary-button" id="show-form-forget-pass">Забули пароль?</span></div>
+                </fieldset>
+            </form>
+        </div>
+        <div class="login__col-reg">
+            <form class="login__form " id="form-reg" action="/user/registration/register" method="post">
+                <h2 class="title title_fourth">Для нових клієнтів</h2>
+                <fieldset class="layout-form-vert-1">
+                    <div class="layout-form-row">
+                        <label for="register-username">ім'я:*</label><input class="input" type="text" id="firstpoput" name="firstpopup" value="" hidden=""><input class="input" type="text" id="register-username" name="register-form[name]" value="">
+                        <div class="login__err-mess"></div>
+                    </div>
+                    <div class="layout-form-row">
+                        <label for="register-surname">прізвище:*</label><input class="input" type="text" id="register-surname" name="register-form[surname]" value="">
+                        <div class="login__err-mess"></div>
+                    </div>
+                    <div class="layout-form-row">
+                        <label for="register-email">E-MAIL:*</label><input class="input" type="text" id="register-email" name="register-form[email]" value="">
+                        <div class="login__err-mess"></div>
+                    </div>
+                    <div class="layout-form-row">
+                        <label for="register-discountNumber">Номер дисконтної картки:</label><input class="input" type="text" id="register-discountNumber" name="register-form[discountNumber]" value="">
+                        <div class="login__err-mess"></div>
+                    </div>
+                    <div class="layout-form-row"><label for="reg-phone">Телефон:*</label><input class="input tel-mask" type="tel" id="reg-phone" name="register-form[phone]" value=""></div>
+                    <div class="layout-form-row">
+                        <label for="register-password">Пароль:*</label><input class="input" type="password" id="register-password" name="register-form[password]" value="">
+                        <div class="login__err-mess"></div>
+                    </div>
+                    <div class="layout-form-row">
+                        <label for="register-repassword">Повторіть пароль:*</label><input class="input" type="password" id="register-repassword" name="register-form[repassword]" value="">
+                        <div class="login__err-mess"></div>
+                    </div>
+
+                    <div class="layout-form-row"><input class="button" type="submit" value="Реєстрація"></div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
