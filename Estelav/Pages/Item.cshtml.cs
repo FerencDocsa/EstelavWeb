@@ -12,6 +12,8 @@ namespace Estelav.Pages
     {
         private readonly EstelavContext _context;
         public Models.Items foundItem { get; set; }
+        public IList<Items> _recItems { get; set; }
+
 
         public ItemModel(EstelavContext context)
         {
@@ -26,6 +28,13 @@ namespace Estelav.Pages
             }
 
             foundItem = _context.Items.FirstOrDefault(c => c.ItemId == id);
+
+            if(foundItem == null)
+            {
+                return NotFound();
+            }
+
+            _recItems = _context.Items.Where(c => c.CategoryId == 1).Take(4).ToList();
 
             return new PageResult();  
         }

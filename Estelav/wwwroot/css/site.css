@@ -1,23 +1,37 @@
 ﻿@font-face {
-    font-family: "FuturaPT Book";
-    src:  url(/fonts/FuturaPTBook.woff) format("woff")
+    font-family: "Roboto Regular";
+    src:  url(/fonts/Roboto-Regular.ttf)
 }
 
 @font-face {
-    font-family: "FuturaPT Light";
-    src: url(/fonts/FuturaPTLight.woff) format("woff")
+    font-family: "Roboto Light";
+    src: url(/fonts/Roboto-Light.ttf) 
 }
 
 @font-face {
-    font-family: "FuturaPT Medium";
-    src:url(/fonts/FuturaPTMedium.woff) format("woff")
+    font-family: "Roboto Thin";
+    src: url(/fonts/Roboto-Thin.ttf)
 }
 
-/*@font-face {
-    font-family: "FuturaPT Oblique";
-    src: url(/fonts/FuturaPTBookOblique.woff) format("woff")
+@font-face {
+    font-family: "Roboto Medium";
+    src: url(/fonts/Roboto-Medium.ttf)
 }
-*/
+
+@font-face {
+    font-family: "Playfair Display";
+    src: url(/fonts/PlayfairDisplay-Regular.ttf)
+}
+
+
+@font-face {
+    font-family: "Playfair Display Bold";
+    src: url(/fonts/PlayfairDisplay-Bold.ttf)
+}
+
+
+
+
 html, body {
     margin: 0;
     padding: 0;
@@ -741,7 +755,7 @@ body,
 input,
 select,
 textarea {
-    font-family: "FuturaPT Light"
+    font-family: "Roboto Light"
 }
 
 .text,
@@ -752,7 +766,7 @@ body {
 }
 
 .text-secondary {
-    font-family: "FuturaPT Book";
+    font-family: "Roboto Regular";
     font-size: 16px;
     color: #000;
     margin-bottom: 20px
@@ -760,7 +774,7 @@ body {
 
 .title,
 .visual-editor h1 {
-    font-family: "FuturaPT Light";
+    font-family: "Roboto Light";
     color: #000;
     text-transform: uppercase;
     margin-bottom: 30px
@@ -799,7 +813,7 @@ body {
 
 .title_secondary,
 .visual-editor h2 {
-    font-family: "FuturaPT Book";
+    font-family: "Roboto Regular";
     font-size: 30px;
     color: #000;
     text-transform: none;
@@ -807,14 +821,14 @@ body {
 }
 
 .title_third {
-    font-family: "FuturaPT Light";
+    font-family: "Roboto Light";
     font-size: 24px;
     color: #000;
     margin-bottom: 20px
 }
 
 .title_fourth {
-    font-family: "FuturaPT Book";
+    font-family: "Roboto Regular";
     font-size: 20px;
     color: #000;
     margin-bottom: 10px
@@ -826,7 +840,7 @@ body {
 }
 
 .title_fifth {
-    font-family: "FuturaPT Light";
+    font-family: "Roboto Light";
     font-size: 28px;
     color: #000;
     margin-bottom: 10px
@@ -836,7 +850,7 @@ body {
 .visual-editor h4,
 .visual-editor h5,
 .visual-editor h6 {
-    font-family: "FuturaPT Light";
+    font-family: "Roboto Light";
     color: #000;
     font-size: 16px;
     margin-bottom: 15px
@@ -1257,7 +1271,7 @@ a.header__shops-help-item {
         left: 25px;
         z-index: 2;
         font-size: 14px;
-        font-family: "FuturaPT Book";
+        font-family: "Roboto Regular";
         color: #000
     }
 
@@ -1287,7 +1301,7 @@ a.header__shops-help-item {
     right: 0;
     top: 100px;
     text-align: center;
-    font-family: "FuturaPT Medium";
+    font-family: "Roboto Medium";
     transition: all .3s
 }
 
@@ -1421,7 +1435,7 @@ a.header__shops-help-item {
     color: #000;
     display: block;
     padding-bottom: 22px;
-    font-family: "FuturaPT Light";
+    font-family: "Roboto Light";
     font-weight: 500;
     letter-spacing: .5px;
     font-size: 15px
@@ -1434,7 +1448,7 @@ a.header__shops-help-item {
 @media (max-width:1000px) {
     .h-menu-dd__link {
         padding: 19px 0;
-        font-family: "FuturaPT Light";
+        font-family: "Roboto Light";
         margin-left: 20px
     }
 }
@@ -1699,7 +1713,7 @@ a.header__shops-help-item {
 .h-menu-dd__layout-sub-menu li {
     margin-bottom: 15px;
     text-transform: uppercase;
-    font-family: "FuturaPT Book";
+    font-family: "Roboto Regular";
     color: #000
 }
 
@@ -1724,7 +1738,7 @@ a.header__shops-help-item {
 }
 
 .h-menu-dd__layout-sub-menu li:first-child {
-    font-family: "FuturaPT Medium"
+    font-family: "Roboto Medium"
 }
 
 @media screen and (min-width:320px) {
@@ -1743,7 +1757,7 @@ a.header__shops-help-item {
 
 @media (max-width:1000px) {
     .h-menu-dd__layout-sub-menu li {
-        font-family: "FuturaPT Light";
+        font-family: "Roboto Light";
         padding-left: 25px;
         position: relative;
         margin-bottom: 21px
@@ -1767,7 +1781,7 @@ a.header__shops-help-item {
         }
 
         .h-menu-dd__layout-sub-menu li:first-child {
-            font-family: "FuturaPT Light";
+            font-family: "Roboto Light";
             color: #000;
             padding-left: 0
         }
@@ -1832,14 +1846,14 @@ a.header__shops-help-item {
     z-index: 2;
     margin-bottom: 5px;
     line-height: 24px !important;
-    font-family: "FuturaPT Book"
+    font-family: "Roboto Regular"
 }
 
 .h-menu-dd__layout-promo-buy {
     position: relative;
     z-index: 2;
     text-decoration: underline;
-    font-family: "FuturaPT Light";
+    font-family: "Roboto Light";
     margin-bottom: 5px
 }
 
@@ -1886,7 +1900,7 @@ a.header__shops-help-item {
     cursor: pointer;
     padding-left: 30px;
     position: relative;
-    font-family: "FuturaPT Light";
+    font-family: "Roboto Light";
     font-weight: 500;
     letter-spacing: .5px;
     color: #000;
@@ -1949,7 +1963,7 @@ a.header__shops-help-item {
 .header-search-wrap .input-search {
     text-transform: uppercase;
     padding: 5px;
-    font-family: "FuturaPT Light";
+    font-family: "Roboto Light";
     font-size: 15px;
     color: #000;
     height: 28px;
@@ -1995,14 +2009,14 @@ a.header__shops-help-item {
 .header__search-suggestions-link {
     font-size: 18px;
     color: #000;
-    font-family: "FuturaPT Light";
+    font-family: "Roboto Light";
     padding-left: 50px;
     margin-bottom: 35px
 }
 
     .header__search-suggestions-link a {
         color: #000;
-        font-family: "FuturaPT Book";
+        font-family: "Roboto Regular";
         font-weight: 700
     }
 
@@ -2045,7 +2059,7 @@ a.header__shops-help-item {
 
 .search-autocomplete-item__title {
     text-transform: uppercase;
-    font-family: "FuturaPT Light";
+    font-family: "Roboto Light";
     display: block;
     margin-bottom: 5px;
     padding-top: 15px;
@@ -2444,7 +2458,7 @@ a.header__shops-help-item {
     width: 900px;
     padding-top: 100px;
     font-size: 14px;
-    font-family: "FuturaPT Light";
+    font-family: "Roboto Light";
     color: #000
 }
 
@@ -2947,7 +2961,7 @@ a.header__shops-help-item {
     text-align: center;
     font-size: 14px;
     line-height: 16px;
-    font-family: "FuturaPT Light";
+    font-family: "Roboto Light";
     color: #000;
     transition: all .5s
 }
@@ -3110,7 +3124,7 @@ a.header__shops-help-item {
 
 .e-card-2__oldPrice,
 .e-card-2__price {
-    font-family: "FuturaPT Book";
+    font-family: "Roboto Regular";
     text-transform: none
 }
 
@@ -3195,7 +3209,7 @@ a.header__shops-help-item {
     text-align: center;
     font-size: 14px;
     line-height: 16px;
-    font-family: "FuturaPT Medium";
+    font-family: "Roboto Medium";
     color: #000
 }
 
@@ -3257,7 +3271,7 @@ a.header__shops-help-item {
 
 .e-card-1__oldPrice,
 .e-card-1__price {
-    font-family: "FuturaPT Book";
+    font-family: "Roboto Regular";
     text-transform: none
 }
 
@@ -3455,7 +3469,7 @@ a.header__shops-help-item {
         }
 
 .horisontal-ecards-slider__header {
-    height: 100px;
+    /*height: 100px;*/
     color: #000
 }
 
@@ -3468,7 +3482,7 @@ a.header__shops-help-item {
 
 .horisontal-ecards-slider__title {
     text-align: center;
-    font-family: "FuturaPT Light";
+    font-family: "Roboto Light";
     font-size: 24px;
     text-transform: uppercase;
     position: relative;
@@ -3671,7 +3685,7 @@ a.header__shops-help-item {
     border: 1px solid #e0e0e0;
     height: 40px;
     padding: 0 11px;
-    font-family: "FuturaPT Book";
+    font-family: "Roboto Regular";
     color: #000;
     font-weight: 300;
     -webkit-appearance: none
@@ -3733,12 +3747,12 @@ a.header__shops-help-item {
     line-height: 27px;
     height: 30px;
     color: gray;
-    font-family: "FuturaPT Light"
+    font-family: "Roboto Light"
 }
 
 .button-fifth,
 .button-sixth {
-    font-family: "FuturaPT Book";
+    font-family: "Roboto Regular";
     font-size: 32px;
 }
 
@@ -4273,7 +4287,7 @@ a.header__shops-help-item {
     text-align: center;
     color: #000;
     font-size: 16px;
-    font-family: "FuturaPT Light"
+    font-family: "Roboto Light"
 }
 
 @media (max-width:1000px) {
@@ -4505,7 +4519,7 @@ a.header__shops-help-item {
 }
 
 .guide_table table {
-    font-family: "FuturaPT Light";
+    font-family: "Roboto Light";
     font-size: 14px;
     color: #000;
     width: 100%;
@@ -5972,7 +5986,7 @@ a.header__shops-help-item {
 
 .item-page__photo-preview .bx-wrapper {
     position: relative;
-    padding-top: 20px;
+    /*padding-top: 20px;*/
     padding-bottom: 10px
 }
 
@@ -6045,7 +6059,7 @@ a.header__shops-help-item {
 
 .item-page__col_title .e-card-2__oldPrice,
 .item-page__col_title .e-card-2__price {
-    font-family: "FuturaPT Light"
+    font-family: "Roboto Light"
 }
 
 .item-page__col_title .e-card-2__oldPrice {
@@ -6127,7 +6141,7 @@ a.header__shops-help-item {
 
 .item-page__colors {
     margin: 0 auto 34px;
-    font-family: "FuturaPT Light";
+    font-family: "Roboto Light";
     color: #000
 }
 
@@ -6169,7 +6183,7 @@ a.header__shops-help-item {
     text-transform: uppercase;
     margin-bottom: 20px;
     margin-top: -3px;
-    font-family: "FuturaPT Medium";
+    font-family: "Roboto Medium";
     font-size: 14px;
     display: none
 }
@@ -6179,7 +6193,7 @@ a.header__shops-help-item {
     }
 
 .item-page__non-in-stock {
-    font-family: "FuturaPT Book";
+    font-family: "Roboto Regular";
     margin-bottom: 9px
 }
 
@@ -6190,7 +6204,7 @@ a.header__shops-help-item {
 }
 
 .item-page__button-cart {
-    font-family: "FuturaPT Light" !important;
+    font-family: "Roboto Light" !important;
     margin-bottom: 25px;
     background-color: #efdbdc;
     color: #fff
@@ -6499,7 +6513,7 @@ a.header__shops-help-item {
 }
 
 .stock__header .stock__header-text .text-secondary {
-    font-family: "FuturaPT Light"
+    font-family: "Roboto Light"
 }
 
 @media (min-width:1420px) {
@@ -6596,7 +6610,7 @@ a.header__shops-help-item {
     }
 
         .stock .stock__row-wrap .stock__column-text h1 {
-            font-family: "FuturaPT Book";
+            font-family: "Roboto Regular";
             font-size: 30px;
             color: #000;
             text-transform: none;
@@ -6604,7 +6618,7 @@ a.header__shops-help-item {
         }
 
         .stock .stock__row-wrap .stock__column-text p {
-            font-family: "FuturaPT Book";
+            font-family: "Roboto Regular";
             font-size: 16px;
             color: #000;
             margin-bottom: 22px;
@@ -6816,7 +6830,7 @@ a.header__shops-help-item {
 }
 
 .guide__title {
-    font-family: "FuturaPT Book";
+    font-family: "Roboto Regular";
     text-transform: uppercase;
     margin: 20px 0 21px
 }
@@ -6998,7 +7012,7 @@ a.header__shops-help-item {
 }
 
 .help__accordion-title {
-    font-family: "FuturaPT Book";
+    font-family: "Roboto Regular";
     margin: 36px 0 0;
     line-height: 38px
 }
@@ -7010,7 +7024,7 @@ a.header__shops-help-item {
 }
 
 button.help__accordion {
-    font-family: "FuturaPT Book";
+    font-family: "Roboto Regular";
     font-size: 14px;
     border-bottom: 1px solid #e0e0e0;
     cursor: pointer;
@@ -7074,7 +7088,7 @@ button.help__accordion {
 .help__panel a {
     display: inline-block;
     color: #757575;
-    font-family: "FuturaPT Book"
+    font-family: "Roboto Regular"
 }
 
 .help__panel a {
@@ -7409,7 +7423,7 @@ button.help__accordion {
 
 .error .error__row .error__content .error__title {
     font-size: 14px;
-    font-family: "FuturaPT Book";
+    font-family: "Roboto Regular";
     text-transform: uppercase;
     margin-bottom: 22px;
     color: #000
@@ -7423,7 +7437,7 @@ button.help__accordion {
 
 .error .error__row .error__content p.text-secondary {
     margin-bottom: 18px;
-    font-family: "FuturaPT Light"
+    font-family: "Roboto Light"
 }
 
 .error .error__row .error__content .error__button {
@@ -7447,7 +7461,7 @@ button.help__accordion {
 }
 
 .error .error__row .error__content .error__mail {
-    font-family: "FuturaPT Medium";
+    font-family: "Roboto Medium";
     font-weight: 600
 }
 
@@ -7466,7 +7480,7 @@ button.help__accordion {
 }
 
 .profile-title {
-    font-family: "FuturaPT Book";
+    font-family: "Roboto Regular";
     text-transform: uppercase
 }
 
@@ -7512,7 +7526,7 @@ button.help__accordion {
     text-align: left;
     color: #757575;
     padding: 0 0 55px !important;
-    font-family: "FuturaPT Book"
+    font-family: "Roboto Regular"
 }
 
 .profile .resp-tabs-container {
@@ -7762,7 +7776,7 @@ button.help__accordion {
 }
 
 .profile .profile__personal-info .profile__form-title {
-    font-family: "FuturaPT Light";
+    font-family: "Roboto Light";
     font-weight: 600;
     margin-bottom: 12px
 }
@@ -7796,20 +7810,20 @@ button.help__accordion {
 
 .profile .profile__personal-info ::-webkit-input-placeholder {
     font-size: 14px;
-    font-family: "FuturaPT Light";
+    font-family: "Roboto Light";
     color: #000
 }
 
 .profile .profile__personal-info :-moz-placeholder,
 .profile .profile__personal-info ::-moz-placeholder {
     font-size: 14px;
-    font-family: "FuturaPT Light";
+    font-family: "Roboto Light";
     color: #000
 }
 
 .profile .profile__personal-info :-ms-input-placeholder {
     font-size: 14px;
-    font-family: "FuturaPT Light";
+    font-family: "Roboto Light";
     color: #000
 }
 
@@ -8431,7 +8445,7 @@ button.help__accordion {
 .profile .profile__buy .profile__buy-order.profile__order-status .profile__buy-status a {
     background-color: transparent;
     cursor: default;
-    font-family: "FuturaPT Light";
+    font-family: "Roboto Light";
     padding-top: 1px;
     padding-left: 0;
     padding-right: 0;
@@ -8453,7 +8467,7 @@ button.help__accordion {
 
 .profile .profile__buy-empty .profile__buy-empty-title {
     font-size: 18px;
-    font-family: "FuturaPT Book";
+    font-family: "Roboto Regular";
     line-height: 40px !important;
     color: #000
 }
@@ -8630,7 +8644,7 @@ button.help__accordion {
 
 .profile .profile__address .profile__address-forms-wrap .profile__address-title {
     margin-bottom: 7px;
-    font-family: "FuturaPT Light"
+    font-family: "Roboto Light"
 }
 
 .profile .profile__address .profile__address-forms-wrap label {
@@ -8842,7 +8856,7 @@ button.help__accordion {
 
 .profile__popup-ansver {
     display: none;
-    font-family: "FuturaPT Book";
+    font-family: "Roboto Regular";
     color: #000;
     text-align: center;
     margin: 13px 0 75px
@@ -8978,7 +8992,7 @@ button.help__accordion {
     text-align: center;
     text-transform: uppercase;
     font-size: 14px;
-    font-family: "FuturaPT Book";
+    font-family: "Roboto Regular";
     color: #000;
     text-decoration: none;
     cursor: pointer
@@ -9041,7 +9055,7 @@ button.help__accordion {
 
 .profile__favorites .profile__favorites-btn-back .icon__text {
     font-size: 14px;
-    font-family: "FuturaPT Book";
+    font-family: "Roboto Regular";
     color: #757575
 }
 
@@ -9139,7 +9153,7 @@ button.help__accordion {
 
     .favorites-send__wrap .layout-form-row input {
         color: #000;
-        font-family: "FuturaPT Book";
+        font-family: "Roboto Regular";
         font-size: 14px
     }
 
@@ -9147,7 +9161,7 @@ button.help__accordion {
     .favorites-send__wrap .layout-form-row textarea,
     .favorites-send__wrap label {
         color: #000;
-        font-family: "FuturaPT Light";
+        font-family: "Roboto Light";
         font-size: 16px
     }
 
@@ -9164,7 +9178,7 @@ button.help__accordion {
 }
 
 .favorites-send__title {
-    font-family: "FuturaPT Book";
+    font-family: "Roboto Regular";
     line-height: 40px;
     margin-bottom: 11px
 }
@@ -9183,7 +9197,7 @@ button.help__accordion {
     width: 120px;
     margin-left: 20px;
     color: #000;
-    font-family: "FuturaPT Book";
+    font-family: "Roboto Regular";
     font-size: 14px;
     font-weight: 300
 }
@@ -9194,7 +9208,7 @@ button.help__accordion {
     text-align: right;
     margin-top: 5px;
     color: #000;
-    font-family: "FuturaPT Light";
+    font-family: "Roboto Light";
     font-weight: 300
 }
 
@@ -9206,14 +9220,14 @@ button.help__accordion {
     border: 1px solid #e0e0e0;
     padding: 15px 15px 0 18px;
     color: #000;
-    font-family: "FuturaPT Light";
+    font-family: "Roboto Light";
     margin: 16px 0 18px
 }
 
 .favorites-send__message-main-title {
     font-size: 14px;
     text-transform: uppercase;
-    font-family: "FuturaPT Light"
+    font-family: "Roboto Light"
 }
 
 .favorites-send__message-row {
@@ -9243,7 +9257,7 @@ button.help__accordion {
 
 .favorites-send__hide-text {
     color: #000;
-    font-family: "FuturaPT Light";
+    font-family: "Roboto Light";
     font-size: 14px;
     line-height: 18px
 }
@@ -9408,7 +9422,7 @@ button.help__accordion {
 }
 
 .index__row .index__col img {
-    max-width: none
+    /*max-width: none*/
 }
 
 @media (max-width:1366px) {
@@ -9693,7 +9707,7 @@ button.help__accordion {
 
 .index__recommend {
     margin-top: 30px;
-    margin-bottom: 65px
+    /*margin-bottom: 65px*/
 }
 
 @media (max-width:1000px) {
@@ -9769,7 +9783,7 @@ button.help__accordion {
 }
 
 .stores .stores__row .stores__column-content .stores__title {
-    font-family: "FuturaPT Book";
+    font-family: "Roboto Regular";
     text-transform: uppercase;
     margin-top: 15px;
     margin-bottom: 30px
@@ -9984,7 +9998,7 @@ button.help__accordion {
         margin-right: -20px;
         margin-bottom: 16px;
         font-size: 20px;
-        font-family: "FuturaPT Light";
+        font-family: "Roboto Light";
         text-align: center;
         padding: 10px 0;
         border-top: 1px solid #ececec;
@@ -10021,7 +10035,7 @@ button.help__accordion {
 .login__form .layout-form-vert-1 .layout-form-row label {
     margin-bottom: 16px;
     text-transform: uppercase;
-    font-family: "FuturaPT Light";
+    font-family: "Roboto Light";
     font-size: 14px;
     color: #000;
     display: block
@@ -10044,7 +10058,7 @@ button.help__accordion {
 
 .login__secondary-button {
     text-transform: uppercase;
-    font-family: "FuturaPT Light";
+    font-family: "Roboto Light";
     font-size: 14px;
     color: gray;
     cursor: pointer;
@@ -10197,7 +10211,7 @@ button.help__accordion {
         padding: 0;
         text-align: left;
         font-size: 16px;
-        font-family: "FuturaPT Book";
+        font-family: "Roboto Regular";
         font-weight: 700;
         margin-left: 0;
         margin-right: 0;
@@ -10431,7 +10445,7 @@ button.help__accordion {
 }
 
 .lookbook-1 .lookbook-1__row .lookbook-1__col .lookbook-1__col-title {
-    font-family: "FuturaPT Light";
+    font-family: "Roboto Light";
     margin-bottom: 10px;
     padding-left: 17px;
     width: 86%
@@ -10466,7 +10480,7 @@ button.help__accordion {
 }
 
 .lookbook-1 .lookbook-1__row .lookbook-1__col .icon.icon_grafic .icon__text {
-    font-family: "FuturaPT Book";
+    font-family: "Roboto Regular";
     text-transform: uppercase;
     color: #000;
     font-size: 14px;
@@ -10483,7 +10497,7 @@ button.help__accordion {
 }
 
 .lookbook-1 .lookbook-1__row .lookbook-1__col .lookbook-1__slider .lookbook-1__slide-text {
-    font-family: "FuturaPT Book";
+    font-family: "Roboto Regular";
     font-size: 16px;
     color: #000;
     margin-top: 10px;
@@ -10623,7 +10637,7 @@ button.help__accordion {
 }
 
 .lookbook-2 .lookbook-2__title-group .lookbook-2__title {
-    font-family: "FuturaPT Light";
+    font-family: "Roboto Light";
     margin-bottom: 10px;
     width: 86%
 }
@@ -10656,7 +10670,7 @@ button.help__accordion {
 }
 
 .lookbook-2 .lookbook-2__title-group .icon.icon_grafic .icon__text {
-    font-family: "FuturaPT Book";
+    font-family: "Roboto Regular";
     text-transform: uppercase;
     color: #000;
     font-size: 14px;
@@ -10857,7 +10871,7 @@ button.help__accordion {
 }
 
 .lookbook-3 .stock__row-wrap .stock__column-text h1 {
-    font-family: "FuturaPT Book";
+    font-family: "Roboto Regular";
     font-size: 30px;
     color: #000;
     text-transform: none;
@@ -10872,7 +10886,7 @@ button.help__accordion {
 }
 
 .lookbook-3 .stock__row-wrap .stock__column-text p {
-    font-family: "FuturaPT Light";
+    font-family: "Roboto Light";
     font-size: 16px;
     color: #000;
     margin-bottom: 22px;
@@ -10949,7 +10963,7 @@ button.help__accordion {
     top: 43%;
     color: #000;
     font-size: 24px;
-    font-family: "FuturaPT Book";
+    font-family: "Roboto Regular";
     padding-right: 15px
 }
 
@@ -11170,7 +11184,6 @@ button.help__accordion {
     color: #000;
     text-transform: uppercase;
     text-align: center;
-    font-family: "FuturaPT Oblique";
     font-weight: 700
 }
 
@@ -11203,7 +11216,7 @@ button.help__accordion {
 }
 
 .lookbook-3 .lookbook-3__slider .lookbook-3__slide-text {
-    font-family: "FuturaPT Book";
+    font-family: "Roboto Regular";
     font-size: 16px;
     color: #000;
     margin-top: 10px;
@@ -11415,7 +11428,7 @@ button.help__accordion {
 .cart-page__title {
     font-size: 24px;
     color: #000;
-    font-family: "FuturaPT Book";
+    font-family: "Roboto Regular";
     float: left;
     text-transform: uppercase;
     padding-top: 7px
@@ -11734,7 +11747,7 @@ button.help__accordion {
 
 .cart-page-promobox__title {
     color: #000;
-    font-family: "FuturaPT Book";
+    font-family: "Roboto Regular";
     text-transform: uppercase;
     float: left;
     margin-top: 5px
@@ -11852,7 +11865,7 @@ button.help__accordion {
     text-align: right;
     font-size: 24px;
     color: #000;
-    font-family: "FuturaPT Book"
+    font-family: "Roboto Regular"
 }
 
 @media (max-width:1000px) {
@@ -11903,7 +11916,7 @@ button.help__accordion {
 .cart-page__back {
     font-size: 16px;
     color: #000;
-    font-family: "FuturaPT Book";
+    font-family: "Roboto Regular";
     position: relative;
     top: 9px
 }
@@ -12082,7 +12095,7 @@ button.help__accordion {
     border-bottom: 1px solid #e0e0e0;
     line-height: 1;
     padding-bottom: 18px;
-    font-family: "FuturaPT Book";
+    font-family: "Roboto Regular";
     margin-bottom: 16px;
     text-transform: uppercase
 }
@@ -12516,7 +12529,7 @@ button.help__accordion {
 .checkout-msg-box__title {
     font-size: 20px;
     text-transform: uppercase;
-    font-family: "FuturaPT Book";
+    font-family: "Roboto Regular";
     margin-bottom: 27px;
     line-height: 1.5;
     letter-spacing: -.1px
@@ -12535,7 +12548,7 @@ button.help__accordion {
 .checkout-msg-box__link {
     text-transform: uppercase;
     color: #000;
-    font-family: "FuturaPT Light"
+    font-family: "Roboto Light"
 }
 
 .checkout-addr-form {
@@ -12973,7 +12986,7 @@ button.help__accordion {
 
 .inspiration .inspiration__header-col .inspiration__header-group .inspiration__header-title {
     margin-bottom: 10px;
-    font-family: "FuturaPT Light"
+    font-family: "Roboto Light"
 }
 
 .inspiration .inspiration__header-col .inspiration__header-group .inspiration__header-text {
@@ -12981,14 +12994,14 @@ button.help__accordion {
     line-height: 28px;
     width: 308px;
     color: #000;
-    font-family: "FuturaPT Book";
+    font-family: "Roboto Regular";
     font-size: 16px
 }
 
 .inspiration .inspiration__header-col .inspiration__header-group .inspiration__header-button {
     text-decoration: underline;
     line-height: 28px;
-    font-family: "FuturaPT Book";
+    font-family: "Roboto Regular";
     font-size: 18px;
     color: #000
 }
@@ -13082,7 +13095,7 @@ button.help__accordion {
 }
 
 .inspiration .inspiration__content-img-title {
-    font-family: "FuturaPT Book";
+    font-family: "Roboto Regular";
     color: #000;
     text-align: center;
     line-height: 50px;
@@ -13627,7 +13640,7 @@ button.help__accordion {
 .popup-hashtag__buy {
     display: none;
     text-decoration: none;
-    font-family: "FuturaPT Medium";
+    font-family: "Roboto Medium";
     font-size: 18px;
     margin-bottom: 4px
 }
@@ -13737,11 +13750,11 @@ button.help__accordion {
     color: #5f5f5f;
     text-align: center;
     margin-bottom: 5px;
-    font-family: "FuturaPT Light"
+    font-family: "Roboto Light"
 }
 
     .upload-photo__title span {
-        font-family: "FuturaPT Book"
+        font-family: "Roboto Regular"
     }
 
 .upload-photo__subtitlle {
@@ -13928,7 +13941,7 @@ button.help__accordion {
     margin: 130px 0 20px;
     text-align: center;
     text-transform: uppercase;
-    font-family: "FuturaPT Book"
+    font-family: "Roboto Regular"
 }
 
 .upload-photo__finish-btn {
@@ -14271,7 +14284,7 @@ button.help__accordion {
     border: 1px solid #ef4882;
     background-color: #ef4882;
     color: #fff;
-    font-family: "FuturaPT Light";
+    font-family: "Roboto Light";
     font-size: 18px;
     line-height: 50px;
     text-transform: uppercase;
@@ -15051,7 +15064,7 @@ button.help__accordion {
     font-size: 25px;
     font-weight: 400;
     line-height: 36px;
-    font-family: "FuturaPT Medium";
+    font-family: "Roboto Medium";
     padding: 63px 0 73px;
     width: 100%;
     display: inline-block
@@ -15068,7 +15081,7 @@ button.help__accordion {
 .insider7-card__price {
     font-size: 30px;
     line-height: 36px;
-    font-family: "FuturaPT Medium"
+    font-family: "Roboto Medium"
 }
 
 .insider7-card__price {
@@ -15456,7 +15469,7 @@ button.help__accordion {
     background: #000;
     color: #fff;
     height: 78px;
-    font-family: "FuturaPT Book";
+    font-family: "Roboto Regular";
     font-size: 15px;
     line-height: 22px;
     text-transform: uppercase;
@@ -16998,9 +17011,133 @@ video::-webkit-media-text-track-display {
     /*border: 1px solid black;*/
     width: 100%;
     color: white;
-    background: #efdbdc;
+    background: #EFDBDC;
 }
 
 .nav-link {
     color: black !important;
+}
+
+.navbar-text{
+    padding-top: 0!important;
+    padding-bottom: 1rem!important;
+}
+
+/* Main page */
+.main-image-cont1 {
+    position: relative;
+}
+
+    .main-image-cont1 img {
+        width: 100%;
+        opacity: 0.9;
+    }
+
+.center-txt {
+    white-space: nowrap;
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+}
+
+
+    .center-txt h1 {
+        font-size: 60px;
+        font-family: "Playfair Display";
+        color: white;
+        text-shadow: 1px 1px 1px #000;
+    }
+
+.center-button {
+    white-space: nowrap;
+    position: absolute;
+    top: 48%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+}
+
+    .center-button a {
+        text-decoration: none;
+        color: white;
+    }
+
+.main-button {
+    background-color: none;
+    border: 2px solid white;
+    font-size: 28px;
+    padding: 15px 30px 15px 30px;
+    /*font*/
+}
+
+
+.main-slide-title {
+    text-decoration: none;
+    font-size: 54px;
+    font-family: 'Playfair Display Bold';
+    color: white;
+    text-transform: uppercase;
+}
+
+.center-txt-desc {
+    white-space: nowrap;
+    position: absolute;
+    top: 42%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+}
+
+.center-txt-view {
+    white-space: nowrap;
+    position: absolute;
+    top: 57%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+}
+
+.center-txt-view-dress{
+    top: 50%;
+}
+
+.center-txt-view-dec {
+    font-size: 32px;
+    text-decoration: underline !important;
+    color: white !important;
+    font-weight: normal !important;
+    font-family: "Roboto Thin";
+}
+
+.layer {
+    background-color: rgba(239, 219, 220, 0.4);
+    position: absolute;
+    top: 0px;
+    left: 10px;
+    width: 95.5%;
+    height: 98.5%;
+}
+
+@media (max-width: 1000px){
+    .center-txt {
+        top: 30%;
+    }
+
+        .center-txt h1 {
+            font-size: 40px;
+        }
+
+    .main-button{
+        font-size: 16px;
+    }
 }
