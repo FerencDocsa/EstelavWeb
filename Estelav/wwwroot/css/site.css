@@ -37,6 +37,7 @@ html, body {
     padding: 0;
     scroll-behavior: smooth;
     height: 100%;
+    font-family: "Roboto Regular";
 }
 
 
@@ -688,16 +689,15 @@ html {
 }
 
 .layuot-global {
-    min-height: 80%;
-    padding-bottom: 310px;
-    padding-top: 180px;
-    text-align: center
+    min-height: 100vh;
+    /*padding-bottom: 310px;*/
+    text-align: center;
 }
 
 @media (max-width:1000px) {
     .layuot-global {
-        min-height: inherit;
-        padding-top: 120px
+        /*min-height: inherit;*/
+        /*padding-top: 120px*/
     }
 }
 
@@ -2581,19 +2581,11 @@ a.header__shops-help-item {
     }
 
 .footer {
-    height: 200px;
-    /*padding-top: 20px;*/
+    height: 260px;
+    padding-top: 20px;
     background-color: #f9f9f9;
-    /*overflow: hidden;*/
-    /*position: absolute;*/
-    /*margin-top: -310px*/
-    /*position: relative;
-    bottom: 0;*/
-    background-color: #efdbdc;
-    width: 100%;
-    position: fixed;
-    bottom: 0;
-    left: 0;
+    overflow: hidden;
+    /*margin-top: -260px;*/
 }
 
 @media (max-width:1000px) {
@@ -7494,7 +7486,7 @@ button.help__accordion {
 .profile {
     margin-bottom: 117px;
     text-align: left;
-    padding-top: 70px
+    /*padding-top: 70px*/
 }
 
 @media (max-width:768px) {
@@ -17153,5 +17145,9 @@ video::-webkit-media-text-track-display {
 
     .center-txt-acc{
         font-size: 38px;
+    }
+
+    .profile_link {
+        display: none;
     }
 }

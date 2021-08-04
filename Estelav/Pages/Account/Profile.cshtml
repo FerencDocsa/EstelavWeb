@@ -1,0 +1,198 @@
+﻿@page
+@model Estelav.Pages.Account.ProfileModel
+@{
+}
+
+<div class="layout-main">
+    <div class="title-content-group">
+        <br/>
+        <h1 class="title_third title-content profile-title">Profile</h1>
+        <div class="title-content-second"></div>
+    </div>
+</div>
+
+<div class="profile">
+    <div class="profile__layout">
+        <div id="parentVerticalTab" class="resp-vtabs hor_1" style="display: block; width: 100%; margin: 0px;">
+            <ul class="resp-tabs-list hor_1" style="margin-top: 3px;">
+                <li class="title_fifth resp-tab-item hor_1 resp-tab-active" data-url-hash="#personal-info" aria-controls="hor_1_tab_item-0" role="tab" style="background-color: white; border-color: rgb(193, 193, 193);"><span>Info</span></li>
+                <li class="title_fifth resp-tab-item hor_1" data-url-hash="#my-purchases" aria-controls="hor_1_tab_item-1" role="tab" style="background-color: rgb(245, 245, 245); border-color: rgb(193, 193, 193);"><span>My Orders</span></li>
+            </ul>
+
+
+            <div class="resp-tabs-container hor_1" style="border-color: rgb(193, 193, 193);">
+                <h2 class="resp-accordion hor_1 resp-tab-active" role="tab" aria-controls="hor_1_tab_item-0" data-url-hash="#personal-info" style="background-color: white; border-color: rgb(193, 193, 193);">
+                    <span class="resp-arrow"></span>
+                    <span>Info</span>
+                </h2>
+                <div class="profile__personal-info resp-tab-content hor_1 resp-tab-content-active" id="personal-info" aria-labelledby="hor_1_tab_item-0" style="display:block">
+
+                    <form class="layout-form-column" id="form-profile" action="/user/settings/account" method="post">
+                        <fieldset class="profile__fieldset">
+                            <div class="title title_fourth profile__form-title">Personal Info</div>
+                            <div class="profile__form-vert">
+                                
+                                <div class="profile__form-row">
+                                    <label for="input_name">Name</label>
+                                    <input class="input" type="text" id="input_name" name="settings-form[name]">
+                                </div>
+
+                                <div class="profile__form-row">
+                                    <label for="oldemail">EMAIL</label>
+                                    <input class="input" type="email" id="oldemail" placeholder="E-mail" name="settings-form[email]" reguired="" readonly="">
+                                </div>
+                                
+                                <div class="profile__form-row">
+                                    <label for="input_name">Phone Number</label>
+                                    <input class="input" type="text" id="input_phone" name="settings-form[name]">
+                                </div>
+
+
+
+                                @*<div class="profile__form-row">
+                                    <label for="newemail">новий e-mail</label><input class="input" type="email" id="newemail" name="settings-form[new_email]" value="">
+                                    <div class="profile__err-mess"></div>
+                                </div>*@
+                                @*<div class="profile__form-row">
+                                    <label for="repemail">повторіть новий e-mail</label><input class="input" type="email" id="repemail" name="settings-form[new_email_confirm]" value="">
+                                    <div class="profile__err-mess"></div>
+                                </div>*@
+                            </div>
+                        </fieldset>
+                        @*<fieldset class="profile__fieldset-second">
+                            <div class="title title_fourth profile__form-title">безпека</div>
+                            <div class="profile__form-vert">
+                                <div class="profile__form-row">
+                                    <label for="oldpass">старий пароль</label><input class="input" type="password" id="oldpass" name="settings-form[current_password]" value="">
+                                    <div class="profile__err-mess"></div>
+                                </div>
+                                <div class="profile__form-row">
+                                    <label for="newpass">новий пароль</label><input class="input" type="password" id="newpass" name="settings-form[new_password]" value="">
+                                    <div class="profile__err-mess"></div>
+                                </div>
+                                <div class="profile__form-row">
+                                    <label for="repass">повторіть пароль</label><input class="input" type="password" id="repass" name="settings-form[new_password_confirm]" value="">
+                                    <div class="profile__err-mess"></div>
+                                </div>
+                                <div class="title title_fourth profile__form-title profile__contacts-title">контактні номера</div>
+                                <div class="profile__form-row">
+                                    <label for="input_phone">телефон</label><input class="input tel-mask" type="tel" id="input_phone" name="settings-form[phone]" placeholder="телефон" value="+38(050)-123-45-67">
+                                    <div class="profile__err-mess"></div>
+                                </div>
+                                <div class="profile__form-row">
+                                    <label for="input_discont">номер дисконтної картки</label><input class="input discount-mask" type="text" id="input_discont" name="settings-form[discountNumber]" placeholder="" value="">
+                                    <div class="profile__err-mess"></div>
+                                </div>
+                            </div>
+                        </fieldset>*@
+                        @*<fieldset class="layout-form-col-2">
+                            <div class="title title_fourth profile__form-title">підписка</div>
+                            <div class="profile__text-subscribe">будьте в курсі подій, ексклюзивних пропозицій!</div>
+                            <div class="custom-checkbox profile__checkbox"><input id="checkbox-name" type="checkbox" name="settings-form[subscribe]"><label for="checkbox-name">я хочу отримувати розсилку новин від tally weijl</label></div>
+                            <div class="profile__form-row"><input class="button profile__submit" type="submit" value="зберегти"></div>
+                        </fieldset>*@
+                    </form>
+                </div>
+                
+
+                <h2 class="resp-accordion hor_1" role="tab" aria-controls="hor_1_tab_item-1" data-url-hash="#my-purchases" style="background-color: rgb(245, 245, 245); border-color: rgb(193, 193, 193);"><span class="resp-arrow"></span><span>мої покупки</span></h2>
+                <div class="profile__buy resp-tab-content hor_1" id="my-purchases" data-url-my-purchases="/api/cancel-order" aria-labelledby="hor_1_tab_item-1">
+                    <div class="profile__buy-title">
+                        <div class="profile__buy-date-title">дата</div>
+                        <div class="profile__buy-goods-title">товар</div>
+                        <div class="profile__buy-description-title">опис</div>
+                        <div class="profile__buy-status-title">статус</div>
+                        <div class="profile__buy-cost-title">вартість</div>
+                    </div>
+                    <div class="profile__buy-order profile__order-status">
+                        <div class="profile__buy-item-wrap">
+                            <div class="profile__buy-date">
+                                <div class="profile__buy-order-number">Заказ №17574</div>
+                                <div class="profile__buy-order-date">26.07.2021</div>
+                            </div>
+                            <div class="profile__buy-status"><a class="button">Отменен</a></div>
+                            <div class="profile__buy-cost">1199 грн</div>
+                        </div>
+                        <!-- данные единицы товара (модель заказов) --><!-- данные единицы товара (модель товаров) -->
+                        <div class="profile__buy-item-wrap">
+                            <div class="profile__buy-goods"><img src="/p/prods/preview-9233-gallery-1626791031.9587.jpg" alt=""></div>
+                            <div class="profile__buy-description">
+                                <div class="profile__buy-description-name">
+                                    Худі тай - дай
+                                    <p></p>
+                                </div>
+                                <div class="profile__buy-description-code">
+                                    Код товару:
+                                    <p class="profile__buy-code">ЦБ-257655</p>
+                                </div>
+                                <div class="profile__buy-description-price-item">1199 грн</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h2 class="resp-accordion hor_1" role="tab" aria-controls="hor_1_tab_item-2" data-url-hash="#address-book" style="background-color: rgb(245, 245, 245); border-color: rgb(193, 193, 193);"><span class="resp-arrow"></span><span>адресна книга</span></h2>
+                <div class="profile__address resp-tab-content hor_1" id="address-book" aria-labelledby="hor_1_tab_item-2" style="border-color: rgb(193, 193, 193);">
+                    <div class="profile__address-border profile__hidden">
+                        <form class="profile__address-wrap" action="/deliveryadress/inner" method="post"></form>
+                        <div class="icon icon_grafic icon_grafic-small profile__add-new-address" data-action="add new address"><span class="icon__text">додати нову адресу</span><span class="icon__pic plus"></span></div>
+                    </div>
+                    <div class="profile__address-forms-wrap">
+                        <form id="profile__form-user-data" class="profile__form-vert" action="/user/settings/update" method="post" data-answer="Дані користувача успішно оновлені!">
+                            <div class="title title_fourth profile__form-title profile__address-title">дані користувача</div>
+                            <div class="profile__form-row">
+                                <label for="name">ім'я:</label><input class="input" type="text" id="name" name="settings-form[name]" placeholder="Ім'я" value="Ivan">
+                                <div class="profile__err-mess"></div>
+                            </div>
+                            <div class="profile__form-row">
+                                <label for="lastname">прізвище:</label><input class="input" type="text" id="lastname" name="settings-form[surname]" placeholder="Прізвище" value="Ivanov">
+                                <div class="profile__err-mess"></div>
+                            </div>
+                            <div class="profile__form-row">
+                                <label for="phone">телефон:</label><input class="input tel-mask" type="tel" id="phone" name="settings-form[phone]" placeholder="Телефон" value="+38(050)-123-45-67">
+                                <div class="profile__err-mess"></div>
+                            </div>
+                            <div class="profile__address-button"><input class="button profile__button-user-data" type="submit" value="оновити"></div>
+                        </form>
+                        <form id="profile__form-your-address" class="profile__form-vert" action="/deliveryadress/inner" method="post" data-answer="Ваша адреса успішно збережена!">
+                            <div class="title title_fourth profile__form-title profile__address-title">ваша адреса</div>
+                            <input class="input" type="text" id="form-action" name="action" value="create"><input class="input" type="text" id="id-address" name="DeliveryAdress[id]" value="create">
+                            <div class="profile__form-row">
+                                <label for="city">населений пункт:</label><input class="input" type="text" id="city" name="DeliveryAdress[town]" value="">
+                                <div class="profile__err-mess"></div>
+                            </div>
+                            <div class="profile__form-row">
+                                <label for="street">вулиця:</label><input class="input" type="text" id="street" name="DeliveryAdress[street]" value="">
+                                <div class="profile__err-mess"></div>
+                            </div>
+                            <div class="profile__form-row">
+                                <label for="house">будинок:</label><input class="input" type="text" id="house" name="DeliveryAdress[house]" value="">
+                                <div class="profile__err-mess"></div>
+                            </div>
+                            <div class="profile__form-row">
+                                <label for="room">квартира:</label><input class="input" type="text" id="room" name="DeliveryAdress[flat]" value="">
+                                <div class="profile__err-mess"></div>
+                            </div>
+                            <div class="profile__form-row">
+                                <label for="index">індекс:</label><input class="input" type="text" id="index" name="DeliveryAdress[zipcode]" value="">
+                                <div class="profile__err-mess"></div>
+                            </div>
+                            <div class="profile__address-button"><input class="button" type="submit" value="зберегти"></div>
+                        </form>
+                    </div>
+                </div>
+                <h2 class="resp-accordion hor_1" role="tab" aria-controls="hor_1_tab_item-3" data-url-hash="#favorites" style="background-color: rgb(245, 245, 245); border-color: rgb(193, 193, 193);"><span class="resp-arrow"></span><span>обране</span></h2>
+                <div id="favorites" class="resp-tab-content hor_1" aria-labelledby="hor_1_tab_item-3" style="border-color: rgb(193, 193, 193);">
+                    <div class="profile__favorites" data-url-favorites="/api/add-to-wishlist">
+                        <a class="icon icon_grafic profile__favorites-btn-back" href="https://tally-weijl.com.ua/profile#my-purchases"><span class="icon__text">Назад</span><span class="icon__pic link-prev"></span></a>
+                        <div class="layout-main layout-main_checkout">
+                            <div class="checkout-msg-box">
+                                <div class="checkout-msg-box__title">У вас немає товарів у обраному!</div>
+                                <a href="https://tally-weijl.com.ua/clothes" class="checkout-msg-box__link">Додати товари</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
