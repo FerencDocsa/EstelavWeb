@@ -7,24 +7,18 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
 </head>
 
-
-
-
 <body>
-@*  *@
     <nav class="navbar navbar-expand-md navbar-dark" style="background: #EFDBDC;">
         <div class="d-flex w-50 order-0">
-            <a class="navbar-brand mr-1" asp-page="/Index"> 
-                <img src="/img/logo.png" width="100" height="50" class="d-inline-block align-top" alt="">
+            <a class="navbar-brand mr-1" asp-page="/Index">
+                <img src="/img/logo.png" width="130" height="20" class="d-inline-block align-top" alt="">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
         </div>
-
 
         <div class="navbar-collapse collapse justify-content-center order-2" style="white-space: nowrap;" id="collapsingNavbar">
             <ul class="navbar-nav">
@@ -45,176 +39,49 @@
                 </li>
             </ul>
         </div>
-        <span class="navbar-text small text-truncate mt-1 w-50 text-right order-1 order-md-last">                       
-         
-                <div>
-                    <img width="25" height="25" src="~/img/user.png" style="position: relative; top: 8px;" />
-                    <a asp-page="/Account/Register" style="color: black;">Login/Register</a>
-                   
-                <img width="25" height="25" src="~/img/bag.png" style="position: relative; top: 8px;" />
-                    <a asp-page="/Cart/Index" style="color: black;">Cart</a>
+        <span class="navbar-text small text-truncate mt-1 w-50 text-right order-1 order-md-last">
 
-                </div>
+            @*<select style="margin-right: 20px; font-size: 16px; font-family: 'Roboto Regular';">
+                <option>EN</option>
+                <option>CZ</option>
+                <option>RU</option>
+            </select>*@
 
+            <partial name="_LoginPartial"/>
+               
+            <partial name="_CartPartial"/>
+            
 
         </span>
-
-
-        @*<a class="navbar-text small text-truncate mt-1 w-50 text-right order-1 order-md-last" asp-page="/Account/Register">
-            <span class="navbar-text">
-                <img width="25" height="25" src="https://img.icons8.com/ios-glyphs/30/000000/gender-neutral-user.png" style="position: relative; top: 6px;" />
-                <span style="">Login/Register</span>
-            </span>
-        </a>
-
-        <span class="navbar-text small text-truncate mt-1 w-50 text-right order-1 order-md-last">
-            <img width="25" height="25" src="~/img/cart.svg"  />
-            <span style="">Cart <b>(1)</b></span>
-        </span>*@
     </nav>
-
-<div>
+    <div class="layuot-global">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
 
-    <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
-        <meta itemprop="copyrightYear" content="2021">
-        <div class="layout-main">
-            <div class="footer__row">
-                <div class="footer__wrap-column">
-                    <div class="footer__column footer__menu-about">
-                        <ul>
-                            <li>
-                                <div class="footer__title">About Us</div>
-                            </li>
-                            <li><a href="#">Information</a></li>
-                            <li><a href="#">Contacts</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer__column footer__menu-buyers">
-                        <ul>
-                            <li>
-                                <div class="footer__title">For Buyers</div>
-                            </li>
-                            <li><a href="#">Shipping</a></li>
-                            <li><a href="#">Return</a></li>
-                            <li><a href="#">Size Guide</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer__column footer__menu-info">
-                        <ul>
-                            <li>
-                                <div class="footer__title">Legal Information</div>
-                            </li>
-                            <li><a href="#">Confidentiality</a></li>
-                            <li><a href="#">Terms of sale</a></li>
-                            <li><a href="#">Information protection</a></li>
-                        </ul>
-                    </div>
-                    @*<div class="footer__column footer__form-subscription">
-                                        <div class="footer__subscription">
-                                <div class="footer__title">підписка на новини</div>
-                                <form id="footer__subscription-form" class="footer__subscription" action="/user/settings/subscribe" method="get" novalidate data-answer="Ви успішно підписалися на цю розсилку">
-                                    <fieldset class="layout-form-inline">
-                                        <div class="layout-form-row footer__wrap-input">
-                                            <input class="input footer__input-subscription" type="email" name="Subscribe[email]" placeholder="Ваш e-mail" value="" required="">
-                                            <div class="profile__err-mess"></div>
-                                        </div>
-                                        <div class="layout-form-row footer__wrap-submit"><input class="button button-secondary footer__submit" type="submit" value="Підписатися"></div>
-                                    </fieldset>
-                                </form>
-                            </div>
-                        </div>*@
-                    <div class="footer__column footer__menu-info" style="margin-top: -15px;">
-                        <div class="footer__title">Social Media</div>
-                        <ul class="social">
-                            @*<li><a href="#" target="_blank" class="ic-fc"></a></li>*@
-                            <li><a href="#" target="_blank" class="ic-in"></a></li>
-                            @*<li><span class="ic-portmone"></span></li>*@
-                            <li><span class="ic-mastercard"></span></li>
-                            <li><span class="ic-visa"></span></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+<footer class="footer" itemscope="" itemtype="http://schema.org/WPFooter" style="background: #efdbdc;">
+    <meta itemprop="copyrightYear" content="2021">
+    <div class="layout-main">
+        <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-evenly;">
+            <span>Contacts</span>
+            <span>Find us on Instagram</span>
+            <span>Payment & Shipping</span>
+            <span>F.A.Q</span>
+            <span>How to place an Order</span>
         </div>
-        <div class="F-popup F-popup_message" id="popup-subscribe-footer">
-            <div class="F-popup__window">
-                <div class="F-popup__close" title="закрити вікно"></div>
-                <div class="F-popup__content">
-                    <h2 class="title title_fourth footer__text-for-success-send-form"></h2>
-                    <input class="button button_popup-mess-close" type="button" value="закрити вікно">
-                </div>
-            </div>
-        </div>
-    </footer>
-    @*<footer class="border-top footer text-muted" style="background-color: #efefdc;">
-            <div class="container">
-                &copy; 2021 - Estelav - <a asp-area="" asp-page="/Contacts">Contacts</a>  <a asp-area="" asp-page="/Shipping">Payment & Shipping</a>  <a asp-area="" asp-page="/Contacts">F.A.Q</a>
-            </div>
-        </footer>*@
+        
+        <div style="display: flex;"></div>
+    </div>
+    
+</footer>
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
 
 </body>
 </html>
 
-
-@*
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-                    <a class="navbar-brand" asp-page="/Index">
-                        
-
-                    </a>
-
-                    
-                    <div class="navbar-nav my-lg-0">
-
-                        <a asp-page="/Account/Register">
-                            <span class="navbar-text" style="position:relative; right: 25px;">
-                                <img width="25" height="25" src="https://img.icons8.com/ios-glyphs/30/000000/gender-neutral-user.png" style="position: relative; top: 6px;" />
-                                <span style="">Login/Register</span>
-                            </span>
-                        </a>
-
-                        <span class="navbar-text">
-
-                        </span>
-
-                        <span class="navbar-text">
-                            <img width="25" height="25" src="~/img/cart.svg" style="position: relative; top: 6px;" />
-                            <span style="">Cart <b>(1)</b></span>
-                        </span>
-
-
-
-                        @*<ul class="navbar-nav mr-auto">
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        EN
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown" >
-                                        <a class="dropdown-item" href="#" style="font-weight: bold;">EN</a>
-                                        <a class="dropdown-item" href="#" style="font-weight: bold;">RU</a>
-                                        <a class="dropdown-item" href="#" style="font-weight: bold;">UA</a>
-
-                                    </div>
-                                </li>
-                            </ul>@*
-
-                </div>
-
-            </div>
-</nav>
-*@
+@RenderSection("scripts", required: false)

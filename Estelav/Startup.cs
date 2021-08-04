@@ -14,6 +14,7 @@ using Microsoft.EntityFrameworkCore;
 using Estelav.Helpers;
 using Estelav.Helpers.Interface;
 using Estelav.Helpers.Services;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace Estelav
 {
@@ -39,11 +40,20 @@ namespace Estelav
                 options.Cookie.IsEssential = true;
             });
 
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie("Cookies",
+                options =>
+                {
+                    options.LoginPath = "/Account/Login";
+                    options.LogoutPath = "/Account/Logout";
+                    //options.AccessDeniedPath = "/Account/AccessDenied";
+                    options.ReturnUrlParameter = "ReturnUrl";
+                });
+
             services.AddRazorPages();
             //services.AddScoped<DbContext, Models.EstelavContext>();
             services.AddDbContext<EstelavContext>(options =>
-                //options.UseSqlServer(Configuration.GetConnectionString("EstelavDatabase")));
-                options.UseSqlServer(Configuration.GetConnectionString("EstelavDatabaseLocal")));
+            options.UseSqlServer(Configuration.GetConnectionString("EstelavDatabase")));
+            //options.UseSqlServer(Configuration.GetConnectionString("EstelavDatabaseLocal")));
 
             services.AddTransient<IItem, ItemService>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
@@ -77,6 +87,7 @@ namespace Estelav
 
             app.UseSession();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

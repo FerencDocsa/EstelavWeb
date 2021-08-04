@@ -23,6 +23,7 @@ namespace Estelav.Models
         public virtual DbSet<Customer> Customer { get; set; }
         public virtual DbSet<Items> Items { get; set; }
         public virtual DbSet<ShoppingCartItem> ShoppingCartItem { get; set; }
+        public virtual DbSet<Users> Users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -43,7 +44,11 @@ namespace Estelav.Models
                     .HasColumnName("CatergoryID")
                     .ValueGeneratedNever();
 
-                entity.Property(e => e.CategoryName).HasColumnType("text");
+                entity.Property(e => e.CategoryDescription).HasColumnType("text");
+
+                entity.Property(e => e.CategoryName)
+                    .IsRequired()
+                    .HasColumnType("text");
             });
 
             modelBuilder.Entity<Customer>(entity =>
@@ -126,6 +131,27 @@ namespace Estelav.Models
                     .HasForeignKey(d => d.Item)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_ShoppingCartItem_Items");
+            });
+
+            modelBuilder.Entity<Users>(entity =>
+            {
+                entity.Property(e => e.CreatedUtc).HasColumnType("datetime");
+
+                entity.Property(e => e.EmailAddress)
+                    .IsRequired()
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Name)
+                    .IsRequired()
+                    .IsUnicode(false);
+
+                entity.Property(e => e.PasswordHash)
+                    .IsRequired()
+                    .IsUnicode(false);
+
+                entity.Property(e => e.PhoneNumber)
+                    .IsRequired()
+                    .IsUnicode(false);
             });
 
             OnModelCreatingPartial(modelBuilder);

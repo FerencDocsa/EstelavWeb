@@ -10,7 +10,7 @@
 
         <div class="title-plus title-plus_transform-for-mobile">
             <h1 class="title" style="font-size: 40px; color: #000">@Model._categoryName</h1>
-            <p class="title-plus__text" style="color: #000">Description of the categories</p>
+            <p class="title-plus__text" style="color: #000">@Model._categoryDescription</p>
         </div>
     </main>
 
@@ -23,34 +23,36 @@
 
                 <div class="catalog__action-panel-sort">
                     <div class="catalog__sort-form" id="catalog__sort-form">
-                    <span class="catalog__action-sort-label">Sort By:</span>
-                    <div class="selectricWrapper selectric-select-selectric">
-                        <div class="selectricHideSelect">
-                        <select class="select-selectric" id="catalog__sort-select" name="sorting" tabindex="0">
-                            <option value="" data-text-mobile="Сортування">Select</option>
-                            <option value="priceAsc">Ціна за зростанням</option>
-                            <option value="priceDesc">Ціна за зменшенням</option>
-                            <option value="popularDesc">За популярністю</option>
-                            <option value="newDesc">Новинки</option>
-                            <option value="bestsellerDesc">Бестселери</option>
-                            </select></div><div class="selectric">
-                                               <p class="label">Select</p>
-                        <b class="button"></b>
+                        @*<span class="catalog__action-sort-label">Sort By:</span>*@
+                        @*<div class="selectricWrapper selectric-select-selectric">
+                            <div class="selectricHideSelect">
+                                <select class="select-selectric" id="catalog__sort-select" name="sorting" tabindex="0">
+                                    <option value="" data-text-mobile="Сортування">Select</option>
+                                    <option value="priceAsc">Ціна за зростанням</option>
+                                    <option value="priceDesc">Ціна за зменшенням</option>
+                                    <option value="popularDesc">За популярністю</option>
+                                    <option value="newDesc">Новинки</option>
+                                    <option value="bestsellerDesc">Бестселери</option>
+                                </select>
+                            </div>
+                            <div class="selectric">
+                                <p class="label">Select</p>
+                                <b class="button"></b>
+                            </div>
+                            <div class="selectricItems" tabindex="-1" style="width: 180px;">
+                                <div class="selectricScroll">
+                                    <ul>
+                                        <li class="selected">Обрати</li>
+                                        <li class="">Ціна за зростанням</li>
+                                        <li class="">Ціна за зменшенням</li>
+                                        <li class="">За популярністю</li>
+                                        <li class="">Новинки</li>
+                                        <li class="last">Бестселери</li>
+                                    </ul>
                                 </div>
-                        <div class="selectricItems" tabindex="-1" style="width: 180px;">
-                        <div class="selectricScroll">
-                            <ul>
-                            <li class="selected">Обрати</li>
-                            <li class="">Ціна за зростанням</li>
-                            <li class="">Ціна за зменшенням</li>
-                            <li class="">За популярністю</li>
-                            <li class="">Новинки</li>
-                            <li class="last">Бестселери</li>
-                                </ul>
                             </div>
-                            </div>
-                        <input class="selectricInput" tabindex="0">
-                        </div>
+                            <input class="selectricInput" tabindex="0">
+                        </div>*@
                     </div>
                 </div>
 
@@ -65,34 +67,41 @@
                 @foreach (var item in Model.items)
                 {
 
-    <div class="e-card-2">
-        <a class="e-card-2__layout-inside" asp-page="/Item" asp-route-id="@item.ItemId">
-            <div class="e-card-2__layout-slider">
-                <div class="e-card-2__layout-slider">
-                    <div class="e-card-2__pic e-card-2__pic_load e-card-2__pic_first">
-                        <img src="@item.ImageUrl" />
+                    <div class="e-card-2">
+                        <a class="e-card-2__layout-inside" asp-page="/Item" asp-route-id="@item.ItemId">
+                            <div class="e-card-2__layout-slider">
+                                <div class="e-card-2__layout-slider">
+                                    <div class="e-card-2__pic e-card-2__pic_load e-card-2__pic_first">
+                                        <img src="@item.ImageUrl" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <span class="e-card-2__title">@item.Name</span>
+                        </a>
+                        <span class="e-card-2__price">@item.Price$</span>
+                        <br />
+
+                        @if(item.InStock == false)
+                        {
+                            var itemId = item.ItemId;
+
+                            <button class="addToCartBtn" style="background: gray;">Not in Stock</button>
+                        }
+                        else
+                        {
+                            var item11 = 0;
+
+                          <a asp-page="/Item" asp-route-id="@item.ItemId">
+                        <button class="addToCartBtn" >Add to Cart</button>
+                    </a>
+                        }
+
                     </div>
-                </div>
-            </div>
-
-            @*<span class="e-card-2__label e-card-2__label_new">New</span>*@
-            <span class="e-card-2__title">@item.Name</span>
-        </a>
-        <span class="e-card-2__price">@item.Price$</span>
-        <br />
-                    @if (item.Price == 11.00)
-                    {
-            @Html.Raw("<button style='background: gray;'>Not in Stock</button>") }
-            else
-            {
-            @Html.Raw("<button class='addToCartBtn'> Add to Cart</button>")}
-
-    </div>}
-
+                    }
             </div>
         </div>
 
 
     </div>
 </div>
-

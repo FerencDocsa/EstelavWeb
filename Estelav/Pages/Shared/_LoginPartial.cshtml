@@ -1,0 +1,23 @@
+﻿<style>
+
+</style>
+
+@if (User.Identity.IsAuthenticated)
+{
+    <a style="margin: 0 5px 0 5px; color: black;">
+        <a style="color: black;" asp-page="/Account/Profile">
+            <img width="25" height="25" src="~/img/user.png" style="position: relative; top: 9px; right: 6px; text-decoration: none;" />
+        </a>
+        <a style="color: black;" class="profile_link" asp-page="/Account/Profile">Profile</a>
+        <a style="color: black;" class="profile_link" asp-page="/Account/Logout">(Logout)</a>
+    </a>
+}
+else
+{
+    <a asp-page="/Account/Login" style="color: black;">
+        <img width="25" height="25" src="~/img/user.png" style="position: relative; top: 9px; right: 6px;"/>
+    </a>
+    <a asp-page="/Account/Login" class="profile_link" style="color: black;">
+        Login
+    </a>
+}

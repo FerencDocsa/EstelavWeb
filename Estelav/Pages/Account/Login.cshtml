@@ -1,0 +1,52 @@
+﻿@page
+@model Estelav.Pages.Account.LoginModel
+@{
+}
+
+<div class="layout-main">
+    <div class="login__row-layout" style="-o-justify-content: center!important; -webkit-justify-content: center!important; justify-content: center!important;">
+        <div class="loginFormMain">
+            <div class="login__form login__form_mob-active" >
+                <form id="account" method="post">
+                    <h2 class="title title_fourth">LOGIN</h2>
+                    <hr/>
+                    <fieldset class="layout-form-vert-1">
+
+
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <div class="layout-form-row">
+                            <label asp-for="Input.Email"></label>
+                            <input asp-for="Input.Email" class="input"/>
+                            <span asp-validation-for="Input.Email" class="text-danger"></span>
+                        </div>
+
+                        <div class="layout-form-row">
+                            <label asp-for="Input.Password"></label>
+                            <input asp-for="Input.Password" class="input"/>
+                            <span asp-validation-for="Input.Password" class="text-danger"></span>
+                        </div>
+
+                        <button style="height: 50px; width: 100%; background-color: black; border-radius: 10px; color: white;">Sign In</button>
+                        <br/>
+                        <hr/>
+
+
+
+
+                    </fieldset>
+                </form>
+                <button style="height: 50px; width: 100%; background-color: black; border-radius: 10px; color: white;" >
+                    <a style="text-decoration: none; color: white;" asp-page="/Account/Register">Register</a>
+                </button>
+
+       
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
