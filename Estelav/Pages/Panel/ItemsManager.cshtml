@@ -3,7 +3,7 @@
 @{
 }
 <style>
-    input{
+    input {
         padding: 15px;
     }
 
@@ -12,14 +12,30 @@
         border: 1px solid rgba(255, 255, 255, 0.45);
     }
 
-        #sizesTable td, #sizesTable tr {
-            border: 1px solid rgba(255, 255, 255, 0.45);
+    #descriptionDiv {
+        height: auto;
+        padding: 30px;
+        background: #EFDBDC;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        flex-direction: column;
+        padding: 20px;
+        margin-bottom: 30px;
+    }
+
+        #descriptionDiv span {
+            text-align: left;
         }
 
-        #sizesTable input {
-            width: 60%;
-            margin: 10px;
-        }
+    #sizesTable td, #sizesTable tr {
+        border: 1px solid rgba(255, 255, 255, 0.45);
+    }
+
+    #sizesTable input {
+        width: 60%;
+        margin: 10px;
+    }
 
     .tableInputs {
         background: rgba(255, 255, 255, 0.45);
@@ -40,74 +56,83 @@
         color: black;">Add Items</span>
 
     <!--Description Div-->
-    <div style="height: auto; padding: 30px; width: 50%; background: #EFDBDC; display: flex; flex-wrap: wrap;
-        justify-content: space-evenly; flex-direction:column; padding: 20px; margin-bottom: 30px;">
-        <span style="text-align: left;">Describe in detail</span>
-        <input style="background: rgba(255, 255, 255, 0.45); border-radius: 10px; height: 35px;" />
+    <form  style=" width: 50%;" method="post" enctype="multipart/form-data">
 
-        <span style="text-align: left;">Category</span>
-        <select style="background: rgba(255, 255, 255, 0.45); border-radius: 10px; height: 35px;">
-            @foreach (var category in Model.categoriesList)
-            {
-                <option value="@category.CatergoryId">@category.CategoryName</option>
+        <div id="descriptionDiv">
+            <span>Describe in detail</span>
+            <input asp-for="Upload.Name" style="background: rgba(255, 255, 255, 0.45); border-radius: 10px; height: 35px;" />
+            <span asp-validation-for="Upload.Name" class="text-danger"></span>
 
-            }
-        </select>
+            <span>Category</span>
+            <select asp-for="Upload.CatergoryId" style="background: rgba(255, 255, 255, 0.45); border-radius: 10px; height: 35px;">
+                @foreach (var category in Model.categoriesList)
+                {
+                    <option value="@category.CatergoryId">@category.CategoryName</option>
 
-        <span style="text-align: left;">Price</span>
-        <input style="background: rgba(255, 255, 255, 0.45); border-radius: 10px; height: 35px;" />
-
-        <br/>
-        <form method="post" enctype="multipart/form-data">
-            <input type="file" name="photos" multiple="multiple" class="tableInputs" style="width: 100%; height: 50px;"/>
-            <button type="submit" style="width: 100%; margin: 15px 0px 15px 0px; color: black; background: lightcoral; height: 45px;">Submit</button>
-        </form>
-    </div>
+                }
+            </select>
+            <span asp-validation-for="Upload.CatergoryId" class="text-danger"></span>
 
 
-    <!--Sizes Div-->
-    <div style=" min-height: 100px; height: auto; width: 50%; background: #EFDBDC; display: flex; flex-wrap: wrap; justify-content: space-evenly; flex-direction: column; padding: 20px; margin-bottom: 30px;">
-        <span style="text-align: left;">Add Sizes</span>
+            <span>Price</span>
+            <input asp-for="Upload.Price" style="background: rgba(255, 255, 255, 0.45); border-radius: 10px; height: 35px;" />
+            <span asp-validation-for="Upload.Price" class="text-danger"></span>
 
-        <table id="sizesTable">
-            <tr>
-                <td>Size (e.g 30, 32, XS..)</td>
-                <td>Avaliable Amount</td>
-            </tr>
+            <span>Main Photo (will be shown in search)</span>
+            <input type="file" name="mainPhoto" class="tableInputs" style="width: 100%; height: 50px;" />
 
-            <tr>
-                <td>
-                    <input class="tableInputs" />
-                </td>
+            <span>Description Photos (will be shown on item page)</span>
+            <input type="file" name="descrPhotos" multiple="multiple" class="tableInputs" style="width: 100%; height: 50px;" />
+        </div>
 
-                <td>
-                    <input class="tableInputs" />
-                </td>
-            </tr>
-        </table>
+        <!--Sizes Div-->
+        <div style="display:none!important; min-height: 100px; height: auto; width: 50%; background: #EFDBDC; display: flex; flex-wrap: wrap; justify-content: space-evenly; flex-direction: column; padding: 20px; margin-bottom: 30px;">
+            <span style="text-align: left;">Add Sizes</span>
 
-        <button onclick="addSizeButton()" class="addToCartBtn" style="background: green; margin:10px auto 0px auto; width: 30%;">Add More</button>
+            <table id="sizesTable">
+                <tr>
+                    <td>Size (e.g 30, 32, XS..)</td>
+                    <td>Avaliable Amount</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <input class="tableInputs" />
+                    </td>
+
+                    <td>
+                        <input class="tableInputs" />
+                    </td>
+                </tr>
+            </table>
+
+            <button onclick="addSizeButton()" class="addToCartBtn" style="background: green; margin:10px auto 0px auto; width: 30%;">Add More</button>
 
 
-    </div>
+        </div>
+
+        <!--Item Description Div-->
+        <div style="height: 180px; background: #EFDBDC; display: flex; flex-wrap: wrap;
+            justify-content: space-evenly; flex-direction:column; padding: 20px; margin-bottom: 30px;">
+            <span style="text-align: left;">Description</span>
+            <textarea style="background: rgba(255, 255, 255, 0.45); border-radius: 10px; height: 100px; padding:5px;" asp-for="Upload.Description"></textarea>
+        </div>
 
 
-    <!--Item Description Div-->
-    <div style="height: 180px; width: 50%; background: #EFDBDC; display: flex; flex-wrap: wrap;
-    justify-content: space-evenly; flex-direction:column; padding: 20px; margin-bottom: 30px;">
-        <span style="text-align: left;">Description</span>
-        <textarea style="background: rgba(255, 255, 255, 0.45); border-radius: 10px; height: 100px; padding:5px;"></textarea>
-    </div>
+        <!--Submit button-->
+        <button type="submit" class="addToCartBtn" style="width: 50%;  margin: auto;">
+            Publish
+        </button>
+    </form>
 
+    @if(ViewData["newItemAdded"] != null)
+    {
+        <a asp-page="/Item" asp-route-id="@ViewData["newItemAdded"]">View Added Item</a>
+    }
 
-    <!--Submit button-->
-    <button class="addToCartBtn" style="width: 50%;  margin: auto;">
-        Publish
-    </button>
-
-    <button class="addToCartBtn" id="btnInsert" style="width: 50%;  margin: auto;">
-        Test
-    </button>
+    @*<button class="addToCartBtn" id="btnInsert" style="width: 50%;  margin: auto;">
+            Test
+        </button>*@
 
 </div>
 
@@ -149,3 +174,7 @@
     });
     });
 </script>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

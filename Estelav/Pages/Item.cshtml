@@ -12,28 +12,18 @@
                         <div class="item-page__photo-preview-layout">
                             <div class="bx-wrapper" style="max-width: 100%;">
                                 <div class="bx-viewport" aria-live="polite" style="width: 100%; overflow: hidden; position: relative; height: 470px;">
-                                    <div class="item-page__photo-prevew-list" id="itempage__photo-preview-list" style="width: auto; position: relative; transition-duration: 0s; transform: translate3d(0px, -480px, 0px);">
-                                    <a href="" data-slide-index="2" aria-hidden="true" style="float: none; list-style: none; position: relative; width: 90px; margin-bottom: 10px;" class="bx-clone">
-                                        <img src="~/img/merch/main-bag.png" >
-                                        </a>
-                                    <a href="" data-slide-index="3" aria-hidden="true" style="float: none; list-style: none; position: relative; width: 90px; margin-bottom: 10px;" class="bx-clone">
-                                        <img src="~/img/merch/main-bag.png">
-                                    </a>
-                                    <a href="" data-slide-index="4" aria-hidden="true" style="float: none; list-style: none; position: relative; width: 90px; margin-bottom: 10px;" class="bx-clone active">
-                                        <img src="~/img/merch/main-bag.png">
-                                    </a>
-                                    <a href="" data-slide-index="0" class="" aria-hidden="false" style="float: none; list-style: none; position: relative; width: 90px; margin-bottom: 10px;">
-                                        <img src="~/img/merch/main-bag.png">
-                                    </a>
-                                    <a href="" data-slide-index="1" aria-hidden="false" style="float: none; list-style: none; position: relative; width: 90px; margin-bottom: 10px;" class="">
-                                        <img src="~/img/merch/main-bag.png">
-                                    </a>
-                                    <a href="" data-slide-index="2" aria-hidden="false" style="float: none; list-style: none; position: relative; width: 90px; margin-bottom: 10px;">
-                                        <img src="~/img/merch/main-bag.png">
-                                    </a>
-                                    <a href="" data-slide-index="3" aria-hidden="true" style="float: none; list-style: none; position: relative; width: 90px; margin-bottom: 10px;">
-                                        <img src="~/img/merch/main-bag.png">
-                                    </a>
+                                    <div class="item-page__photo-prevew-list" id="itempage__photo-preview-list" style="width: auto; position: relative;">
+
+
+
+
+                                        @foreach (var item in Model._desItems)
+                                        {
+                                            <a href="" data-slide-index="2" aria-hidden="true" style="float: none; list-style: none; position: relative; width: 90px; margin-bottom: 10px;" class="bx-clone">
+                                                <img src="@item.ImageUrl">
+                                            </a>
+                                        }
+
 
                                     </div>
                                 </div>
@@ -49,18 +39,12 @@
                     </div>
                     <div class="item-page__photo-big">
                         <div class="bx-wrapper" style="max-width: 100%">
-
                             <ul id="item-page-big-photo-gallery">
                                 <li><img src="@Model.foundItem.ImageUrl" width="310" height="510"></li>
 
                             </ul>
-
                         </div>
-
-
                     </div>
-
-
                 </div>
 
                 <div class="item-page__col_title">
@@ -76,7 +60,6 @@
                             </span>
                         </span>
                         <link itemprop="availability" href="http://schema.org/InStock">
-                        @*   <span class="e-card-2__label e-card-2__label_new">New In</span>*@
                     </div>
                 </div>
                 <div class="item-page__col_cart-button">
@@ -91,33 +74,19 @@
                         <span class="button button-size button-size_none">L</span>
                         <span class="button button-size button-size_none">XL</span>
                     </div>
+
+                    <div>
+                        @Html.Raw(Model.foundItem.Description)
+                    </div>
+
                     <div class="item-page__wrong-message" data-cart-size-wrong>Please, choose a size!</div>
                     <div class="item-page__non-in-stock"></div>
-                    @*<div class="item-page__show-size-guide" id="show-size-guide" data-active-tabs="0">Гід по розмірах</div>*@
 
                     <a onclick="AddToCart(@(@Model.foundItem.ItemId))">
-                        @*asp-page="/Cart/Index" asp-page-handler="Add" asp-route-id="@Model.foundItem.ItemId"
-                        *@
                         <div class="button item-page__button-cart">Add to Cart</div>
-
                     </a>
 
-                    @*<div class="item-page__sucsses-message" data-cart-size-sucsses>Товар доданий до <a href="https://tally-weijl.com.ua/cart">кошику</a></div>*@
-                    @*<div class="item-page__sucsses-message" data-cart-favorite-sucsses>Товар доданий до <a href="https://tally-weijl.com.ua/profile#favorites">обраного</a></div>*@
-                    <div class="item-page__share">
-                        @*<span class="icon icon_grafic icon_grafic-small" data-cart-logout-add-to-favorite>
-                            <a class="icon__text">To Favourites</a>
-                            <span class="icon__pic star-small item-page__favorites icon-font"></span>
-                        </span>*@
-                        <div class="icon icon_grafic icon_grafic-small" id="item-page-sharing-toggle">
-                            @*<span class="icon__text">Поділитися</span>*@<span class="icon__pic plus"></span>
-                            <ul class="social" id="sharing-panel">
-                                @*<li><a href="https://www.facebook.com/sharer/sharer.php?u=https://tally-weijl.com.ua/clothes/futbolki--topi/ukorochena-futbolka-9249" target="_blank" class="ic-fc"></a></li>
-                                <li><a href="https://twitter.com/share?url=https://tally-weijl.com.ua/clothes/futbolki--topi/ukorochena-futbolka-9249&amp;text=Укорочена футболка" target="_blank" class="ic-tw"></a></li>
-                                <li><a href="https://plus.google.com/share?url=https://tally-weijl.com.ua/clothes/futbolki--topi/ukorochena-futbolka-9249" target="_blank" class="ic-gp"></a></li>*@
-                            </ul>
-                        </div>
-                    </div>
+ 
                 </div>
             </div>
         </div>

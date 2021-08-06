@@ -100,14 +100,12 @@ namespace Estelav.Models
 
             modelBuilder.Entity<ImagesList>(entity =>
             {
-                entity.HasNoKey();
-
                 entity.Property(e => e.ImageUrl)
                     .IsRequired()
                     .IsUnicode(false);
 
                 entity.HasOne(d => d.Item)
-                    .WithMany()
+                    .WithMany(p => p.ImagesList)
                     .HasForeignKey(d => d.ItemId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_ImagesList_Items");
@@ -133,11 +131,11 @@ namespace Estelav.Models
             {
                 entity.HasKey(e => e.ItemId);
 
-                entity.Property(e => e.ItemId)
-                    .HasColumnName("ItemID")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.ItemId).HasColumnName("ItemID");
 
                 entity.Property(e => e.CategoryId).HasColumnName("CategoryID");
+
+                entity.Property(e => e.Description).IsUnicode(false);
 
                 entity.Property(e => e.ImageUrl)
                     .IsRequired()

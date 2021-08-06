@@ -9,6 +9,7 @@ namespace Estelav.Models
 {
     public partial class ImagesList
     {
+        public int Id { get; set; }
         public int ItemId { get; set; }
         public string ImageUrl { get; set; }
 

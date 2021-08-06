@@ -14,6 +14,8 @@ namespace Estelav.Pages
         public Models.Items foundItem { get; set; }
         public IList<Items> _recItems { get; set; }
 
+        public IList<ImagesList> _desItems { get; set; }
+
 
         public ItemModel(EstelavContext context)
         {
@@ -34,6 +36,7 @@ namespace Estelav.Pages
                 return NotFound();
             }
 
+            _desItems = _context.ImagesList.Where(c => c.ItemId == id).ToList();
             _recItems = _context.Items.Where(c => c.CategoryId == 1).Take(4).ToList();
 
             return new PageResult();  

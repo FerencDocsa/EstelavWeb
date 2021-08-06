@@ -6023,8 +6023,8 @@ a.header__shops-help-item {
     width: 25%;
     float: left;
     margin-top: 15px;
-    margin-bottom: 7px;
-    min-height: 140px;
+    margin-bottom: 15px;
+    /*min-height: 140px;*/
     text-align: center
 }
 
