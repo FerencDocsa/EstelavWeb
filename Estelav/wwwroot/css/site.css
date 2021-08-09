@@ -691,7 +691,7 @@ html {
 .layuot-global {
     min-height: 100vh;
     /*padding-bottom: 310px;*/
-    text-align: center;
+    /*text-align: center;*/
 }
 
 @media (max-width:1000px) {
@@ -3797,7 +3797,8 @@ a.header__shops-help-item {
     text-transform: uppercase;
     padding: 0 5px !important;
     text-align: center;
-    color: #757575
+    color: #757575;
+    margin-right: 5px;
 }
 
 .button-size_none {
@@ -6023,8 +6024,8 @@ a.header__shops-help-item {
     width: 25%;
     float: left;
     margin-top: 15px;
-    margin-bottom: 7px;
-    min-height: 140px;
+    margin-bottom: 15px;
+    /*min-height: 140px;*/
     text-align: center
 }
 
@@ -11447,8 +11448,8 @@ button.help__accordion {
 
 .cart-page-button {
     float: right;
-    background-color: #ef4882;
-    color: #fff;
+    color: white;
+    background: #EFDBDC;
     padding-left: 25px;
     padding-right: 25px
 }
@@ -17130,6 +17131,27 @@ video::-webkit-media-text-track-display {
     height: 98.5%;
 }
 
+.column-responsive {
+    padding: 24px;
+    text-align: right;
+    margin-right: 90px;
+}
+
+.item-title {
+    font-size: 34px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.item-price {
+    font-weight: bold;
+    color: black;
+}
+
+.item-sizes{
+    margin-top: 25px;
+}
+
 @media (max-width: 1000px){
     .center-txt {
         top: 25%;
@@ -17149,5 +17171,14 @@ video::-webkit-media-text-track-display {
 
     .profile_link {
         display: none;
+    }
+
+    .column {
+        padding: 1!important;
+    }
+
+    .column-responsive {
+        text-align: right;
+        margin-right: 0px;
     }
 }

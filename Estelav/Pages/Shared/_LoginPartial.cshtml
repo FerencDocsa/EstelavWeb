@@ -1,9 +1,13 @@
 ﻿<style>
-
 </style>
 
 @if (User.Identity.IsAuthenticated)
 {
+    if (User.IsInRole("Admin"))
+    {
+        <a style="color: black; font-weight: bold;" class="profile_link" asp-page="/Panel/AdminPanel">Admin Page</a>
+    }
+
     <a style="margin: 0 5px 0 5px; color: black;">
         <a style="color: black;" asp-page="/Account/Profile">
             <img width="25" height="25" src="~/img/user.png" style="position: relative; top: 9px; right: 6px; text-decoration: none;" />
@@ -15,7 +19,7 @@
 else
 {
     <a asp-page="/Account/Login" style="color: black;">
-        <img width="25" height="25" src="~/img/user.png" style="position: relative; top: 9px; right: 6px;"/>
+        <img width="25" height="25" src="~/img/user.png" style="position: relative; top: 9px; right: 6px;" />
     </a>
     <a asp-page="/Account/Login" class="profile_link" style="color: black;">
         Login

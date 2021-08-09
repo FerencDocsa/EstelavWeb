@@ -52,8 +52,8 @@ namespace Estelav
             services.AddRazorPages();
             //services.AddScoped<DbContext, Models.EstelavContext>();
             services.AddDbContext<EstelavContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("EstelavDatabase")));
-            //options.UseSqlServer(Configuration.GetConnectionString("EstelavDatabaseLocal")));
+            //options.UseSqlServer(Configuration.GetConnectionString("EstelavDatabase")));
+            options.UseSqlServer(Configuration.GetConnectionString("EstelavDatabaseLocal")));
 
             services.AddTransient<IItem, ItemService>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();

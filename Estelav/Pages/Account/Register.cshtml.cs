@@ -54,6 +54,11 @@ namespace Estelav.Pages.Account
 
         public void OnGet(string returnUrl = null)
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                RedirectToPage("/Index");
+            }
+
             ReturnUrl = returnUrl;
         }
 

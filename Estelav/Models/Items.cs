@@ -11,6 +11,7 @@ namespace Estelav.Models
     {
         public Items()
         {
+            ImagesList = new HashSet<ImagesList>();
             ShoppingCartItem = new HashSet<ShoppingCartItem>();
         }
 
@@ -21,8 +22,10 @@ namespace Estelav.Models
         public int Amount { get; set; }
         public bool InStock { get; set; }
         public string ImageUrl { get; set; }
+        public string Description { get; set; }
 
         public virtual Categories Category { get; set; }
+        public virtual ICollection<ImagesList> ImagesList { get; set; }
         public virtual ICollection<ShoppingCartItem> ShoppingCartItem { get; set; }
     }
 }

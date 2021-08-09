@@ -2,34 +2,179 @@
 @model Estelav.Pages.Panel.ItemsManagerModel
 @{
 }
+<style>
+    input {
+        padding: 15px;
+    }
+
+    #sizesTable {
+        width: 100%;
+        border: 1px solid rgba(255, 255, 255, 0.45);
+    }
+
+    #descriptionDiv {
+        height: auto;
+        padding: 30px;
+        background: #EFDBDC;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        flex-direction: column;
+        padding: 20px;
+        margin-bottom: 30px;
+    }
+
+        #descriptionDiv span {
+            text-align: left;
+        }
+
+    #sizesTable td, #sizesTable tr {
+        border: 1px solid rgba(255, 255, 255, 0.45);
+    }
+
+    #sizesTable input {
+        width: 60%;
+        margin: 10px;
+    }
+
+    .tableInputs {
+        background: rgba(255, 255, 255, 0.45);
+        border-radius: 10px;
+        height: 35px;
+    }
+</style>
+
 
 <div style="display: flex; flex-direction: column; align-items: center;">
-    <span>Add Items</span>
-    
-    <div style="height: 300px; width: 80%; background: #EFDBDC; display: flex; flex-direction: row; align-items: flex-start">
-        <span>Describe in detail</span>
-        <input/>
-        
-        <br/>
-        <span>Category</span>
-        <select>
-            <option>New In</option>
-        </select>
 
-    </div>
-    
-    
-    <br/>
-    
-    <div style="height: 300px; width: 80%; background: #EFDBDC; display: flex; flex-direction: row; align-items: flex-start">
-        <span>Photo</span>
+    <!--Title-->
+    <span style="width: 50%;
+        font-size: 36px;
+        margin: auto;
+        text-align: left;
+        font-weight: bold;
+        color: black;">Add Items</span>
 
-    </div>
-    
-    
-    <div style="height: 300px; width: 80%; background: #EFDBDC; display: flex; flex-direction: row; align-items: flex-start">
-        <span>Desciption</span>
+    <!--Description Div-->
+    <form  style=" width: 50%;" method="post" enctype="multipart/form-data">
 
-    </div>
+        <div id="descriptionDiv">
+            <span>Describe in detail</span>
+            <input asp-for="Upload.Name" style="background: rgba(255, 255, 255, 0.45); border-radius: 10px; height: 35px;" />
+            <span asp-validation-for="Upload.Name" class="text-danger"></span>
+
+            <span>Category</span>
+            <select asp-for="Upload.CatergoryId" style="background: rgba(255, 255, 255, 0.45); border-radius: 10px; height: 35px;">
+                @foreach (var category in Model.categoriesList)
+                {
+                    <option value="@category.CatergoryId">@category.CategoryName</option>
+
+                }
+            </select>
+            <span asp-validation-for="Upload.CatergoryId" class="text-danger"></span>
+
+
+            <span>Price</span>
+            <input asp-for="Upload.Price" style="background: rgba(255, 255, 255, 0.45); border-radius: 10px; height: 35px;" />
+            <span asp-validation-for="Upload.Price" class="text-danger"></span>
+
+            <span>Main Photo (will be shown in search)</span>
+            <input type="file" name="mainPhoto" class="tableInputs" style="width: 100%; height: 50px;" />
+
+            <span>Description Photos (will be shown on item page)</span>
+            <input type="file" name="descrPhotos" multiple="multiple" class="tableInputs" style="width: 100%; height: 50px;" />
+        </div>
+
+        <!--Sizes Div-->
+        <div style="display:none!important; min-height: 100px; height: auto; width: 50%; background: #EFDBDC; display: flex; flex-wrap: wrap; justify-content: space-evenly; flex-direction: column; padding: 20px; margin-bottom: 30px;">
+            <span style="text-align: left;">Add Sizes</span>
+
+            <table id="sizesTable">
+                <tr>
+                    <td>Size (e.g 30, 32, XS..)</td>
+                    <td>Avaliable Amount</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <input class="tableInputs" />
+                    </td>
+
+                    <td>
+                        <input class="tableInputs" />
+                    </td>
+                </tr>
+            </table>
+
+            <button onclick="addSizeButton()" class="addToCartBtn" style="background: green; margin:10px auto 0px auto; width: 30%;">Add More</button>
+
+
+        </div>
+
+        <!--Item Description Div-->
+        <div style="height: 180px; background: #EFDBDC; display: flex; flex-wrap: wrap;
+            justify-content: space-evenly; flex-direction:column; padding: 20px; margin-bottom: 30px;">
+            <span style="text-align: left;">Description</span>
+            <textarea style="background: rgba(255, 255, 255, 0.45); border-radius: 10px; height: 100px; padding:5px;" asp-for="Upload.Description"></textarea>
+        </div>
+
+
+        <!--Submit button-->
+        <button type="submit" class="addToCartBtn" style="width: 50%;  margin: auto;">
+            Publish
+        </button>
+    </form>
+
+    @if(ViewData["newItemAdded"] != null)
+    {
+        <a asp-page="/Item" asp-route-id="@ViewData["newItemAdded"]">View Added Item</a>
+    }
+
+    @*<button class="addToCartBtn" id="btnInsert" style="width: 50%;  margin: auto;">
+            Test
+        </button>*@
 
 </div>
+
+<script>
+    function addSizeButton() {
+        $('#sizesTable').append('<tr><td><input class="tableInputs" /></td><td><input class="tableInputs"/></td></tr>');
+    }
+
+
+    $(function () {
+    $("#btnInsert").click(function () {
+        var itemlist = [];
+
+        //get cell values, instead of the header text.
+        $("table tr:not(:first)").each(function () {
+            var tdlist = $(this).find("td");
+            var Item = { ID: $(tdlist[0]).html(), Name: $(tdlist[1]).html() };
+            itemlist.push(Item);
+
+        })
+        console.log(itemlist);
+
+
+
+
+        @*$.ajax({
+            url: '@Url.Action("InsertValue", "Home")', //
+            dataType: "json",
+            data: JSON.stringify({ itemlist: itemlist }),
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            success: function (result) {
+                alert("success");
+            },
+            error: function (xhr) {
+                alert("error");
+            }
+        });*@
+    });
+    });
+</script>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
