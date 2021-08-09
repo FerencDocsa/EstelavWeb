@@ -2,14 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Estelav.Pages.Panel
+namespace Estelav.Pages.Cart
 {
-    [Authorize(Roles = "Admin")]
-    public class OrdersModel : PageModel
+    public class CheckoutModel : PageModel
     {
         public void OnGet()
         {

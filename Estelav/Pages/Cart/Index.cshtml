@@ -3,6 +3,8 @@
 @{
 }
 
+
+
 <div class="layout-main layout-main_cart">
     <section class="cart-page">
         <div class="cart-page-title-pane">
@@ -37,8 +39,8 @@
                         <div class="cart-page-table-td cart-page-table-td_size">Size</div>
                         <div class="cart-page-table-td cart-page-table-td_price">Price</div>
                         <div class="cart-page-table-td cart-page-table-td_num">Amount</div>
+                        <div class="cart-page-table-td cart-page-table-td_cost">Total</div>
                         <div class="cart-page-table-td cart-page-table-td_del">Remove</div>
-                        <div class="cart-page-table-td cart-page-table-td_cost">Price</div>
                     </div>
 
 
@@ -54,50 +56,25 @@
                             <div class="cart-page-table-td-mobcol">
                                 <div class="cart-page-table-td cart-page-table-td_name">
                                     <div class="cart-page__descr">
-                                        <a class="cart-page__descr-name" href="#" target="_blank">@item.ItemNavigation.Name</a>
-                                        <div class="cart-page__descr-mobprice">@item.ItemNavigation.Price</div>
-                                        @*<div class="cart-page__descr-feature">Монохром</div>*@
-                                        <div class="cart-page__descr-code">@*Код товара: ЦБ-257496*@</div>
+                                        <a class="cart-page__descr-name" target="_blank" asp-page="/Item" asp-route-id="@item.ItemNavigation.ItemId" >@item.ItemNavigation.Name</a>
+                                        <div class="cart-page__descr-mobprice">@item.ItemNavigation.Price CZK</div>
+
                                     </div>
                                 </div>
                                 <div class="cart-page-table-td cart-page-table-td_size">
-                                    @*<div class="selectricWrapper selectric-select-selectric">
-                                            <div class="selectricHideSelect"><select class="select-selectric" data-cart-val-size="" tabindex="0"><option value="13" selected="selected">XS</option><option value="14">S</option><option value="15">M</option><option value="31">XXS</option></select></div>
-                                            <div class="selectric">
-                                                <p class="label">XS</p><b class="button"></b>
-                                            </div>
-                                            <div class="selectricItems" tabindex="-1">
-                                                <div class="selectricScroll"><ul><li class="selected">XS</li><li class="">S</li><li class="">M</li><li class="last">XXS</li></ul></div>
-                                            </div><input class="selectricInput" tabindex="0">
-                                        </div>*@
+
                                 </div>
                                 <div class="cart-page-table-td cart-page-table-td_price">@item.ItemNavigation.Price</div>
                                 <div class="cart-page-table-td-mobrow">
                                     <div class="cart-page-table-td cart-page-table-td_num">
 
                                         @Html.Raw(item.Amount)
-                                        @*<div class="selectricWrapper selectric-select-selectric">
-                                                <div class="selectricHideSelect">
-                                                    <select class="select-selectric" data-cart-val-num="" tabindex="0">
-                                                        <option value="1" selected="selected">1</option>
-                                                        <option value="2">2</option>
-                                                        <option value="3">3</option>
-                                                        <option value="4">4</option>
-                                                        <option value="5">5</option>
-                                                    </select>
-                                                </div>
-                                                <div class="selectric">
-                                                    <p class="label">1</p><b class="button"></b>
-                                                </div>
-                                                <div class="selectricItems" tabindex="-1">
-                                                    <div class="selectricScroll"><ul><li class="selected">1</li><li class="">2</li><li class="">3</li><li class="">4</li><li class="last">5</li></ul></div>
-                                                </div><input class="selectricInput" tabindex="0">
-                                            </div>*@
                                     </div>
+
+                                    <div class="cart-page-table-td cart-page-table-td_cost"><span data-cart-cost="">@item.ItemNavigation.Price</span> CZK</div>
                                     <div class="cart-page-table-td cart-page-table-td_del">
-                                        <div class="cart-page__del" data-cart-delete-item=""></div>
+                                        <a class="cart-page__del" asp-page-handler="Remove" asp-route-id="@item.ItemNavigation.ItemId"></a>
                                     </div>
-                                    <div class="cart-page-table-td cart-page-table-td_cost"><span data-cart-cost="">@item.ItemNavigation.Price</span> $</div>
                                 </div>
                             </div>
                         </div>
@@ -110,7 +87,7 @@
                         </span>
                         
                         <span class="cart-page-total__cost">@Model._shoppingCartSum</span>
-                        <span class="cart-page-total__cost-currency">$</span>
+                        <span class="cart-page-total__cost-currency">CZK</span>
                     </div>
                     
                     <div class="cart-page-pane">

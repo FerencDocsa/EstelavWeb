@@ -5,12 +5,14 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Estelav.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Estelav.Pages.Panel
 {
+    [Authorize(Roles = "Admin")]
     public class ItemsManagerModel : PageModel
     {
         private readonly EstelavContext _context;

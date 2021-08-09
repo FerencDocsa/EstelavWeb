@@ -131,6 +131,39 @@ namespace Estelav.Pages.Cart
             return isValidAmount;
         }
 
+        public int RemoveFromCart(Items item)
+        {
+            var shoppingCartItem = _context.ShoppingCartItem.FirstOrDefault(
+                s => s.ItemNavigation.ItemId == item.ItemId);
+            int localAmmount = 0;
+            if(shoppingCartItem != null)
+            {
+                if(shoppingCartItem.Amount > 1)
+                {
+                    shoppingCartItem.Amount--;
+                    localAmmount = shoppingCartItem.Amount;
+                }
+                else
+                {
+                    _context.ShoppingCartItem.Remove(shoppingCartItem);
+                }
+            }
+
+            _context.SaveChanges();
+            return localAmmount;       
+        }
+
+        public IActionResult OnGetRemove(int id)
+        {
+            var item = _context.Items.FirstOrDefault(c => c.ItemId == id);
+            if(item != null)
+            {
+                RemoveFromCart(item);
+            }
+
+            return Redirect("/Cart");
+        }
+
 
         public IEnumerable<ShoppingCartItem> GetShoppingCartItems()
         {

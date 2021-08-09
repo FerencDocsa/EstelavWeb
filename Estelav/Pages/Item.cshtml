@@ -2,145 +2,259 @@
 @model Estelav.Pages.ItemModel
 @{
 }
+<style>
+    #content-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    .column {
+        /*width: 600px;*/
+        /*padding: 10px;*/
+    }
+
+    #featured {
+        max-width: 500px;
+        max-height: 600px;
+        object-fit: cover;
+        cursor: pointer;
+        /*border: 2px solid black;*/
+    }
+
+    .thumbnail {
+        object-fit: cover;
+        max-width: 180px;
+        max-height: 100px;
+        cursor: pointer;
+        opacity: 0.5;
+        margin: 5px;
+        /*border: 2px solid black;*/
+    }
+
+        .thumbnail:hover {
+            opacity: 1;
+        }
+
+    .active {
+        opacity: 1;
+    }
+
+    #slide-wrapper {
+        /*max-width: 500px;*/
+        display: flex;
+        min-height: 100px;
+        align-items: center;
+        justify-content: flex-end;
+    }
+
+    #slider {
+        /*width: 440px;*/
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+    }
+
+        #slider::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        #slider::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+        }
+
+        #slider::-webkit-scrollbar-thumb {
+            background-color: #dede2e;
+            outline: 1px solid slategrey;
+            border-radius: 100px;
+        }
+
+            #slider::-webkit-scrollbar-thumb:hover {
+                background-color: #18b5ce;
+            }
+
+    .arrow {
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        transition: .3s;
+    }
+
+        .arrow:hover {
+            opacity: .5;
+        }
+</style>
+
 
 <main>
     <div class="layout-main">
-        <div class="item-page">
-            <div class="item-page__main-row">
-                <div class="item-page__col_photo" id="item-page__photo-type-switching-row">
-                    <div class="item-page__photo-preview">
-                        <div class="item-page__photo-preview-layout">
-                            <div class="bx-wrapper" style="max-width: 100%;">
-                                <div class="bx-viewport" aria-live="polite" style="width: 100%; overflow: hidden; position: relative; height: 470px;">
-                                    <div class="item-page__photo-prevew-list" id="itempage__photo-preview-list" style="width: auto; position: relative;">
 
+        <div id="content-wrapper" >
+            <div class="column column-responsive" style="
+">
+                <img id=featured src="@Model.foundItem.ImageUrl" width="310" height="510">
 
+                <div id="slide-wrapper">
+                    <img id="slideLeft" class="arrow" src="~/img/arrow-left.png">
 
+                    <div id="slider">
+                        @{ bool flag1 = false;}
 
-                                        @foreach (var item in Model._desItems)
-                                        {
-                                            <a href="" data-slide-index="2" aria-hidden="true" style="float: none; list-style: none; position: relative; width: 90px; margin-bottom: 10px;" class="bx-clone">
-                                                <img src="@item.ImageUrl">
-                                            </a>
-                                        }
-
-
-                                    </div>
-                                </div>
-                                <div class="bx-controls bx-has-controls-direction">
-                                    <div class="bx-controls-direction"><a class="bx-prev" href="">Prev</a><a class="bx-next" href="">Next</a></div>
-                                </div>
-                            </div>
-                        </div>
-                        <ul class="item-page__photo-preview-switch" id="item-page__photo-preview-switch">
-                            <li class="item-page__photo-preview_1col active"></li>
-                            <li class="item-page__photo-preview_2col"></li>
-                        </ul>
+                        @foreach (var item in Model._desItems)
+                        {
+                            if (!flag1)
+                            {
+                                <img class="thumbnail active" src="@item.ImageUrl">
+                                flag1 = true;
+                            }
+                            else
+                            {
+                                <img class="thumbnail" src="@item.ImageUrl">
+                            }
+                        }
                     </div>
-                    <div class="item-page__photo-big">
-                        <div class="bx-wrapper" style="max-width: 100%">
-                            <ul id="item-page-big-photo-gallery">
-                                <li><img src="@Model.foundItem.ImageUrl" width="310" height="510"></li>
 
-                            </ul>
-                        </div>
-                    </div>
+                    <img id="slideRight" class="arrow" src="~/img/arrow-right.png">
                 </div>
+            </div>
 
-                <div class="item-page__col_title">
-                    <a class="item-page__link-next"> </a>
-                    <h1 class="title title_fifth" itemprop="name">@Model.foundItem.Name</h1>
-                    <meta itemprop="brand" >
+            <div class="column" style="padding:24px;        display: flex;        flex-direction: column;        flex-wrap: nowrap;        justify-content: flex-end;
+">
 
-                    <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-                        <span class="e-card-2__price">
-                            <span itemprop="price" content="@Model.foundItem.Price">
-                                @Model.foundItem.Price
-                                <span itemprop="priceCurrency" content="USD"> $</span>
+                    <div >
+                        <h1 class="item-title">@Model.foundItem.Name</h1>
+
+
+                        <div class="item-price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                            <span>
+                                <span itemprop="price" content="@Model.foundItem.Price">
+                                    @Model.foundItem.Price
+                                    <span itemprop="priceCurrency" content="USD"> $</span>
+                                </span>
                             </span>
-                        </span>
-                        <link itemprop="availability" href="http://schema.org/InStock">
-                    </div>
-                </div>
-                <div class="item-page__col_cart-button">
-                    <div class="item-page__go-to-desc">
-                        <span id="go-to-desc">Size</span><br />
-                    </div>
-                    <div class="item-page__sizes">
-                        <span class="button button-size " data-cart-size-check="31">XXS</span>
-                        <span class="button button-size button-size_none">XS</span>
-                        <span class="button button-size button-size_none">S</span>
-                        <span class="button button-size button-size_none">M</span>
-                        <span class="button button-size button-size_none">L</span>
-                        <span class="button button-size button-size_none">XL</span>
+                            <link itemprop="availability" href="http://schema.org/InStock">
+                        </div>
                     </div>
 
                     <div>
-                        @Html.Raw(Model.foundItem.Description)
+                        <div class="item-sizes">
+                            <span>Size</span>
+                        </div>
+
+                        <div style="display: flex; margin-bottom: 20px;">
+                            <span class="button button-size " data-cart-size-check="31">XXS</span>
+                            <span class="button button-size button-size_none">XS</span>
+                            <span class="button button-size button-size_none">S</span>
+                            <span class="button button-size button-size_none">M</span>
+                            <span class="button button-size button-size_none">L</span>
+                            <span class="button button-size button-size_none">XL</span>
+                        </div>
+
+                        <a onclick="AddToCart(@(@Model.foundItem.ItemId))">
+                            <div class="button item-page__button-cart">Add to Cart</div>
+                        </a>
+                        <br />
+
+                        <span id="addedToCart" style="display:none;">
+                            Added to <a style="font-weight: bold; color: #757575;" asp-page="/Cart/Index">Cart</a>
+                        </span>
+
+                        <div style="color: black; margin-top: 20px; max-width: 300px;">
+                            <b>Description:</b><br/> 
+                            @Html.Raw(Model.foundItem.Description)
+
+                        </div>
+
                     </div>
 
-                    <div class="item-page__wrong-message" data-cart-size-wrong>Please, choose a size!</div>
-                    <div class="item-page__non-in-stock"></div>
-
-                    <a onclick="AddToCart(@(@Model.foundItem.ItemId))">
-                        <div class="button item-page__button-cart">Add to Cart</div>
-                    </a>
-
- 
                 </div>
             </div>
+
         </div>
 
 
-     
 
-        <div class="catalog__products-list layout-main">
-            <div class="catalog__product-list-row" id="catalog__pruduct-list">
-
-                @foreach (var item in Model._recItems)
-                {
-
-                    <div class="e-card-2">
-                        <a class="e-card-2__layout-inside" asp-page="/Item" asp-route-id="@item.ItemId">
-                            <div class="e-card-2__layout-slider">
-                                <div class="e-card-2__layout-slider">
-                                    <div class="e-card-2__pic e-card-2__pic_load e-card-2__pic_first">
-                                        <img src="@item.ImageUrl" />
-                                    </div>
-                                </div>
-                            </div>
-
-                            <span class="e-card-2__title">@item.Name</span>
-                        </a>
-                        <span class="e-card-2__price">@item.Price$</span>
-                        <br />
-                        <button class="addToCartBtn">Add to Cart</button>
-                    </div>
-                }
-
-            </div>
+    <div class="horisontal-ecards-slider index__recommend">
+        <div class="horisontal-ecards-slider__header">
+            <h2 class="horisontal-ecards-slider__title"><span>BESTSELLERS</span></h2>
+            <div class="horisontal-ecards-slider__sub-title"></div>
         </div>
-
 
     </div>
+    <div class="catalog__products-list layout-main">
+        <div class="catalog__product-list-row" id="catalog__pruduct-list">
+
+            @foreach (var item in Model._recItems)
+            {
+
+                <div class="e-card-2">
+                    <a class="e-card-2__layout-inside" asp-page="/Item" asp-route-id="@item.ItemId">
+                        <div class="e-card-2__layout-slider">
+                            <div class="e-card-2__layout-slider">
+                                <div class="e-card-2__pic e-card-2__pic_load e-card-2__pic_first">
+                                    <img src="@item.ImageUrl" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <span class="e-card-2__title">@item.Name</span>
+                    </a>
+                    <span class="e-card-2__price">@item.Price$</span>
+                    <br />
+                    <button class="addToCartBtn">Add to Cart</button>
+                </div>
+            }
+
+        </div>
+    </div>
+
+
 </main>
 
-<script>
+<script type="text/javascript">
 
-    
+
     function AddToCart(itemId) {
         $.ajax({
             type: "GET",
             url: "/Cart/Add",
-            data: { id : itemId },
+            data: { id: itemId },
             contentType: 'application/json; charset=utf-8',
             success: function (data) {
-                console.log("ok");
+                console.log("Added to Cart");
+                $("#addedToCart").show();
             }
-            
+
         });
     }
 
+    let thumbnails = document.getElementsByClassName('thumbnail')
+
+    let activeImages = document.getElementsByClassName('active')
+
+    for (var i = 0; i < thumbnails.length; i++) {
+
+        thumbnails[i].addEventListener('mouseover', function () {
+            console.log(activeImages)
+
+            if (activeImages.length > 0) {
+                activeImages[0].classList.remove('active')
+            }
+
+
+            this.classList.add('active')
+            document.getElementById('featured').src = this.src
+        })
+    }
+
+
+    let buttonRight = document.getElementById('slideRight');
+    let buttonLeft = document.getElementById('slideLeft');
+
+    buttonLeft.addEventListener('click', function () {
+        document.getElementById('slider').scrollLeft -= 180
+    })
 
 
 </script>
