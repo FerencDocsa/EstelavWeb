@@ -1,19 +1,12 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Estelav.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
-using Estelav.Helpers;
-using Estelav.Helpers.Interface;
-using Estelav.Helpers.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace Estelav
@@ -55,7 +48,6 @@ namespace Estelav
             //options.UseSqlServer(Configuration.GetConnectionString("EstelavDatabase")));
             options.UseSqlServer(Configuration.GetConnectionString("EstelavDatabaseLocal")));
 
-            services.AddTransient<IItem, ItemService>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             //services.AddScoped(sp => Pages.Cart.ShoppingCartModel.GetCart(sp));
 

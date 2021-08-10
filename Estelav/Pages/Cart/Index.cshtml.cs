@@ -2,8 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Estelav.Helpers.Interface;
-using Estelav.Helpers.Services;
 using Estelav.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -17,22 +15,27 @@ namespace Estelav.Pages.Cart
     {
         private readonly EstelavContext _context;
 
-        private readonly IItem _itemService;
-
         private static IServiceProvider _service;
 
         public IList<ShoppingCartItem> _shopCartItems { get; set; }
 
         public double _shoppingCartSum { get; set; }
 
-        public static string Id { get; set; }
+        public string Id { get; set; }
         public IEnumerable<ShoppingCartItem> ShoppingCartItems { get; set; }
 
+        [BindProperty]
+        public CheckoutCartModel checkout { get; set; }
 
-        public ShoppingCartModel(EstelavContext context, IItem itemService, IServiceProvider services)
+        public class CheckoutCartModel
+        {
+            public string shoppingCartId { get; set; }
+            public int shopingCartSummary { get; set; }
+        }
+
+        public ShoppingCartModel(EstelavContext context, IServiceProvider services)
         {
             _context = context;
-            _itemService = itemService;
             _service = services;
 
             GetCart();
@@ -41,7 +44,7 @@ namespace Estelav.Pages.Cart
         }
 
 
-        public static void GetCart()
+        public void GetCart()
         {
             ISession session = _service.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
             var context = _service.GetService<EstelavContext>();

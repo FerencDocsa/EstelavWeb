@@ -91,7 +91,11 @@
                     </div>
                     
                     <div class="cart-page-pane">
-                        <a class="button cart-page-button">Checkout</a>
+                        <form method="post">
+                            <input name="shoppingCartId" value="@Model.Id"/>
+                            <input name="shoppingCartSum" value="@Model._shoppingCartSum"/>
+                            <button class="button cart-page-button" type="submit">Checkout</button>
+                        </form>
                         <a class="cart-page__back" asp-page="/Index">Continue Shopping</a>
                     </div>
 
