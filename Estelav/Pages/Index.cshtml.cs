@@ -2,10 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Estelav.Pages
 {
@@ -24,6 +22,14 @@ namespace Estelav.Pages
         public void OnGet()
         {
             _recItems = _context.Items.Where(c => c.CategoryId == 1).Take(4).ToList();
+        }
+        
+
+        public IActionResult OnGetSetCulture(string culture)
+        {
+            HttpContext.Response.Cookies.Append("Culture", "c=" + culture + "|uic=" + culture);
+            var returnUrl = Request.Headers["Referer"].ToString();
+            return Redirect(returnUrl);
         }
     }
 }

@@ -20,12 +20,12 @@ namespace Estelav.Models
         }
 
         public virtual DbSet<Categories> Categories { get; set; }
-        public virtual DbSet<Customer> Customer { get; set; }
         public virtual DbSet<ImagesList> ImagesList { get; set; }
         public virtual DbSet<ItemSizes> ItemSizes { get; set; }
         public virtual DbSet<Items> Items { get; set; }
-        public virtual DbSet<Order> Order { get; set; }
+        public virtual DbSet<ItemsDescription> ItemsDescription { get; set; }
         public virtual DbSet<OrderStatus> OrderStatus { get; set; }
+        public virtual DbSet<Orders> Orders { get; set; }
         public virtual DbSet<ShoppingCartItem> ShoppingCartItem { get; set; }
         public virtual DbSet<Users> Users { get; set; }
 
@@ -53,49 +53,6 @@ namespace Estelav.Models
                 entity.Property(e => e.CategoryName)
                     .IsRequired()
                     .HasColumnType("text");
-            });
-
-            modelBuilder.Entity<Customer>(entity =>
-            {
-                entity.HasKey(e => e.UserId);
-
-                entity.Property(e => e.UserId).ValueGeneratedNever();
-
-                entity.Property(e => e.City)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Email)
-                    .IsRequired()
-                    .HasMaxLength(50);
-
-                entity.Property(e => e.FlatNumber)
-                    .HasMaxLength(10)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Name)
-                    .IsRequired()
-                    .HasMaxLength(50);
-
-                entity.Property(e => e.Password)
-                    .IsRequired()
-                    .HasMaxLength(20);
-
-                entity.Property(e => e.Phone)
-                    .IsRequired()
-                    .HasMaxLength(20);
-
-                entity.Property(e => e.Street)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.StreetNumber)
-                    .HasMaxLength(15)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Surname)
-                    .IsRequired()
-                    .HasMaxLength(50);
             });
 
             modelBuilder.Entity<ImagesList>(entity =>
@@ -152,34 +109,28 @@ namespace Estelav.Models
                     .HasConstraintName("FK_Items_Categories");
             });
 
-            modelBuilder.Entity<Order>(entity =>
+            modelBuilder.Entity<ItemsDescription>(entity =>
             {
-                entity.Property(e => e.OrderId)
-                    .HasColumnName("order_id")
-                    .ValueGeneratedNever();
+                entity.HasNoKey();
 
-                entity.Property(e => e.Address)
-                    .HasColumnName("address")
+                entity.Property(e => e.Description)
+                    .IsRequired()
                     .IsUnicode(false);
 
-                entity.Property(e => e.Email)
-                    .HasColumnName("email")
+                entity.Property(e => e.Language)
+                    .IsRequired()
+                    .HasMaxLength(10)
                     .IsUnicode(false);
 
-                entity.Property(e => e.OrderStatus).HasColumnName("order_status");
-
-                entity.Property(e => e.Phone)
-                    .HasColumnName("phone")
+                entity.Property(e => e.Name)
+                    .IsRequired()
                     .IsUnicode(false);
 
-                entity.Property(e => e.UserId)
-                    .HasColumnName("user_id")
-                    .IsUnicode(false);
-
-                entity.HasOne(d => d.OrderStatusNavigation)
-                    .WithMany(p => p.Order)
-                    .HasForeignKey(d => d.OrderStatus)
-                    .HasConstraintName("FK_Order_OrderStatus");
+                entity.HasOne(d => d.Item)
+                    .WithMany()
+                    .HasForeignKey(d => d.ItemId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_ItemsDescription_Items");
             });
 
             modelBuilder.Entity<OrderStatus>(entity =>
@@ -194,6 +145,15 @@ namespace Estelav.Models
                     .IsRequired()
                     .HasColumnName("status_name")
                     .HasMaxLength(50)
+                    .IsUnicode(false);
+            });
+
+            modelBuilder.Entity<Orders>(entity =>
+            {
+                entity.Property(e => e.Id).ValueGeneratedNever();
+
+                entity.Property(e => e.CartId)
+                    .IsRequired()
                     .IsUnicode(false);
             });
 

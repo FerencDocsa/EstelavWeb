@@ -31,7 +31,7 @@ namespace Estelav.Pages
             }
 
             var category = _context.Categories.FirstOrDefault(c => c.CatergoryId == id);
-            items = _context.Items.Where(c => c.CategoryId == id).ToList();
+            items = _context.Items.Where(c => c.CategoryId == id).OrderByDescending(o => o.InStock).ToList();
             _itemsCount = items.Count;
 
             if (category != null){
