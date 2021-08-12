@@ -43,6 +43,17 @@ namespace Estelav.Pages.Cart
                 RetrieveShoppingCartItems();
         }
 
+        public IActionResult OnPost()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                return Redirect("/Cart/Checkout");
+            }
+            else
+            {
+                return RedirectToPage("/Account/Login", new { returnUrl = "", Message = "Login" });
+            }
+        }
 
         public void GetCart()
         {

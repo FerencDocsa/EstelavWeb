@@ -118,42 +118,42 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Accessories" xml:space="preserve">
-    <value>Příslušenství</value>
-  </data>
-  <data name="Add To Cart" xml:space="preserve">
-    <value>Přidat do Košíku</value>
+    <value>Аксессуары</value>
   </data>
   <data name="Bags" xml:space="preserve">
-    <value>Kabelky</value>
+    <value>Сумки</value>
   </data>
-  <data name="Blouses" xml:space="preserve">
-    <value>Halenky</value>
+  <data name="Cart" xml:space="preserve">
+    <value>Корзина</value>
   </data>
-  <data name="Dresses" xml:space="preserve">
-    <value>Šaty</value>
+  <data name="Clothes" xml:space="preserve">
+    <value>Одежда</value>
   </data>
-  <data name="Main Page Button" xml:space="preserve">
-    <value>Nakupuj teď</value>
+  <data name="Contacts" xml:space="preserve">
+    <value>Контакты</value>
   </data>
-  <data name="Main Page Title" xml:space="preserve">
-    <value>Výprodej</value>
+  <data name="F.A.Q" xml:space="preserve">
+    <value>F.A.Q</value>
+  </data>
+  <data name="Find Us On Instagram" xml:space="preserve">
+    <value>Мы в Инстаграме</value>
+  </data>
+  <data name="How to Place Order" xml:space="preserve">
+    <value>Как оформить заказ</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Логин</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Выход</value>
+  </data>
+  <data name="New In" xml:space="preserve">
+    <value>Новое</value>
+  </data>
+  <data name="Profile" xml:space="preserve">
+    <value>Профиль</value>
   </data>
   <data name="Shoes" xml:space="preserve">
-    <value>Obuv</value>
-  </data>
-  <data name="Swimsuits" xml:space="preserve">
-    <value>Plavky</value>
-  </data>
-  <data name="Tops" xml:space="preserve">
-    <value>Topy</value>
-  </data>
-  <data name="Trousers" xml:space="preserve">
-    <value>Kalhoty</value>
-  </data>
-  <data name="View" xml:space="preserve">
-    <value>Zobrazit</value>
-  </data>
-  <data name="We Reccommend" xml:space="preserve">
-    <value>Doporučujeme</value>
+    <value>Туфли</value>
   </data>
 </root>

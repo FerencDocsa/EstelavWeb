@@ -3,6 +3,12 @@
 @{
 }
 
+
+@if(ViewData["Message"] != null)
+{
+    <h1 style=" text-align: center; margin-top: 20px; font-size: 16px; color: red;">@ViewData["Message"]</h1>
+}
+
 <div class="layout-main">
     <div class="login__row-layout" style="-o-justify-content: center!important; -webkit-justify-content: center!important; justify-content: center!important;">
         <div class="loginFormMain">

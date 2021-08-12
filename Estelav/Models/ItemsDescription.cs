@@ -13,6 +13,7 @@ namespace Estelav.Models
         public string Language { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        public int DescrId { get; set; }
 
         public virtual Items Item { get; set; }
     }

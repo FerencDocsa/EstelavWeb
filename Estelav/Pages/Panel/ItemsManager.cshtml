@@ -37,6 +37,15 @@
         margin: 10px;
     }
 
+    #submitButton {
+        width: 100%;
+        height: 50px;
+        font-size: 26px;
+        font-weight: bold;
+        margin: auto;
+    }
+    }
+
     .tableInputs {
         background: rgba(255, 255, 255, 0.45);
         border-radius: 10px;
@@ -59,9 +68,17 @@
     <form  style=" width: 50%;" method="post" enctype="multipart/form-data">
 
         <div id="descriptionDiv">
-            <span>Describe in detail</span>
+            <span>Item Title (EN)</span>
             <input asp-for="Upload.Name" style="background: rgba(255, 255, 255, 0.45); border-radius: 10px; height: 35px;" />
             <span asp-validation-for="Upload.Name" class="text-danger"></span>
+
+            <span>Item Title (CZ)</span>
+            <input asp-for="Upload.NameCZ" style="background: rgba(255, 255, 255, 0.45); border-radius: 10px; height: 35px;" />
+            <span asp-validation-for="Upload.NameCZ" class="text-danger"></span>
+
+            <span>Item Title (RU)</span>
+            <input asp-for="Upload.NameRU" style="background: rgba(255, 255, 255, 0.45); border-radius: 10px; height: 35px;" />
+            <span asp-validation-for="Upload.NameRU" class="text-danger"></span>
 
             <span>Category</span>
             <select asp-for="Upload.CatergoryId" style="background: rgba(255, 255, 255, 0.45); border-radius: 10px; height: 35px;">
@@ -112,15 +129,23 @@
         </div>
 
         <!--Item Description Div-->
-        <div style="height: 180px; background: #EFDBDC; display: flex; flex-wrap: wrap;
+        <div style="background: #EFDBDC; display: flex;
             justify-content: space-evenly; flex-direction:column; padding: 20px; margin-bottom: 30px;">
-            <span style="text-align: left;">Description</span>
-            <textarea style="background: rgba(255, 255, 255, 0.45); border-radius: 10px; height: 100px; padding:5px;" asp-for="Upload.Description"></textarea>
+            <span style="text-align: left;">Description (EN)</span>
+            <textarea style="background: rgba(255, 255, 255, 0.45); border-radius: 10px; height: 100px; padding:5px; width: 100%; height: 200px;" asp-for="Upload.Description"></textarea>
+            <br/>
+            <span style="text-align: left;">Description (CZ)</span>
+            <textarea style="background: rgba(255, 255, 255, 0.45); border-radius: 10px; height: 100px; padding:5px; width: 100%; height: 200px;" asp-for="Upload.DescriptionCZ"></textarea>
+
+            <br/>
+            <span style="text-align: left;">Description (RU)</span>
+            <textarea style="background: rgba(255, 255, 255, 0.45); border-radius: 10px; height: 100px; padding:5px; width: 100%; height: 200px;" asp-for="Upload.DescriptionRU"></textarea>
+
         </div>
 
 
         <!--Submit button-->
-        <button type="submit" class="addToCartBtn" style="width: 50%;  margin: auto;">
+        <button type="submit" class="addToCartBtn submitButton">
             Publish
         </button>
     </form>

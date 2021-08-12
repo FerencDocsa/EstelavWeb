@@ -1,11 +1,52 @@
-﻿<style>
-    span:hover{
-        border-bottom: none!important;
+﻿@using System.Threading;
+
+
+<style>
+    span:hover {
+        border-bottom: none !important;
     }
 </style>
 
+@{
+    var culture = Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName;
+}
+
 <span style="color: black; margin-right: 17px; font-size: 13px; text-decoration: none;">
-    <a asp-page="/Index" asp-page-handler="SetCulture" asp-route-culture="en-US" style="font-weight:bold; color: black;">EN</a> |
-    <a asp-page="/Index" asp-page-handler="SetCulture" asp-route-culture="cz-CZ" style="color: black;">CZ</a> |
-    <a asp-page="/Index" asp-page-handler="SetCulture" asp-route-culture="ru-RU" style="color: black;">RU</a> 
+
+    @if (culture == "en")
+    {
+        <a asp-page="/Index" asp-page-handler="SetCulture" asp-route-culture="en-US" style="color: black; font-weight: bold;">EN</a>
+    }
+    else
+    {
+        <a asp-page="/Index" asp-page-handler="SetCulture" asp-route-culture="en-US" style="color: black;">EN</a>
+    }
+    |
+
+    @if (culture == "cs")
+    {
+        <a asp-page="/Index" asp-page-handler="SetCulture" asp-route-culture="cz-CZ" style="color: black; font-weight: bold;">CZ</a>
+    }
+    else
+    {
+        <a asp-page="/Index" asp-page-handler="SetCulture" asp-route-culture="cz-CZ" style="color: black;">CZ</a>
+    }
+    |
+
+    @if (culture == "ru")
+    {
+        <a asp-page="/Index" asp-page-handler="SetCulture" asp-route-culture="ru-RU" style="color: black; font-weight: bold;">RU</a>
+    }
+    else
+    {
+        <a asp-page="/Index" asp-page-handler="SetCulture" asp-route-culture="ru-RU" style="color: black;">RU</a>
+    }
+
+
+
+
+
+
+
+
 </span>

@@ -50,8 +50,24 @@ namespace Estelav.Models
 
                 entity.Property(e => e.CategoryDescription).HasColumnType("text");
 
+                entity.Property(e => e.CategoryDescriptionCz)
+                    .HasColumnName("CategoryDescriptionCZ")
+                    .HasColumnType("text");
+
+                entity.Property(e => e.CategoryDescriptionRu)
+                    .HasColumnName("CategoryDescriptionRU")
+                    .HasColumnType("text");
+
                 entity.Property(e => e.CategoryName)
                     .IsRequired()
+                    .HasColumnType("text");
+
+                entity.Property(e => e.CategoryNameCz)
+                    .HasColumnName("CategoryNameCZ")
+                    .HasColumnType("text");
+
+                entity.Property(e => e.CategoryNameRu)
+                    .HasColumnName("CategoryNameRU")
                     .HasColumnType("text");
             });
 
@@ -111,7 +127,7 @@ namespace Estelav.Models
 
             modelBuilder.Entity<ItemsDescription>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e => e.DescrId);
 
                 entity.Property(e => e.Description)
                     .IsRequired()
@@ -127,7 +143,7 @@ namespace Estelav.Models
                     .IsUnicode(false);
 
                 entity.HasOne(d => d.Item)
-                    .WithMany()
+                    .WithMany(p => p.ItemsDescription)
                     .HasForeignKey(d => d.ItemId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_ItemsDescription_Items");

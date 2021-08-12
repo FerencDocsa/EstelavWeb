@@ -44,7 +44,14 @@
                                 </div>
                             </div>
 
-                            <span class="e-card-2__title">@item.Name</span>
+                            @if (Model._itemName != null)
+                            {
+                                <span class="e-card-2__title">@Model._itemName</span>
+                            }
+                            else
+                            {
+                                <span class="e-card-2__title">@item.Name</span>
+                            }
                         </a>
                         <span class="e-card-2__price">@item.Price$</span>
                         <br />

@@ -32,7 +32,8 @@ namespace Estelav
                 var supportedCultures = new[]
                 {
                     new CultureInfo("cs-CZ"),
-                    new CultureInfo("en-US")
+                    new CultureInfo("en-US"),
+                    new CultureInfo("ru-RU")
                 };
 
                 options.DefaultRequestCulture = new RequestCulture("en-US");

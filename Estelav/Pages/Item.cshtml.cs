@@ -33,7 +33,7 @@ namespace Estelav.Pages
             _context = context;
             _httpContextAccessor = httpContext;
             GetCulture();
-        }
+        } 
 
 
         public void GetCulture()
@@ -54,16 +54,18 @@ namespace Estelav.Pages
             {
                 return NotFound();
             }
-
+            //Get Images List
             _desItems = _context.ImagesList.Where(c => c.ItemId == id).ToList();
-            _recItems = _context.Items.Where(c => c.CategoryId == 1).Take(4).ToList();
 
+            //Select Recommended Items
+            _recItems = _context.Items.Where(c => c.InStock).OrderBy(c => Guid.NewGuid()).Take(4).ToList(); // .Where(x => x.InStock == true).Take(4).ToList();
 
-            var itemDescriptionObject = _context.ItemsDescription.FirstOrDefault(c => c.Item.ItemId == id);
+            
+            var itemDescriptionObject = _context.ItemsDescription.FirstOrDefault(c => c.Item.ItemId == id && c.Language == culture);
             if(itemDescriptionObject != null)
             {
                 _itemName = itemDescriptionObject.Name;
-                _itemDescription
+                _itemDescription = itemDescriptionObject.Description;
             }
 
 
