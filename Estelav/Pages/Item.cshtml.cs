@@ -20,12 +20,19 @@ namespace Estelav.Pages
         public string _itemDescription { get; set; }
 
 
+        [BindProperty]
+        public  DeleteItem deleteItem { get; set; }
+
         public class ItemLocalDesciption
         {
             public string Name { get; set; }
             public string Description { get; set; }
         }
 
+        public class DeleteItem
+        {
+            public  int Id { get; set; }
+        }
         public IHttpContextAccessor _httpContextAccessor { get; set; }
 
         public ItemModel(EstelavContext context, IHttpContextAccessor httpContext)
@@ -38,8 +45,18 @@ namespace Estelav.Pages
 
         public void GetCulture()
         {
-            string fullCookie = _httpContextAccessor.HttpContext.Request.Cookies["Culture"];
-            culture = fullCookie.Split('|')[0].Split("=")[1];
+            if (_httpContextAccessor != null)
+            {
+                string fullCookie = _httpContextAccessor.HttpContext.Request.Cookies["Culture"];
+
+                culture = fullCookie != null ? fullCookie.Split('|')[0].Split("=")[1] : "en-US";
+            }
+            else
+            {
+                culture = "en-US";
+            }
+
+
         }
 
         public IActionResult OnGet(int? id)
@@ -71,6 +88,19 @@ namespace Estelav.Pages
 
 
             return new PageResult();  
+        }
+
+        public IActionResult OnPostDeleteItem()
+        {
+            var getItemToDelete = _context.Items.FirstOrDefault(c => c.ItemId == deleteItem.Id);
+
+            if (getItemToDelete != null)
+            {
+                _context.Items.Remove(getItemToDelete);
+                _context.SaveChanges();
+            }
+
+            return RedirectToPage("/Index");
         }
 
 

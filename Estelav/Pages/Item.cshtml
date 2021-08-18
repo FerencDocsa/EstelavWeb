@@ -1,22 +1,20 @@
 ﻿@page
+@using Microsoft.AspNetCore.Mvc.Localization
+@using System.Globalization
 @model Estelav.Pages.ItemModel
 @{
 }
-<style>
 
-</style>
-
+@inject IViewLocalizer ViewLocalizer
 
 <main>
     <div class="layout-main">
 
-        <div id="content-wrapper" >
-            <div class="column column-responsive" style="
-">
+        <div id="content-wrapper">
+            <div class="column column-responsive" style="text-align: center;">
                 <img id=featured src="@Model.foundItem.ImageUrl" width="310" height="510">
 
                 <div id="slide-wrapper">
-                    <img id="slideLeft" class="arrow" src="~/img/arrow-left.png">
 
                     <div id="slider">
                         <img class="thumbnail activeImg" src="@Model.foundItem.ImageUrl">
@@ -27,13 +25,10 @@
                         }
                     </div>
 
-                    <img id="slideRight" class="arrow" src="~/img/arrow-right.png">
                 </div>
             </div>
 
-            <div class="column" style="padding:24px;        display: flex;        flex-direction: column;        flex-wrap: nowrap;        justify-content: flex-end;
-">
-
+            <div class="column" style="padding: 24px; display: flex; flex-direction: column; flex-wrap: nowrap; justify-content: flex-end;">
                 <div>
                     @if (Model._itemName != null)
                     {
@@ -48,7 +43,7 @@
                         <span>
                             <span itemprop="price" content="@Model.foundItem.Price">
                                 @Model.foundItem.Price
-                                <span itemprop="priceCurrency" content="USD"> $</span>
+                                <span itemprop="priceCurrency" content="CZK"> CZK</span>
                             </span>
                         </span>
                         <link itemprop="availability" href="http://schema.org/InStock">
@@ -57,7 +52,7 @@
 
                 <div>
                     <div class="item-sizes">
-                        <span>Size</span>
+                        <span>@ViewLocalizer["Size"]</span>
                     </div>
 
                     <div style="display: flex; margin-bottom: 20px;">
@@ -73,8 +68,9 @@
                     @if (Model.foundItem.InStock)
                     {
                         <a onclick="AddToCart(@(@Model.foundItem.ItemId))">
-                            <div class="button item-page__button-cart">Add to Cart</div>
+                            <div class="button item-page__button-cart">@ViewLocalizer["AddToCart"]</div>
                         </a>
+
                     }
                     else
                     {
@@ -82,14 +78,25 @@
 
                     }
 
+                    @if (User.IsInRole("Admin"))
+                    {
+
+                        <form method="post" asp-page-handler="DeleteItem">
+                            <input style="display: none;" asp-for="deleteItem.Id" value="@Model.foundItem.ItemId" />
+                            <button class="button item-page__button-cart btn-danger" onclick="return confirm('Are you sure?')" type="submit">
+                                Видалити позицію
+                            </button>
+                        </form>
+                    }
+
                     <br />
 
                     <span id="addedToCart" style="display:none;">
-                        Added to <a style="font-weight: bold; color: #757575;" asp-page="/Cart/Index">Cart</a>
+                        @ViewLocalizer["Added"] <a style="font-weight: bold; color: #757575;" asp-page="/Cart/Index">@ViewLocalizer["AddCart"]</a>
                     </span>
 
                     <div style="color: black; margin-top: 20px; max-width: 300px;">
-                        <b>Description:</b><br />
+                        <b>@ViewLocalizer["Description"]:</b><br />
 
                         @if (Model._itemDescription != null)
                         {
@@ -104,10 +111,10 @@
 
                 </div>
 
-                </div>
             </div>
-
         </div>
+
+    </div>
 
 
 
@@ -135,10 +142,10 @@
                         </div>
 
                         <span class="e-card-2__title">@item.Name</span>
+                        <span class="e-card-2__price">@item.Price$</span>
+                        <br />
+                        <button class="addToCartBtn">@ViewLocalizer["AddToCart"]</button>
                     </a>
-                    <span class="e-card-2__price">@item.Price$</span>
-                    <br />
-                    <button class="addToCartBtn">Add to Cart</button>
                 </div>
             }
 
@@ -149,8 +156,6 @@
 </main>
 
 <script type="text/javascript">
-
-
     function AddToCart(itemId) {
         $.ajax({
             type: "GET",
@@ -158,39 +163,22 @@
             data: { id: itemId },
             contentType: 'application/json; charset=utf-8',
             success: function (data) {
-                console.log("Added to Cart");
                 $("#addedToCart").show();
             }
 
         });
     }
 
-    let thumbnails = document.getElementsByClassName('thumbnail')
-
-    let activeImages = document.getElementsByClassName('activeImg')
-
+    let thumbnails = document.getElementsByClassName('thumbnail');
+    let activeImages = document.getElementsByClassName('activeImg');
     for (var i = 0; i < thumbnails.length; i++) {
 
         thumbnails[i].addEventListener('mouseover', function () {
-            console.log(activeImages)
-
             if (activeImages.length > 0) {
-                activeImages[0].classList.remove('activeImg')
+                activeImages[0].classList.remove('activeImg');
             }
-
-
-            this.classList.add('activeImg')
-            document.getElementById('featured').src = this.src
-        })
+            this.classList.add('activeImg');
+            document.getElementById('featured').src = this.src;
+        });
     }
-
-
-    let buttonRight = document.getElementById('slideRight');
-    let buttonLeft = document.getElementById('slideLeft');
-
-    buttonLeft.addEventListener('click', function () {
-        document.getElementById('slider').scrollLeft -= 180
-    })
-
-
 </script>

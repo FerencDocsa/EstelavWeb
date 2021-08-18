@@ -46,22 +46,23 @@ namespace Estelav.Pages
             items = _context.Items.Where(c => c.CategoryId == id).OrderByDescending(o => o.InStock).ToList();
             _itemsCount = items.Count;
 
-            if(category == null)
+            if (category == null)
             {
                 return RedirectToPage("/Index");
             }
 
-            var culture = Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName;
+            var cultureGet = Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName;
 
-            if(culture == "en") { 
-            _categoryName = category.CategoryName;
+            if (cultureGet == "en")
+            {
+                _categoryName = category.CategoryName;
             }
 
-            if (culture == "cs")
+            if (cultureGet == "cs")
             {
                 _categoryName = category.CategoryNameCz;
             }
-            if (culture == "ru")
+            if (cultureGet == "ru")
             {
                 _categoryName = category.CategoryNameRu;
             }
@@ -73,7 +74,7 @@ namespace Estelav.Pages
             var itemDescriptionObject = _context.ItemsDescription.FirstOrDefault(c => c.Item.ItemId == id && c.Language == culture);
             if (itemDescriptionObject != null)
             {
-                _itemName = itemDescriptionObject.Name;           
+                _itemName = itemDescriptionObject.Name;
             }
 
 

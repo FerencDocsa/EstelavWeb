@@ -51,7 +51,7 @@ namespace Estelav.Pages.Cart
             }
             else
             {
-                return RedirectToPage("/Account/Login", new { returnUrl = "", Message = "Login" });
+                return RedirectToPage("/Account/Login", new { returnUrl = "/Cart/", Message = "Login" });
             }
         }
 

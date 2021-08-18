@@ -2590,7 +2590,7 @@ a.header__shops-help-item {
 
 @media (max-width:1000px) {
     .footer {
-        height: 460px;
+        height: 250px;
         padding-top: 12px
     }
 }
@@ -12317,7 +12317,7 @@ button.help__accordion {
 }
 
 .checkout-box {
-    width: 33.33%;
+    width: 50%;
     border-left: 1px solid #ececec;
     padding: 0 30px 40px 29px;
     text-align: left
@@ -17182,6 +17182,18 @@ video::-webkit-media-text-track-display {
     .column-responsive {
         text-align: right;
         margin-right: 0px;
+    }
+
+    .addToCartBtn {
+        height: 50px;
+    }
+
+    .formItemManager {
+        width: 100%;
+    }
+
+    #descriptionDiv {
+        width: 100%;
     }
 }
 

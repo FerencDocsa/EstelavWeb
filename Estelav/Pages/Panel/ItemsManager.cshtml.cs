@@ -110,7 +110,7 @@ namespace Estelav.Pages.Panel
                 var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img/merch", photosNewName);
                 var stream = new FileStream(path, FileMode.Create);
                 photo.CopyToAsync(stream);
-                var dbMulPath = "/img/merch/" + photosNewName;
+                var dbMulPath = "img/merch/" + photosNewName;
                 imList.Add(new ImagesList { ImageUrl = dbMulPath, ItemId = newItem.ItemId });              
             }
 
