@@ -2,7 +2,7 @@
 
 
 <style>
-    span:hover {
+    #spanTop:hover {
         border-bottom: none !important;
     }
 </style>
@@ -11,7 +11,7 @@
     var culture = Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName;
 }
 
-<span style="color: black; margin-right: 17px; font-size: 13px; text-decoration: none;">
+<span id="spanTop" style="color: black; margin-right: 17px; font-size: 13px; text-decoration: none;">
 
     @if (culture == "en")
     {

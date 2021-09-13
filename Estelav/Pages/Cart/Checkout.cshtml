@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "{handler?}"
 @model Estelav.Pages.Cart.CheckoutModel
 @{
 }
@@ -12,8 +12,6 @@
 
     store data in user profile
     show order on admin page
-
-
 *@
 
 <style>
@@ -34,36 +32,40 @@
                 <div class="checkout-box__title">Delivery</div>
                 <div class="checkout-box-body" style="display: flex; flex-direction: column;">
 
-                    <form method="get" asp-page-handler="Delivery">
+                    <form method="post" asp-page-handler="Delivery">
                         <div class="input-row">
                             <label>Address</label>
                             <br />
-                            <input class="input" style="width: 100%" />
+                            <input class="input" asp-for="DeliverTo.Address" style="width: 100%" required/>
                         </div>
 
                         <div class="input-row">
                             <label>Street</label>
                             <br />
-                            <input class="input" style="width: 100%" />
+                            <input class="input" asp-for="DeliverTo.Street" style="width: 100%" required/>
                         </div>
 
                         <div class="input-row">
                             <label>City</label>
                             <br />
-                            <input class="input" style="width: 100%" />
+                            <input class="input" asp-for="DeliverTo.City" style="width: 100%" required/>
                         </div>
 
                         <div class="input-row">
                             <label>Post Code</label>
                             <br />
-                            <input class="input" style="width: 100%" />
+                            <input class="input" asp-for="DeliverTo.PostCode" style="width: 100%" required/>
                         </div>
 
                         <div class="input-row">
                             <label>Country</label>
                             <br />
-                            <input class="input" style="width: 100%" />
+                            <input class="input" asp-for="DeliverTo.Country" style="width: 100%" required/>
                         </div>
+                        
+
+
+
 
                         <input class="button" type="submit" value="Deliver it" data-checkout-submit="" style="width: 100%;">
                     </form>
@@ -81,7 +83,7 @@
                         </select>
                     </div>
 
-                    <form method="get" asp-page-handler="Pickup">
+                    <form method="post" asp-page-handler="Pickup">
                         <input class="button" type="submit" value="I want to Pick Up" style="width: 100%;">
                     </form>
                 </div>
@@ -90,3 +92,7 @@
         </div>
     </div>
 </div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

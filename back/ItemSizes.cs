@@ -7,14 +7,10 @@ using System.Collections.Generic;
 
 namespace Estelav.Models
 {
-    public partial class ShoppingCartItem
+    public partial class ItemSizes
     {
-        public int Id { get; set; }
-        public int Item { get; set; }
+        public int ItemId { get; set; }
+        public string Size { get; set; }
         public int Amount { get; set; }
-        public string ShoppingCartId { get; set; }
-        public bool? Ordered { get; set; }
-
-        public virtual Items ItemNavigation { get; set; }
     }
 }

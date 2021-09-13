@@ -23,6 +23,7 @@ namespace Estelav.Pages.Account
         public async Task<IActionResult> OnGet(string returnUrl = null)
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+
             if (returnUrl != null)
             {
                 return LocalRedirect(returnUrl);

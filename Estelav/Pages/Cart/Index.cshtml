@@ -65,14 +65,14 @@
                                 <div class="cart-page-table-td cart-page-table-td_size">
 
                                 </div>
-                                <div class="cart-page-table-td cart-page-table-td_price">@item.ItemNavigation.Price</div>
+                                <div class="cart-page-table-td cart-page-table-td_price">@item.ItemNavigation.Price CZK</div>
                                 <div class="cart-page-table-td-mobrow">
                                     <div class="cart-page-table-td cart-page-table-td_num">
 
                                         @Html.Raw(item.Amount)
                                     </div>
 
-                                    <div class="cart-page-table-td cart-page-table-td_cost"><span data-cart-cost="">@item.ItemNavigation.Price</span> CZK</div>
+                                    <div class="cart-page-table-td cart-page-table-td_cost"><span data-cart-cost="">@(item.ItemNavigation.Price * item.Amount)</span> CZK</div>
                                     <div class="cart-page-table-td cart-page-table-td_del">
                                         <a class="cart-page__del" asp-page-handler="Remove" asp-route-id="@item.ItemNavigation.ItemId"></a>
                                     </div>

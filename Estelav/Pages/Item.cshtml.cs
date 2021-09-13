@@ -93,9 +93,16 @@ namespace Estelav.Pages
         public IActionResult OnPostDeleteItem()
         {
             var getItemToDelete = _context.Items.FirstOrDefault(c => c.ItemId == deleteItem.Id);
+            
 
             if (getItemToDelete != null)
             {
+                //_context.ImagesList
+                var imageList = _context.ImagesList.Where(c => c.ItemId == getItemToDelete.ItemId).ToList();
+                var descriptionList = _context.ItemsDescription.Where(c => c.ItemId == getItemToDelete.ItemId).ToList();
+
+                _context.ImagesList.RemoveRange(imageList);
+                _context.ItemsDescription.RemoveRange(descriptionList);
                 _context.Items.Remove(getItemToDelete);
                 _context.SaveChanges();
             }

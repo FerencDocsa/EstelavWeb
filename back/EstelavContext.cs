@@ -130,7 +130,8 @@ namespace Estelav.Models
                 entity.HasKey(e => e.DescrId);
 
                 entity.Property(e => e.Description)
-                    .IsUnicode(true);
+                    .IsRequired()
+                    .IsUnicode(false);
 
                 entity.Property(e => e.Language)
                     .IsRequired()
@@ -139,7 +140,7 @@ namespace Estelav.Models
 
                 entity.Property(e => e.Name)
                     .IsRequired()
-                    .IsUnicode(true);
+                    .IsUnicode(false);
 
                 entity.HasOne(d => d.Item)
                     .WithMany(p => p.ItemsDescription)
@@ -153,7 +154,8 @@ namespace Estelav.Models
                 entity.HasKey(e => e.StatusId);
 
                 entity.Property(e => e.StatusId)
-                    .HasColumnName("status_id");
+                    .HasColumnName("status_id")
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.StatusName)
                     .IsRequired()
@@ -164,9 +166,7 @@ namespace Estelav.Models
 
             modelBuilder.Entity<Orders>(entity =>
             {
-                entity.HasKey(e => e.Id);
-                entity.Property(e => e.Id).ValueGeneratedOnAdd();
-
+                entity.Property(e => e.Id).ValueGeneratedNever();
 
                 entity.Property(e => e.CartId)
                     .IsRequired()
@@ -178,9 +178,6 @@ namespace Estelav.Models
                 entity.Property(e => e.ShoppingCartId)
                     .IsRequired()
                     .IsUnicode(false);
-
-                entity.Property(e => e.Ordered)
-                    .HasColumnName("Ordered");
 
                 entity.HasOne(d => d.ItemNavigation)
                     .WithMany(p => p.ShoppingCartItem)

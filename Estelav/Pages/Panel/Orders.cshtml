@@ -1,4 +1,111 @@
 ﻿@page
+@using Microsoft.AspNetCore.Mvc.Localization
+@using System.Text.RegularExpressions
+
 @model Estelav.Pages.Panel.OrdersModel
 @{
 }
+@inject IViewLocalizer ViewLocalizer
+
+<style>
+    th, td {
+        border-bottom: 1px solid #ddd;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+</style>
+
+<div class="layout-main" style="display: flex; flex-direction: column; align-items: center; margin-top: 25px;">
+
+    <h1 style="font-weight: bold; font-size: 36px;">Orders</h1>
+
+    <div class="profile">
+        <div class="profile__layout">
+            <div class="profile__buy resp-tab-content hor_1 resp-tab-content-active" id="my-purchases" data-url-my-purchases="/api/cancel-order" aria-labelledby="hor_1_tab_item-1" style="display: block">
+
+
+                @*<div class="profile__buy-title">
+                        <div class="profile__buy-date-title">дата</div>
+                        <div class="profile__buy-goods-title">товар</div>
+                        <div class="profile__buy-description-title">опис</div>
+                        <div class="profile__buy-status-title">статус</div>
+                        <div class="profile__buy-cost-title">вартість</div>
+                    </div>*@
+
+
+                <div class="accordion" id="accordionExample" style="width: 800px;">
+
+
+                    @foreach (var order in Model.AllOrders)
+                    {
+
+
+                        <div class="card">
+                            <div class="card-header" id="headingOne">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne_@order.OrderId" aria-expanded="true" aria-controls="collapseOne">
+                                        Order #@order.OrderId
+                                    </button>
+                                </h2>
+                            </div>
+
+                            <div id="collapseOne_@order.OrderId" class="collapse" aria-labelledby="headingOne_@order.OrderId" data-parent="#accordionExample">
+                                <div class="card-body">
+
+
+                                    <table style="width: 100%;">
+                                        <tr>
+                                            <th>Item</th>
+                                            <th>Name</th>
+                                            <th>Price</th>
+                                            <th>Amount</th>
+                                            <th>Size</th>
+                                        </tr>
+                                        @foreach (var item in order.OrderedItems)
+                                        {
+                                            <tr>
+
+                                                <td><a asp-page="/Item" asp-route-id="@item.ItemId"><img src="@item.ImageUrl" width="100" height="100" alt=""></a></td>
+                                                <td>@item.Name</td>
+                                                <td>@item.Price CZK</td>
+                                                <td>@item.Amount</td>
+                                                <td>@item.Size</td>
+                                            </tr>
+                                        }
+                                    </table>
+                                    
+                                    <div style="width: 100%;">
+                                        <span style="text-align: left; font-size: 16px; font-weight: bold;">TOTAL</span><br/>
+                                        <span style="text-align: right;">@order.Total CZK</span>
+                                    </div>
+
+                                    <table style="width:100%">
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Phone</th>
+                                            <th>Address</th>
+                                            <th></th>
+                                        </tr>
+                                        <tr>
+                                            <td>@order.User.Name</td>
+                                            <td>@order.User.EmailAddress</td>
+                                            <td>@order.User.PhoneNumber</td>
+                                            <td>@order.Address</td>
+                                        </tr>
+                                    </table>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

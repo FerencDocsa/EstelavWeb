@@ -13,7 +13,7 @@ namespace Estelav.Pages.Cart
 {
     public class ShoppingCartModel : PageModel
     {
-        private readonly EstelavContext _context;
+        private static EstelavContext _context;
 
         private static IServiceProvider _service;
 
@@ -71,11 +71,11 @@ namespace Estelav.Pages.Cart
 
 
             var items = _context.ShoppingCartItem
-                .Where(session => session.ShoppingCartId == Id)
+                .Where(session => session.ShoppingCartId == Id && session.Ordered != true)
                 .Include(c => c.ItemNavigation).ToList();
 
             var sum = _context.ShoppingCartItem
-                .Where(c => c.ShoppingCartId == Id)
+                .Where(c => c.ShoppingCartId == Id && c.Ordered != true)
                 .Select(c => c.ItemNavigation.Price * c.Amount).Sum();
 
             _shopCartItems = items;
@@ -110,7 +110,7 @@ namespace Estelav.Pages.Cart
             }
 
             var shoppingCartItem = _context.ShoppingCartItem.SingleOrDefault(
-                s => s.ItemNavigation.ItemId == item.ItemId && s.ShoppingCartId == Id);
+                s => s.Item == item.ItemId && s.ShoppingCartId == Id && s.Ordered != true);
 
             var isValidAmount = true;
             if (shoppingCartItem == null)
@@ -140,16 +140,16 @@ namespace Estelav.Pages.Cart
                 }
             }
 
-
-            _context.SaveChanges();
+            _context.SaveChangesAsync();
             return isValidAmount;
         }
 
-        public int RemoveFromCart(Items item)
+        public async Task<int> RemoveFromCart(Items item)
         {
             var shoppingCartItem = _context.ShoppingCartItem.FirstOrDefault(
-                s => s.ItemNavigation.ItemId == item.ItemId);
+                s => s.Item == item.ItemId && s.ShoppingCartId == Id && s.Ordered != true);
             int localAmmount = 0;
+
             if(shoppingCartItem != null)
             {
                 if(shoppingCartItem.Amount > 1)
@@ -163,16 +163,16 @@ namespace Estelav.Pages.Cart
                 }
             }
 
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
             return localAmmount;       
         }
 
-        public IActionResult OnGetRemove(int id)
+        public async Task<RedirectResult> OnGetRemove(int id)
         {
             var item = _context.Items.FirstOrDefault(c => c.ItemId == id);
             if(item != null)
             {
-                RemoveFromCart(item);
+                 await RemoveFromCart(item);
             }
 
             return Redirect("/Cart");
@@ -181,8 +181,8 @@ namespace Estelav.Pages.Cart
 
         public IEnumerable<ShoppingCartItem> GetShoppingCartItems()
         {
-            return ShoppingCartItems ??= _context.ShoppingCartItem.Where(c => c.ShoppingCartId == Id)
-                .Include(s => s.ItemNavigation);
+            return ShoppingCartItems ??= _context.ShoppingCartItem.Where(c => c.ShoppingCartId == Id && c.Ordered != true);
+            //.Include(s => s.ItemNavigation);
         }
 
         public void ClearCart()

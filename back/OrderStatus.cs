@@ -7,13 +7,9 @@ using System.Collections.Generic;
 
 namespace Estelav.Models
 {
-    public partial class Orders
+    public partial class OrderStatus
     {
-        public int Id { get; set; }
-        public int? UserId { get; set; }
-        public string CartId { get; set; }
-        public double CartTotal { get; set; }
-        public string DeliveryAddress { get; set; }
-        public bool IsPickup { get; set; }
+        public int StatusId { get; set; }
+        public string StatusName { get; set; }
     }
 }

@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using Estelav.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -91,7 +93,7 @@ namespace Estelav.Pages.Panel
             var newItem = new Items { CategoryId = Upload.CatergoryId,
                 Name = Upload.Name, 
                 Price = Upload.Price, 
-                Amount = 1,
+                Amount = 50,
                 InStock = true, 
                 Description = Upload.Description, 
                 ImageUrl = dbPath 
@@ -118,9 +120,9 @@ namespace Estelav.Pages.Panel
 
 
             //Lang Decription 
-            var descrCZ = new ItemsDescription { Description = Upload.DescriptionCZ, Language = "cz-CZ", Name = Upload.NameCZ, ItemId = newItem.ItemId };
+            var descrCZ = new ItemsDescription { Description = Upload.DescriptionCZ, Language = "cs-CZ", Name = Upload.NameCZ, ItemId = newItem.ItemId };
 
-            var descrRU = new ItemsDescription { Description = Upload.DescriptionRU, Language = "ru-RU", Name = Upload.NameRU, ItemId = newItem.ItemId };
+            var descrRU = new ItemsDescription { Description =@Upload.DescriptionRU, Language = "ru-RU", Name = Upload.NameRU, ItemId = newItem.ItemId };
             
 
             _context.ItemsDescription.Add(descrCZ);

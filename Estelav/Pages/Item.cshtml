@@ -51,17 +51,17 @@
                 </div>
 
                 <div>
-                    <div class="item-sizes">
-                        <span>@ViewLocalizer["Size"]</span>
+                    <div class="item-sizes" style="margin-top: 0px;">
+                        @*<span>@ViewLocalizer["Size"]</span>*@
                     </div>
 
                     <div style="display: flex; margin-bottom: 20px;">
-                        <span class="button button-size " data-cart-size-check="31">XXS</span>
+                        @*<span class="button button-size " data-cart-size-check="31">XXS</span>
                         <span class="button button-size button-size_none">XS</span>
                         <span class="button button-size button-size_none">S</span>
                         <span class="button button-size button-size_none">M</span>
                         <span class="button button-size button-size_none">L</span>
-                        <span class="button button-size button-size_none">XL</span>
+                        <span class="button button-size button-size_none">XL</span>*@
                     </div>
 
 
@@ -142,7 +142,7 @@
                         </div>
 
                         <span class="e-card-2__title">@item.Name</span>
-                        <span class="e-card-2__price">@item.Price$</span>
+                        <span class="e-card-2__price">@item.Price CZK</span>
                         <br />
                         <button class="addToCartBtn">@ViewLocalizer["AddToCart"]</button>
                     </a>

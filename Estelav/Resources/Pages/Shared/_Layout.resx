@@ -150,6 +150,9 @@
   <data name="New In" xml:space="preserve">
     <value>New In</value>
   </data>
+  <data name="Pants" xml:space="preserve">
+    <value>Pants</value>
+  </data>
   <data name="Profile" xml:space="preserve">
     <value>Profile</value>
   </data>

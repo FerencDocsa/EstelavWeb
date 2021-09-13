@@ -7642,7 +7642,7 @@ button.help__accordion {
 .profile .resp-vtabs li.resp-tab-active {
     position: relative;
     z-index: 1;
-    color: #000;
+    /*color: #000;*/
     line-height: 18px
 }
 
@@ -7650,7 +7650,7 @@ button.help__accordion {
         border-bottom: 2px solid #000;
         display: inline-block;
         max-width: 240px;
-        font-weight: 700
+        /*font-weight: 700*/
     }
 
 .profile .resp-jfit {
@@ -12394,7 +12394,8 @@ button.help__accordion {
     }
 
     .checkout-box-body {
-        display: none;
+        /*display: none;*/
+        margin-top: 20px;
         padding-left: 20px;
         padding-right: 20px
     }
@@ -17154,6 +17155,11 @@ video::-webkit-media-text-track-display {
     margin-top: 25px;
 }
 
+.formItemManager {
+    width: 70%;
+}
+
+
 @media (max-width: 1000px){
     .center-txt {
         top: 25%;
@@ -17243,7 +17249,7 @@ video::-webkit-media-text-track-display {
     display: flex;
     min-height: 100px;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
 }
 
 #slider {
