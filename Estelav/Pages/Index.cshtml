@@ -1,25 +1,26 @@
 ﻿@page
+@using Microsoft.AspNetCore.Mvc.Localization
+@using System.Globalization
 @model IndexModel
 @{ ViewData["Title"] = "Estelav Shop"; }
 
 
-<style>
+@inject IViewLocalizer ViewLocalizer
 
 
-</style>
 
 <div class="main-image-cont1" style="">
     <img src="~/img/top.png" style="width: 100%; margin-bottom: 20px;" />
 
     <div class="center-txt">
-        <h1>SALE</h1>
+        <h1>@ViewLocalizer["Main Page Title"]</h1>
     </div>
 
     <div class="center-button">
 
-            <a class="main-button" asp-page="/Items" asp-route-id="6">
-                SHOP NOW
-            </a>
+        <a class="main-button" asp-page="/Items" asp-route-id="6">
+            @ViewLocalizer["Main Page Button"]
+        </a>
     </div>
 
 </div>
@@ -36,11 +37,11 @@
                     </picture>
 
                     <div class="center-txt-desc main-slide-title">
-                        BAGS
+                        @ViewLocalizer["Bags"]
                     </div>
 
                     <a class="center-txt-view center-txt-view-dec" asp-page="/Items" asp-route-id="1">
-                        View
+                        @ViewLocalizer["View"]
                     </a>
                 </div>
 
@@ -50,11 +51,11 @@
                     </picture>
 
                     <div class="center-txt-desc main-slide-title">
-                        SHOES
+                        @ViewLocalizer["Shoes"]
                     </div>
 
                     <a class="center-txt-view center-txt-view-dec" asp-page="/Items" asp-route-id="2">
-                        View
+                        @ViewLocalizer["View"]
                     </a>
                 </div>
 
@@ -65,11 +66,11 @@
                     </picture>
 
                     <div class="center-txt-desc main-slide-title">
-                        Swimsuits
+                        @ViewLocalizer["Swimsuits"]
                     </div>
 
                     <a class="center-txt-view center-txt-view-dec" asp-page="/Items" asp-route-id="3">
-                        View
+                        @ViewLocalizer["View"]
                     </a>
                 </div>
             </div>
@@ -81,11 +82,11 @@
                     </picture>
 
                     <div class="center-txt-desc main-slide-title">
-                        Dresses
+                        @ViewLocalizer["Dresses"]
                     </div>
 
                     <a class="center-txt-view center-txt-view-dec center-txt-view-dress" asp-page="/Items" asp-route-id="4">
-                        View
+                        @ViewLocalizer["View"]
                     </a>
 
                 </div>
@@ -96,11 +97,11 @@
                     </picture>
 
                     <div class="center-txt-desc main-slide-title">
-                        Tops
+                        @ViewLocalizer["Tops"]
                     </div>
 
                     <a class="center-txt-view center-txt-view-dec center-txt-view-dress" asp-page="/Items" asp-route-id="9">
-                        View
+                        @ViewLocalizer["View"]
                     </a>
                 </div>
             </div>
@@ -112,11 +113,11 @@
                     </picture>
 
                     <div class="center-txt-desc main-slide-title center-txt-acc">
-                        Accessories
+                        @ViewLocalizer["Accessories"]
                     </div>
 
                     <a class="center-txt-view center-txt-view-dec" asp-page="/Items" asp-route-id="8">
-                        View
+                        @ViewLocalizer["View"]
                     </a>
                 </div>
 
@@ -126,11 +127,11 @@
                     </picture>
 
                     <div class="center-txt-desc main-slide-title">
-                        Trousers
+                        @ViewLocalizer["Trousers"]
                     </div>
 
                     <a class="center-txt-view center-txt-view-dec" asp-page="/Items" asp-route-id="10">
-                        View
+                        @ViewLocalizer["View"]
                     </a>
                 </div>
 
@@ -140,11 +141,11 @@
                     </picture>
 
                     <div class="center-txt-desc main-slide-title">
-                        Blouses
+                        @ViewLocalizer["Blouses"]
                     </div>
 
                     <a class="center-txt-view center-txt-view-dec" asp-page="/Items" asp-route-id="11">
-                        View
+                        @ViewLocalizer["View"]
                     </a>
                 </div>
             </div>
@@ -154,7 +155,7 @@
 
     <div class="horisontal-ecards-slider index__recommend">
         <div class="horisontal-ecards-slider__header">
-            <h2 class="horisontal-ecards-slider__title"><span>WE RECOMMEND</span></h2>
+            <h2 class="horisontal-ecards-slider__title"><span>@ViewLocalizer["We Reccommend"]</span></h2>
             <div class="horisontal-ecards-slider__sub-title"></div>
         </div>
 
@@ -166,221 +167,38 @@
             @foreach (var item in Model._recItems)
             {
 
-            <div class="e-card-2">
-                <a class="e-card-2__layout-inside" asp-page="/Item" asp-route-id="@item.ItemId">
-                    <div class="e-card-2__layout-slider">
+                <div class="e-card-2">
+                    <a class="e-card-2__layout-inside" asp-page="/Item" asp-route-id="@item.ItemId">
                         <div class="e-card-2__layout-slider">
-                            <div class="e-card-2__pic e-card-2__pic_load e-card-2__pic_first">
-                                <img src="@item.ImageUrl" />
+                            <div class="e-card-2__layout-slider">
+                                <div class="e-card-2__pic e-card-2__pic_load e-card-2__pic_first">
+                                    <img src="@item.ImageUrl" />
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <span class="e-card-2__title">@item.Name</span>
-                </a>
-                <span class="e-card-2__price">@item.Price$</span>
-                <br />
-                <button class="addToCartBtn">Add to Cart</button>
-            </div>
+                        <span class="e-card-2__title">@item.Name</span>
+                    </a>
+                    <span class="e-card-2__price">@item.Price CZK</span>
+                    <br />
+                    <button class="addToCartBtn">@ViewLocalizer["Add To Cart"]</button>
+                </div>
             }
 
         </div>
-     </div>
-        <script>
-            $(document).ready(function () {
-                $('#shopNowButton').click(function (e) {
-                    e.preventDefault();
+    </div>
+</div>
 
-                    $('html, body').animate({
-                        scrollTop: $('#main-cards').offset().top
-                    }, 500);
-                });
+
+    <script>
+        $(document).ready(function () {
+            $('#shopNowButton').click(function (e) {
+                e.preventDefault();
+
+                $('html, body').animate({
+                    scrollTop: $('#main-cards').offset().top
+                }, 500);
             });
+        });
 
-        </script>
-
-        @*<div style="justify-content: center; text-align: center; width: 100%; " id="main-cards">
-
-                        <div class="top-3-cards" style="flex-direction: row; flex-basis: auto; flex-wrap: wrap;">
-
-                            <div class="main-image-row">
-                                <a asp-page="/Items" asp-route-id="1">
-
-                                    <p>BAGS</p>
-                                    <img src="~/img/merch/bag.jpg" />
-                                </a>
-                            </div>
-
-                            <div class="main-image-row">
-                                <a asp-page="/Items" asp-route-id="2">
-                                    <p>SHOES</p>
-                                    <img src="~/img/merch/shoes.jpg" />
-                                </a>
-                            </div>
-
-                            <div class="main-image-row">
-                                <a asp-page="/Items" asp-route-id="3">
-                                    <p>SWIMSUITS</p>
-                                    <img src="~/img/merch/swim.jpg" />
-                                </a>
-                            </div>
-
-                        </div>
-
-                        <div class="top-2-cards">
-                            <div class="main-image-row">
-                                <p style="top: 55%;">DRESSES</p>
-                                <img src="~/img/merch/dress1.png" style="height: 500px; " />
-                            </div>
-
-                            <div class="main-image-row">
-                                <p style="top: 55%;">DRESSES</p>
-                                <img src="~/img/merch/dress2.png" style="height: 500px; " />
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="layout-main">
-
-                        <a class="index__row">
-                            <picture>
-                                <img src="~/img/img1.jpg" />
-                            </picture>
-
-                            <div class="index__col-content index__col-content_hCenter index__col-content_vBottom">
-                                <div class="title title_third "></div>
-                                <div class="button button-sixth ">Футболки &amp; топи</div>
-                            </div>
-
-                        </a>
-
-                        <a class="index__row">
-                            <picture>
-                                <img src="~/img/img2.jpg" />
-                            </picture>
-
-                            <div class="index__col-content index__col-content_hCenter index__col-content_vBottom">
-                                <div class="title title_third "></div>
-                                <div class="button button-sixth ">Футболки &amp; топи</div>
-                            </div>
-
-                        </a>
-
-                        <a class="index__row">
-                            <picture>
-                                <img src="~/img/img3.jpg" />
-                            </picture>
-
-                            <div class="index__col-content index__col-content_hCenter index__col-content_vBottom">
-                                <div class="title title_third "></div>
-                                <div class="button button-sixth ">Футболки &amp; топи</div>
-                            </div>
-
-                        </a>
-
-
-                </div>
-
-
-
-
-
-
-
-            <p style="font-size: 40px; width: 100%; text-align: center; font-weight: bold;">BESTSELLERS</p>
-
-            <div class="item-cards" style="display: flex; flex-direction: row; flex-basis: auto; justify-content: space-evenly; margin-bottom: 25px; flex-wrap: wrap;">
-                <div class="item-card">
-                    <img src="~/img/merch/dress1.png" />
-                    <div class="item-descr" style="display: flex; flex-direction: column;">
-                        <span class="sizes">40-41-42-43</span>
-                        <span class="item-name">Dress</span>
-                        <span class="price">50$</span>
-                        <button>Add to Cart</button>
-                    </div>
-                </div>
-
-
-                <div class="item-card">
-                    <img src="~/img/merch/dresses.jpg" />
-                    <div class="item-descr" style="display: flex; flex-direction: column;">
-                        <span class="sizes">40-41-42-43</span>
-                        <span class="item-name">Dress</span>
-                        <span class="price">50$</span>
-                        <button>Add to Cart</button>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <img src="~/img/merch/dress2.png" />
-                    <div class="item-descr" style="display: flex; flex-direction: column;">
-                        <span class="sizes">40-41-42-43</span>
-                        <span class="item-name">Dress</span>
-                        <span class="price">50$</span>
-                        <button>Add to Cart</button>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <img src="~/img/merch/dress3.png" />
-                    <div class="item-descr" style="display: flex; flex-direction: column;">
-                        <span class="sizes">40-41-42-43</span>
-                        <span class="item-name">Dress</span>
-                        <span class="price">50$</span>
-                        <button>Add to Cart</button>
-                    </div>
-                </div>
-
-            </div>
-
-
-            <div class="horisontal-ecards-slider__layout">
-                    <li>
-                        <div class="e-card-1">
-                            <a class="e-card-1__layout-inside">
-                                <div class="e-card-1__layout-slider"><img src="~/img/merch/dress1.png" width="250" height="400"></div>
-                                <span class="e-card-1__title"> Brown Dress </span>
-                            </a>
-                            <div class="e-card-1__price-wrap"><span class="e-card-1__price">1199 грн</span><a class="e-card-1__favorite"></a></div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="e-card-1">
-                            <a class="e-card-1__layout-inside">
-                                <div class="e-card-1__layout-slider"><img src="~/img/merch/dress2.png" width="250" height="400"></div>
-                                <span class="e-card-1__title">Pink Dress </span>
-                            </a>
-                            <div class="e-card-1__price-wrap"><span class="e-card-1__price">1099 грн</span><a class="e-card-1__favorite"></a></div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="e-card-1">
-                            <a class="e-card-1__layout-inside">
-                                <div class="e-card-1__layout-slider"><img src="~/img/merch/dress1.png" width="250" height="400"></div>
-                                <span class="e-card-1__title">Brown Dress </span>
-                            </a>
-                            <div class="e-card-1__price-wrap"><span class="e-card-1__price">459 грн</span><a class="e-card-1__favorite"></a></div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="e-card-1">
-                            <a class="e-card-1__layout-inside">
-                                <div class="e-card-1__layout-slider"><img src="~/img/merch/dress1.png" width="250" height="400"></div>
-                                <span class="e-card-1__title">Pink Dress </span>
-                            </a>
-                            <div class="e-card-1__price-wrap"><span class="e-card-1__price">699 грн</span><a class="e-card-1__favorite"></a></div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="e-card-1">
-                            <a class="e-card-1__layout-inside">
-                                <div class="e-card-1__layout-slider"><img src="~/img/merch/dress2.png" width="250" height="400"></div>
-                                <span class="e-card-1__title">Brown Dress </span>
-                            </a>
-                            <div class="e-card-1__price-wrap"><span class="e-card-1__price">1299 грн</span><a class="e-card-1__favorite"></a></div>
-                        </div>
-                    </li>
-                </div>
-
-        *@
+    </script>

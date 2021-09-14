@@ -1,22 +1,23 @@
 ﻿@page "{handler?}"
+@using Microsoft.AspNetCore.Mvc.Localization
+@using System.Globalization
 @model Estelav.Pages.Cart.ShoppingCartModel
-@{
-}
 
+@inject IViewLocalizer ViewLocalizer
 
 
 <div class="layout-main layout-main_cart">
     <section class="cart-page">
         <div class="cart-page-title-pane">
 
-            @if (Model._shopCartItems.Count == 0 )
+            @if (Model._shopCartItems.Count == 0)
             {
                 <section class="cart-page cart-page_empty">
                     <div class="cart-page-title-pane">
-                        <h1 class="cart-page__title">Your Cart is Empty</h1>
+                        <h1 class="cart-page__title">@ViewLocalizer["Empty"]</h1>
                     </div>
                     <div class="cart-page-pane">
-                        <a class="cart-page__back" asp-page="/Index">Go to Main Page</a>
+                        <a class="cart-page__back" asp-page="/Index">@ViewLocalizer["Main"]</a>
                     </div>
                 </section>
 
@@ -29,18 +30,18 @@
 
 
 
-            <h1 class="cart-page__title">Cart</h1>
+            <h1 class="cart-page__title">@ViewLocalizer["Cart"]</h1>
 
             <div>
                 <div class="cart-page-table">
                     <div class="cart-page-table__head">
                         <div class="cart-page-table-td cart-page-table-td_pic">&nbsp;</div>
-                        <div class="cart-page-table-td cart-page-table-td_name">Name</div>
-                        <div class="cart-page-table-td cart-page-table-td_size">Size</div>
-                        <div class="cart-page-table-td cart-page-table-td_price">Price</div>
-                        <div class="cart-page-table-td cart-page-table-td_num">Amount</div>
-                        <div class="cart-page-table-td cart-page-table-td_cost">Total</div>
-                        <div class="cart-page-table-td cart-page-table-td_del">Remove</div>
+                        <div class="cart-page-table-td cart-page-table-td_name">@ViewLocalizer["Name"]</div>
+                        <div class="cart-page-table-td cart-page-table-td_size">@ViewLocalizer["Size"]</div>
+                        <div class="cart-page-table-td cart-page-table-td_price">@ViewLocalizer["Price"]</div>
+                        <div class="cart-page-table-td cart-page-table-td_num">@ViewLocalizer["Amount"]</div>
+                        <div class="cart-page-table-td cart-page-table-td_cost">@ViewLocalizer["Total"]</div>
+                        <div class="cart-page-table-td cart-page-table-td_del">@ViewLocalizer["Remove"]</div>
                     </div>
 
 
@@ -56,7 +57,7 @@
                             <div class="cart-page-table-td-mobcol">
                                 <div class="cart-page-table-td cart-page-table-td_name">
                                     <div class="cart-page__descr">
-                                        <a class="cart-page__descr-name" target="_blank" asp-page="/Item" asp-route-id="@item.ItemNavigation.ItemId" >@item.ItemNavigation.Name</a>
+                                        <a class="cart-page__descr-name" target="_blank" asp-page="/Item" asp-route-id="@item.ItemNavigation.ItemId">@item.ItemNavigation.Name</a>
                                         <div class="cart-page__descr-mobprice">@item.ItemNavigation.Price CZK</div>
 
                                     </div>
@@ -64,14 +65,14 @@
                                 <div class="cart-page-table-td cart-page-table-td_size">
 
                                 </div>
-                                <div class="cart-page-table-td cart-page-table-td_price">@item.ItemNavigation.Price</div>
+                                <div class="cart-page-table-td cart-page-table-td_price">@item.ItemNavigation.Price CZK</div>
                                 <div class="cart-page-table-td-mobrow">
                                     <div class="cart-page-table-td cart-page-table-td_num">
 
                                         @Html.Raw(item.Amount)
                                     </div>
 
-                                    <div class="cart-page-table-td cart-page-table-td_cost"><span data-cart-cost="">@item.ItemNavigation.Price</span> CZK</div>
+                                    <div class="cart-page-table-td cart-page-table-td_cost"><span data-cart-cost="">@(item.ItemNavigation.Price * item.Amount)</span> CZK</div>
                                     <div class="cart-page-table-td cart-page-table-td_del">
                                         <a class="cart-page__del" asp-page-handler="Remove" asp-route-id="@item.ItemNavigation.ItemId"></a>
                                     </div>
@@ -80,33 +81,28 @@
                         </div>
 
                     }
-                    
+
                     <div class="cart-page-total">
                         <span class="cart-page-total__title">
                             Total
                         </span>
-                        
+
                         <span class="cart-page-total__cost">@Model._shoppingCartSum</span>
                         <span class="cart-page-total__cost-currency">CZK</span>
                     </div>
-                    
+
                     <div class="cart-page-pane">
-                        <a class="button cart-page-button">Checkout</a>
-                        <a class="cart-page__back" asp-page="/Index">Continue Shopping</a>
+                        <form method="post">
+                            <input style="display: none;" name="shoppingCartId" value="@Model.Id" />
+                            <input style="display: none;" name="shoppingCartSum" value="@Model._shoppingCartSum" />
+                            <button class="button cart-page-button" type="submit">@ViewLocalizer["Checkout"]</button>
+                        </form>
+                        <a class="cart-page__back" asp-page="/Index">@ViewLocalizer["Continue"]</a>
                     </div>
 
                 </div>
             </div>
         }
     </section>
-
-
 </div>
 
-@*<div class="cart-page-table-tr" data-cart-object="" data-cart-id="9249" data-cart-size="13" data-cart-num="1">
-
-        <div class="cart-page-table-td cart-page-table-td_pic">
-        <a class="cart-page__pic" href="https://tally-weijl.com.ua/clothes/futbolki--topi/ukorochena-futbolka-9249" target="_blank" style="background-image: url('/p/prods/preview-9249-gallery-1626794953.9179.jpg')"></a>
-        </div>
-
-    </div>*@

@@ -1,177 +1,120 @@
 ﻿@page
+@using Microsoft.AspNetCore.Mvc.Localization
+@using System.Globalization
 @model Estelav.Pages.ItemModel
 @{
 }
-<style>
-    #content-wrapper {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: flex-start;
-    }
 
-    .column {
-        /*width: 600px;*/
-        /*padding: 10px;*/
-    }
-
-    #featured {
-        max-width: 500px;
-        max-height: 600px;
-        object-fit: cover;
-        cursor: pointer;
-        /*border: 2px solid black;*/
-    }
-
-    .thumbnail {
-        object-fit: cover;
-        max-width: 180px;
-        max-height: 100px;
-        cursor: pointer;
-        opacity: 0.5;
-        margin: 5px;
-        /*border: 2px solid black;*/
-    }
-
-        .thumbnail:hover {
-            opacity: 1;
-        }
-
-    .active {
-        opacity: 1;
-    }
-
-    #slide-wrapper {
-        /*max-width: 500px;*/
-        display: flex;
-        min-height: 100px;
-        align-items: center;
-        justify-content: flex-end;
-    }
-
-    #slider {
-        /*width: 440px;*/
-        display: flex;
-        flex-wrap: nowrap;
-        overflow-x: auto;
-    }
-
-        #slider::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        #slider::-webkit-scrollbar-track {
-            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-        }
-
-        #slider::-webkit-scrollbar-thumb {
-            background-color: #dede2e;
-            outline: 1px solid slategrey;
-            border-radius: 100px;
-        }
-
-            #slider::-webkit-scrollbar-thumb:hover {
-                background-color: #18b5ce;
-            }
-
-    .arrow {
-        width: 30px;
-        height: 30px;
-        cursor: pointer;
-        transition: .3s;
-    }
-
-        .arrow:hover {
-            opacity: .5;
-        }
-</style>
-
+@inject IViewLocalizer ViewLocalizer
 
 <main>
     <div class="layout-main">
 
-        <div id="content-wrapper" >
-            <div class="column column-responsive" style="
-">
+        <div id="content-wrapper">
+            <div class="column column-responsive" style="text-align: center;">
                 <img id=featured src="@Model.foundItem.ImageUrl" width="310" height="510">
 
                 <div id="slide-wrapper">
-                    <img id="slideLeft" class="arrow" src="~/img/arrow-left.png">
 
                     <div id="slider">
-                        @{ bool flag1 = false;}
+                        <img class="thumbnail activeImg" src="@Model.foundItem.ImageUrl">
 
                         @foreach (var item in Model._desItems)
                         {
-                            if (!flag1)
-                            {
-                                <img class="thumbnail active" src="@item.ImageUrl">
-                                flag1 = true;
-                            }
-                            else
-                            {
-                                <img class="thumbnail" src="@item.ImageUrl">
-                            }
+                            <img class="thumbnail" src="@item.ImageUrl">
                         }
                     </div>
 
-                    <img id="slideRight" class="arrow" src="~/img/arrow-right.png">
                 </div>
             </div>
 
-            <div class="column" style="padding:24px;        display: flex;        flex-direction: column;        flex-wrap: nowrap;        justify-content: flex-end;
-">
-
-                    <div >
+            <div class="column" style="padding: 24px; display: flex; flex-direction: column; flex-wrap: nowrap; justify-content: flex-end;">
+                <div>
+                    @if (Model._itemName != null)
+                    {
+                        <h1 class="item-title">@Model._itemName</h1>
+                    }
+                    else
+                    {
                         <h1 class="item-title">@Model.foundItem.Name</h1>
+                    }
 
-
-                        <div class="item-price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-                            <span>
-                                <span itemprop="price" content="@Model.foundItem.Price">
-                                    @Model.foundItem.Price
-                                    <span itemprop="priceCurrency" content="USD"> $</span>
-                                </span>
+                    <div class="item-price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                        <span>
+                            <span itemprop="price" content="@Model.foundItem.Price">
+                                @Model.foundItem.Price
+                                <span itemprop="priceCurrency" content="CZK"> CZK</span>
                             </span>
-                            <link itemprop="availability" href="http://schema.org/InStock">
-                        </div>
+                        </span>
+                        <link itemprop="availability" href="http://schema.org/InStock">
+                    </div>
+                </div>
+
+                <div>
+                    <div class="item-sizes" style="margin-top: 0px;">
+                        @*<span>@ViewLocalizer["Size"]</span>*@
                     </div>
 
-                    <div>
-                        <div class="item-sizes">
-                            <span>Size</span>
-                        </div>
+                    <div style="display: flex; margin-bottom: 20px;">
+                        @*<span class="button button-size " data-cart-size-check="31">XXS</span>
+                        <span class="button button-size button-size_none">XS</span>
+                        <span class="button button-size button-size_none">S</span>
+                        <span class="button button-size button-size_none">M</span>
+                        <span class="button button-size button-size_none">L</span>
+                        <span class="button button-size button-size_none">XL</span>*@
+                    </div>
 
-                        <div style="display: flex; margin-bottom: 20px;">
-                            <span class="button button-size " data-cart-size-check="31">XXS</span>
-                            <span class="button button-size button-size_none">XS</span>
-                            <span class="button button-size button-size_none">S</span>
-                            <span class="button button-size button-size_none">M</span>
-                            <span class="button button-size button-size_none">L</span>
-                            <span class="button button-size button-size_none">XL</span>
-                        </div>
 
+                    @if (Model.foundItem.InStock)
+                    {
                         <a onclick="AddToCart(@(@Model.foundItem.ItemId))">
-                            <div class="button item-page__button-cart">Add to Cart</div>
+                            <div class="button item-page__button-cart">@ViewLocalizer["AddToCart"]</div>
                         </a>
-                        <br />
 
-                        <span id="addedToCart" style="display:none;">
-                            Added to <a style="font-weight: bold; color: #757575;" asp-page="/Cart/Index">Cart</a>
-                        </span>
+                    }
+                    else
+                    {
+                        <button class="button item-page__button-cart" style="background: gray;">Not in Stock</button>
 
-                        <div style="color: black; margin-top: 20px; max-width: 300px;">
-                            <b>Description:</b><br/> 
+                    }
+
+                    @if (User.IsInRole("Admin"))
+                    {
+
+                        <form method="post" asp-page-handler="DeleteItem">
+                            <input style="display: none;" asp-for="deleteItem.Id" value="@Model.foundItem.ItemId" />
+                            <button class="button item-page__button-cart btn-danger" onclick="return confirm('Are you sure?')" type="submit">
+                                Видалити позицію
+                            </button>
+                        </form>
+                    }
+
+                    <br />
+
+                    <span id="addedToCart" style="display:none;">
+                        @ViewLocalizer["Added"] <a style="font-weight: bold; color: #757575;" asp-page="/Cart/Index">@ViewLocalizer["AddCart"]</a>
+                    </span>
+
+                    <div style="color: black; margin-top: 20px; max-width: 300px;">
+                        <b>@ViewLocalizer["Description"]:</b><br />
+
+                        @if (Model._itemDescription != null)
+                        {
+                            @Html.Raw(Model._itemDescription)
+                        }
+                        else
+                        {
                             @Html.Raw(Model.foundItem.Description)
 
-                        </div>
-
+                        }
                     </div>
 
                 </div>
-            </div>
 
+            </div>
         </div>
+
+    </div>
 
 
 
@@ -199,10 +142,10 @@
                         </div>
 
                         <span class="e-card-2__title">@item.Name</span>
+                        <span class="e-card-2__price">@item.Price CZK</span>
+                        <br />
+                        <button class="addToCartBtn">@ViewLocalizer["AddToCart"]</button>
                     </a>
-                    <span class="e-card-2__price">@item.Price$</span>
-                    <br />
-                    <button class="addToCartBtn">Add to Cart</button>
                 </div>
             }
 
@@ -213,8 +156,6 @@
 </main>
 
 <script type="text/javascript">
-
-
     function AddToCart(itemId) {
         $.ajax({
             type: "GET",
@@ -222,39 +163,22 @@
             data: { id: itemId },
             contentType: 'application/json; charset=utf-8',
             success: function (data) {
-                console.log("Added to Cart");
                 $("#addedToCart").show();
             }
 
         });
     }
 
-    let thumbnails = document.getElementsByClassName('thumbnail')
-
-    let activeImages = document.getElementsByClassName('active')
-
+    let thumbnails = document.getElementsByClassName('thumbnail');
+    let activeImages = document.getElementsByClassName('activeImg');
     for (var i = 0; i < thumbnails.length; i++) {
 
         thumbnails[i].addEventListener('mouseover', function () {
-            console.log(activeImages)
-
             if (activeImages.length > 0) {
-                activeImages[0].classList.remove('active')
+                activeImages[0].classList.remove('activeImg');
             }
-
-
-            this.classList.add('active')
-            document.getElementById('featured').src = this.src
-        })
+            this.classList.add('activeImg');
+            document.getElementById('featured').src = this.src;
+        });
     }
-
-
-    let buttonRight = document.getElementById('slideRight');
-    let buttonLeft = document.getElementById('slideLeft');
-
-    buttonLeft.addEventListener('click', function () {
-        document.getElementById('slider').scrollLeft -= 180
-    })
-
-
 </script>

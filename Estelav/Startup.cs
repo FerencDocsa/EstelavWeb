@@ -1,35 +1,50 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Estelav.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
-using Estelav.Helpers;
-using Estelav.Helpers.Interface;
-using Estelav.Helpers.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Localization;
+using System.Linq;
+using System.Globalization;
+using Microsoft.Extensions.Options;
 
 namespace Estelav
 {
     public class Startup
     {
+        public IConfiguration Configuration { get; }
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
-
-        public IConfiguration Configuration { get; }
-
+        
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<RequestLocalizationOptions>(options =>
+            {
+                var supportedCultures = new[]
+                {
+                    new CultureInfo("cs-CZ"),
+                    new CultureInfo("en-US"),
+                    new CultureInfo("ru-RU")
+                };
+
+                options.DefaultRequestCulture = new RequestCulture("en-US");
+                options.SupportedCultures = supportedCultures;
+                options.SupportedUICultures = supportedCultures;
+                var cp = options.RequestCultureProviders.OfType<CookieRequestCultureProvider>().First();
+                cp.CookieName = "Culture";
+            });
+
+            services.AddLocalization(options => options.ResourcesPath = "Resources");
+            services.AddMvc().AddViewLocalization();
 
             services.AddDistributedMemoryCache();
 
@@ -49,15 +64,15 @@ namespace Estelav
                     options.ReturnUrlParameter = "ReturnUrl";
                 });
 
-            services.AddRazorPages();
+            services.AddRazorPages().AddViewLocalization();
             //services.AddScoped<DbContext, Models.EstelavContext>();
             services.AddDbContext<EstelavContext>(options =>
-            //options.UseSqlServer(Configuration.GetConnectionString("EstelavDatabase")));
-            options.UseSqlServer(Configuration.GetConnectionString("EstelavDatabaseLocal")));
+            options.UseSqlServer(Configuration.GetConnectionString("EstelavDatabase")));
+            //options.UseSqlServer(Configuration.GetConnectionString("EstelavDatabaseLocal")));
 
-            services.AddTransient<IItem, ItemService>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             //services.AddScoped(sp => Pages.Cart.ShoppingCartModel.GetCart(sp));
+            //services.AddScoped<RequestLocalizationCookiesMiddleware>();
 
 
 
@@ -79,7 +94,12 @@ namespace Estelav
             }
 
             app.UseHttpsRedirection();
+            
             app.UseStaticFiles();
+
+
+            var localizationOptions = app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>().Value;
+            app.UseRequestLocalization(localizationOptions);
 
             app.UseStatusCodePages();
 
@@ -88,6 +108,7 @@ namespace Estelav
             app.UseSession();
 
             app.UseAuthentication();
+            
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

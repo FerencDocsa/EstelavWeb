@@ -20,12 +20,12 @@ namespace Estelav.Models
         }
 
         public virtual DbSet<Categories> Categories { get; set; }
-        public virtual DbSet<Customer> Customer { get; set; }
         public virtual DbSet<ImagesList> ImagesList { get; set; }
         public virtual DbSet<ItemSizes> ItemSizes { get; set; }
         public virtual DbSet<Items> Items { get; set; }
-        public virtual DbSet<Order> Order { get; set; }
+        public virtual DbSet<ItemsDescription> ItemsDescription { get; set; }
         public virtual DbSet<OrderStatus> OrderStatus { get; set; }
+        public virtual DbSet<Orders> Orders { get; set; }
         public virtual DbSet<ShoppingCartItem> ShoppingCartItem { get; set; }
         public virtual DbSet<Users> Users { get; set; }
 
@@ -50,52 +50,25 @@ namespace Estelav.Models
 
                 entity.Property(e => e.CategoryDescription).HasColumnType("text");
 
+                entity.Property(e => e.CategoryDescriptionCz)
+                    .HasColumnName("CategoryDescriptionCZ")
+                    .HasColumnType("text");
+
+                entity.Property(e => e.CategoryDescriptionRu)
+                    .HasColumnName("CategoryDescriptionRU")
+                    .HasColumnType("text");
+
                 entity.Property(e => e.CategoryName)
                     .IsRequired()
                     .HasColumnType("text");
-            });
 
-            modelBuilder.Entity<Customer>(entity =>
-            {
-                entity.HasKey(e => e.UserId);
+                entity.Property(e => e.CategoryNameCz)
+                    .HasColumnName("CategoryNameCZ")
+                    .HasColumnType("text");
 
-                entity.Property(e => e.UserId).ValueGeneratedNever();
-
-                entity.Property(e => e.City)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Email)
-                    .IsRequired()
-                    .HasMaxLength(50);
-
-                entity.Property(e => e.FlatNumber)
-                    .HasMaxLength(10)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Name)
-                    .IsRequired()
-                    .HasMaxLength(50);
-
-                entity.Property(e => e.Password)
-                    .IsRequired()
-                    .HasMaxLength(20);
-
-                entity.Property(e => e.Phone)
-                    .IsRequired()
-                    .HasMaxLength(20);
-
-                entity.Property(e => e.Street)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.StreetNumber)
-                    .HasMaxLength(15)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Surname)
-                    .IsRequired()
-                    .HasMaxLength(50);
+                entity.Property(e => e.CategoryNameRu)
+                    .HasColumnName("CategoryNameRU")
+                    .HasColumnType("text");
             });
 
             modelBuilder.Entity<ImagesList>(entity =>
@@ -152,34 +125,27 @@ namespace Estelav.Models
                     .HasConstraintName("FK_Items_Categories");
             });
 
-            modelBuilder.Entity<Order>(entity =>
+            modelBuilder.Entity<ItemsDescription>(entity =>
             {
-                entity.Property(e => e.OrderId)
-                    .HasColumnName("order_id")
-                    .ValueGeneratedNever();
+                entity.HasKey(e => e.DescrId);
 
-                entity.Property(e => e.Address)
-                    .HasColumnName("address")
+                entity.Property(e => e.Description)
+                    .IsUnicode(true);
+
+                entity.Property(e => e.Language)
+                    .IsRequired()
+                    .HasMaxLength(10)
                     .IsUnicode(false);
 
-                entity.Property(e => e.Email)
-                    .HasColumnName("email")
-                    .IsUnicode(false);
+                entity.Property(e => e.Name)
+                    .IsRequired()
+                    .IsUnicode(true);
 
-                entity.Property(e => e.OrderStatus).HasColumnName("order_status");
-
-                entity.Property(e => e.Phone)
-                    .HasColumnName("phone")
-                    .IsUnicode(false);
-
-                entity.Property(e => e.UserId)
-                    .HasColumnName("user_id")
-                    .IsUnicode(false);
-
-                entity.HasOne(d => d.OrderStatusNavigation)
-                    .WithMany(p => p.Order)
-                    .HasForeignKey(d => d.OrderStatus)
-                    .HasConstraintName("FK_Order_OrderStatus");
+                entity.HasOne(d => d.Item)
+                    .WithMany(p => p.ItemsDescription)
+                    .HasForeignKey(d => d.ItemId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_ItemsDescription_Items");
             });
 
             modelBuilder.Entity<OrderStatus>(entity =>
@@ -187,8 +153,7 @@ namespace Estelav.Models
                 entity.HasKey(e => e.StatusId);
 
                 entity.Property(e => e.StatusId)
-                    .HasColumnName("status_id")
-                    .ValueGeneratedNever();
+                    .HasColumnName("status_id");
 
                 entity.Property(e => e.StatusName)
                     .IsRequired()
@@ -197,11 +162,25 @@ namespace Estelav.Models
                     .IsUnicode(false);
             });
 
+            modelBuilder.Entity<Orders>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.Id).ValueGeneratedOnAdd();
+
+
+                entity.Property(e => e.CartId)
+                    .IsRequired()
+                    .IsUnicode(false);
+            });
+
             modelBuilder.Entity<ShoppingCartItem>(entity =>
             {
                 entity.Property(e => e.ShoppingCartId)
                     .IsRequired()
                     .IsUnicode(false);
+
+                entity.Property(e => e.Ordered)
+                    .HasColumnName("Ordered");
 
                 entity.HasOne(d => d.ItemNavigation)
                     .WithMany(p => p.ShoppingCartItem)

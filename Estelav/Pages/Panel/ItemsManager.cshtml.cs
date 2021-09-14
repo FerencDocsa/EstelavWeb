@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using Estelav.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -32,6 +34,13 @@ namespace Estelav.Pages.Panel
             public string Name { get; set; }
 
             [Required]
+            public string NameRU { get; set; }
+            
+            [Required]
+            public string NameCZ{ get; set; }
+
+
+            [Required]
             public int CatergoryId { get; set; }
 
             //public IFormFile mainPhoto { get; set; }
@@ -42,6 +51,8 @@ namespace Estelav.Pages.Panel
             public int Price { get; set; }
 
             public string Description { get; set; }
+            public string DescriptionRU { get; set; }
+            public string DescriptionCZ { get; set; }
         }
 
         public ItemsManagerModel(EstelavContext context)
@@ -79,7 +90,15 @@ namespace Estelav.Pages.Panel
             var dbPath = "/img/merch/" + photoNewName;
 
             //Add new Item to DB
-            var newItem = new Items { CategoryId = Upload.CatergoryId, Name = Upload.Name, Price = Upload.Price, Amount = 1, InStock = true, Description = Upload.Description, ImageUrl = dbPath };
+            var newItem = new Items { CategoryId = Upload.CatergoryId,
+                Name = Upload.Name, 
+                Price = Upload.Price, 
+                Amount = 50,
+                InStock = true, 
+                Description = Upload.Description, 
+                ImageUrl = dbPath 
+            };
+
             _context.Items.Add(newItem);
             _context.SaveChanges();
 
@@ -93,11 +112,25 @@ namespace Estelav.Pages.Panel
                 var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img/merch", photosNewName);
                 var stream = new FileStream(path, FileMode.Create);
                 photo.CopyToAsync(stream);
-                var dbMulPath = "/img/merch/" + photosNewName;
+                var dbMulPath = "img/merch/" + photosNewName;
                 imList.Add(new ImagesList { ImageUrl = dbMulPath, ItemId = newItem.ItemId });              
             }
 
             _context.ImagesList.AddRange(imList);
+
+
+            //Lang Decription 
+            var descrCZ = new ItemsDescription { Description = Upload.DescriptionCZ, Language = "cs-CZ", Name = Upload.NameCZ, ItemId = newItem.ItemId };
+
+            var descrRU = new ItemsDescription { Description =@Upload.DescriptionRU, Language = "ru-RU", Name = Upload.NameRU, ItemId = newItem.ItemId };
+            
+
+            _context.ItemsDescription.Add(descrCZ);
+            //_context.Entry<ItemsDescription>(descrCZ).State = Microsoft.EntityFrameworkCore.EntityState.Detached;
+            _context.SaveChanges();
+
+            _context.ItemsDescription.Add(descrRU);
+            //_context.Entry<ItemsDescription>(descrRU).State = Microsoft.EntityFrameworkCore.EntityState.Detached;
             _context.SaveChanges();
 
 

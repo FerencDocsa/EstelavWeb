@@ -1,17 +1,98 @@
-﻿@page
+﻿@page "{handler?}"
 @model Estelav.Pages.Cart.CheckoutModel
 @{
 }
 
 @**
 
-    Ask for login -> fill in data -> confirmation 
+    Ask for login -> fill in data -> confirmation
     or
     Ask for data -> confirmation
-    
+
 
     store data in user profile
-    show order on admin page 
-
-
+    show order on admin page
 *@
+
+<style>
+    .input-row {
+        color: black;
+    }
+
+        .input-row input {
+            margin-bottom: 10px;
+        }
+</style>
+
+<div class="layout-main layout-main_checkout">
+    <div class="checkout-form">
+
+        <div class="checkout-box-layout">
+            <div class="checkout-box">
+                <div class="checkout-box__title">Delivery</div>
+                <div class="checkout-box-body" style="display: flex; flex-direction: column;">
+
+                    <form method="post" asp-page-handler="Delivery">
+                        <div class="input-row">
+                            <label>Address</label>
+                            <br />
+                            <input class="input" asp-for="DeliverTo.Address" style="width: 100%" required/>
+                        </div>
+
+                        <div class="input-row">
+                            <label>Street</label>
+                            <br />
+                            <input class="input" asp-for="DeliverTo.Street" style="width: 100%" required/>
+                        </div>
+
+                        <div class="input-row">
+                            <label>City</label>
+                            <br />
+                            <input class="input" asp-for="DeliverTo.City" style="width: 100%" required/>
+                        </div>
+
+                        <div class="input-row">
+                            <label>Post Code</label>
+                            <br />
+                            <input class="input" asp-for="DeliverTo.PostCode" style="width: 100%" required/>
+                        </div>
+
+                        <div class="input-row">
+                            <label>Country</label>
+                            <br />
+                            <input class="input" asp-for="DeliverTo.Country" style="width: 100%" required/>
+                        </div>
+                        
+
+
+
+
+                        <input class="button" type="submit" value="Deliver it" data-checkout-submit="" style="width: 100%;">
+                    </form>
+                </div>
+            </div>
+
+
+            <div class="checkout-box">
+                <div class="checkout-box__title">Self Pickup</div>
+                <div class="checkout-box-body">
+                    <div class="layout-form-row">
+                        <label for="checkout-self">Store:</label>
+                        <select class="select-custom custom-select-wrap">
+                            <option value="1">Na Příkopě 858/20, Prague</option>
+                        </select>
+                    </div>
+
+                    <form method="post" asp-page-handler="Pickup">
+                        <input class="button" type="submit" value="I want to Pick Up" style="width: 100%;">
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -13,6 +13,7 @@ namespace Estelav.Models
         public int Item { get; set; }
         public int Amount { get; set; }
         public string ShoppingCartId { get; set; }
+        public bool? Ordered { get; set; }
 
         public virtual Items ItemNavigation { get; set; }
     }

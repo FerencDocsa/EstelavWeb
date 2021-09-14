@@ -41,12 +41,17 @@ namespace Estelav.Pages.Account
         }
 
 
-        public async Task OnGetAsync(string returnUrl = null)
+        public async Task OnGetAsync(string? message = null, string returnUrl = null)
         {
             returnUrl ??= Url.Content("~/");
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-
             ReturnUrl = returnUrl;
+            if (message != null)
+            {
+                ViewData["Message"] = "You must login or register first in order to complete your order";
+            }
+
+
         }
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)

@@ -9,14 +9,7 @@ namespace Estelav.Models
 {
     public partial class OrderStatus
     {
-        public OrderStatus()
-        {
-            Order = new HashSet<Order>();
-        }
-
         public int StatusId { get; set; }
         public string StatusName { get; set; }
-
-        public virtual ICollection<Order> Order { get; set; }
     }
 }

@@ -16,7 +16,11 @@ namespace Estelav.Models
 
         public int CatergoryId { get; set; }
         public string CategoryName { get; set; }
+        public string CategoryNameCz { get; set; }
+        public string CategoryNameRu { get; set; }
         public string CategoryDescription { get; set; }
+        public string CategoryDescriptionCz { get; set; }
+        public string CategoryDescriptionRu { get; set; }
 
         public virtual ICollection<Items> Items { get; set; }
     }
